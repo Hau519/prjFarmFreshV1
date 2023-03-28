@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.gallery.GalleryFragment">
 
-<!--    design for about us-->
+<!--    design for about us//-->
 
     <TextView
         android:id="@+id/text_gallery"
