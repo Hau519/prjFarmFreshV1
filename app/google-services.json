@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "718495238044",
+    "project_id": "prjfarmfresh",
+    "storage_bucket": "prjfarmfresh.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:718495238044:android:0c67967248ef94b28eaa59",
+        "android_client_info": {
+          "package_name": "com.example.prjfarmfreshv1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "718495238044-4715493ftv7cl274bedr0km39goh1kjq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASPovikslAHvXkGZ1WH1Rd5-0fba02LL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "718495238044-4715493ftv7cl274bedr0km39goh1kjq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
