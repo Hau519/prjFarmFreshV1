@@ -4,8 +4,8 @@ public class User {
     private static int Id=0;
 
     private String name;
-    private String email;
-    private String password;
+    private String Email;
+    private String Password;
 
     public User() {
         Id++;
@@ -14,15 +14,15 @@ public class User {
     public User(int id, String name, String email, String password) {
         Id = id;
         this.name = name;
-        this.email = email;
-        this.password = password;
+        this.Email = email;
+        this.Password = password;
 
     }
 
     public User(String name, String email, String password) {
         this.name = name;
-        this.email = email;
-        this.password = password;
+        this.Email = email;
+        this.Password = password;
         Id++;
     }
 
@@ -40,18 +40,18 @@ public class User {
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.Email = email;
     }
 
     public String getPassword() {
-        return password;
+        return Password;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.Password = password;
     }
 }

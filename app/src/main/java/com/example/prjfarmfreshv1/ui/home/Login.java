@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.prjfarmfreshv1.ProfileActivity;
 import com.example.prjfarmfreshv1.R;
 import com.example.prjfarmfreshv1.activity_Register;
 import com.google.firebase.database.DataSnapshot;
@@ -18,7 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class Login extends AppCompatActivity implements View.OnClickListener, ValueEventListener {
+public class Login extends AppCompatActivity implements View.OnClickListener {
 EditText edEmail,edPassword;
 Button btnLogIn,btnRegister;
 DatabaseReference databaseReference;
@@ -57,8 +58,8 @@ DatabaseReference databaseReference;
     }
 
     private void register() {
-        Intent i = new Intent(Login.this, activity_Register.class);
-        startActivity(i);
+        Intent i = new Intent(this, activity_Register.class);
+       startActivity(i);
     }
 
     private void login() {
@@ -67,37 +68,37 @@ DatabaseReference databaseReference;
         if(email.isEmpty()){
             edEmail.setError("Email is required");
         }
-
         if(password.isEmpty()){
             edPassword.setError("Password is required");
         }
-        databaseReference.child("Users").addValueEventListener(this);
+        databaseReference.child("Users").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                if(snapshot.hasChild(email)){
+
+                    String getPassword=snapshot.child(email).child("Password").getValue(String.class);
+                    if(getPassword.equals(password)){
+                        Toast.makeText(Login.this,"logged in",Toast.LENGTH_LONG).show();
+
+                        Intent i=new Intent(Login.this, ProfileActivity.class);
+                        startActivity(i);
+                    }else{
+                        Toast.makeText(Login.this,"Incorrect email or password",Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
 
     }
 
-    @Override
-    public void onDataChange(@NonNull DataSnapshot snapshot) {
-        String email=edEmail.getText().toString();
-        String password=edPassword.getText().toString();
-        if(snapshot.hasChild(email)){
 
-            String getPassword=snapshot.child(email).child("password").getValue(String.class);
-        if(getPassword.equals(password)){
-            Toast.makeText(this,"Logged in successfully",Toast.LENGTH_SHORT).show();
-          /*  Intent i=new Intent(this,profileActivity.class);
-            startActivity(i);*/
-        }else{
-            Toast.makeText(this,"Incorrect email or password",Toast.LENGTH_SHORT).show();
-        }
-
-        }
-    }
-
-    @Override
-    public void onCancelled(@NonNull DatabaseError error) {
-
-    }
 }
