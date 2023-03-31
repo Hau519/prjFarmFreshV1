@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/signup2"
+    android:background="@drawable/login"
     tools:context=".ui.home.Login">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -60,7 +61,7 @@
             android:ems="8"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:text="Email" />
+            android:hint="Email" />
 
     </LinearLayout>
 
@@ -78,9 +79,9 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:ems="6"
-            android:inputType="textPersonName"
+            android:hint="Password"
             android:minHeight="48dp"
-            android:text="Password" />
+             />
     </LinearLayout>
 
     <LinearLayout
@@ -97,19 +98,20 @@
         android:layout_height="0dp"
         android:layout_weight="0.25"
         android:orientation="horizontal">
+
         <Button
             android:id="@+id/btnLogIn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
             android:layout_weight="0.25"
+            android:gravity="center"
             android:text="LogIn"
             android:textAllCaps="false"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginRight="35dp"
-            android:layout_marginLeft="35dp"
 
-            />
+            tools:ignore="TextSizeCheck" />
 
     </LinearLayout>
 
@@ -148,8 +150,6 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal">
-
-
 
     </LinearLayout>
 

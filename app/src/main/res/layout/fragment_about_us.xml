@@ -4,21 +4,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/aboutus"
     tools:context=".ui.aboutUs.AboutUsFragment">
 
 <!--    design for about us//-->
 
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        />
+
     <TextView
-        android:id="@+id/text_gallery"
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About Us"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="40sp"
+        android:textColor="#DCDEE6"
+        android:textStyle="bold|italic"
+        android:layout_marginTop="40dp"
+        />
+
+    <TextView
+        android:id="@+id/tvText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintLeft_toLeftOf="@id/tvTitle"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold|italic"
+        android:textColor="#D9DEE3"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+
+        android:text="Many Quebec farms offer exciting on-farm activities,
+ ranging from pick-your-own to agri-tainment
+  (e.g. wagon rides, corn mazes, etc.).Coupled with the fact that many quebecers are including
+  local food in their diets and supporting quebec farmers,
+  it’s no wonder that more and more consumers
+    are visiting Quebec farms for the fresh produce,
+   family fun and unique experience.
+
+   Farm fresh is one of the such farm supporting platform.
+
+" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
