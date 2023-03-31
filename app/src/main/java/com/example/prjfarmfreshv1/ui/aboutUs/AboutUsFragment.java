@@ -1,4 +1,4 @@
-package com.example.prjfarmfreshv1.ui.slideshow;
+package com.example.prjfarmfreshv1.ui.aboutUs;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.prjfarmfreshv1.databinding.FragmentSlideshowBinding;
+import com.example.prjfarmfreshv1.databinding.FragmentAboutUsBinding;
 
-public class SlideshowFragment extends Fragment {
+public class AboutUsFragment extends Fragment {
 
-    private FragmentSlideshowBinding binding;
+    private FragmentAboutUsBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        SlideshowViewModel slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
+        AboutUsViewModel galleryViewModel =
+                new ViewModelProvider(this).get(AboutUsViewModel.class);
 
-        binding = FragmentSlideshowBinding.inflate(inflater, container, false);
+        binding = FragmentAboutUsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textSlideshow;
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textGallery;
+        galleryViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

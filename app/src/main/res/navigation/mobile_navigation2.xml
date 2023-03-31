@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation2"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_profile">
 
     <fragment
-        android:id="@+id/nav_home"
+        android:id="@+id/nav_profile"
         android:name="com.example.prjfarmfreshv1.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.prjfarmfreshv1.ui.gallery.GalleryFragment"
+        android:id="@+id/nav_order_history"
+        android:name="com.example.prjfarmfreshv1.ui.aboutUs.AboutUsFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_order_list" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.prjfarmfreshv1.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_logout"
+        android:name="com.example.prjfarmfreshv1.ui.contactUs.ContactUsFragment"
+        android:label="Logout"
+        tools:layout="@layout/fragment_logout" />
 </navigation>

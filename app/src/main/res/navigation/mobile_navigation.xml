@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.prjfarmfreshv1.ui.gallery.GalleryFragment"
+        android:id="@+id/nav_about_us"
+        android:name="com.example.prjfarmfreshv1.ui.aboutUs.AboutUsFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_about_us" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.prjfarmfreshv1.ui.slideshow.SlideshowFragment"
+        android:id="@+id/nav_contact_us"
+        android:name="com.example.prjfarmfreshv1.ui.contactUs.ContactUsFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_contact_us" />
 </navigation>
