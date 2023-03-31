@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.prjfarmfreshv1.ProfileActivity;
 import com.example.prjfarmfreshv1.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -82,8 +83,8 @@ DatabaseReference databaseReference;
             String getPassword=snapshot.child(email).child("password").getValue(String.class);
         if(getPassword.equals(password)){
             Toast.makeText(this,"Logged in successfully",Toast.LENGTH_SHORT).show();
-          /*  Intent i=new Intent(this,profileActivity.class);
-            startActivity(i);*/
+            Intent i=new Intent(this, ProfileActivity.class);
+            startActivity(i);
         }else{
             Toast.makeText(this,"Incorrect email or password",Toast.LENGTH_SHORT).show();
         }
