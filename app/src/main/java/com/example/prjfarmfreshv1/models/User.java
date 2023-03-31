@@ -1,7 +1,7 @@
 package com.example.prjfarmfreshv1.models;
 
 public class User {
-    private static int Id;
+    private static int Id=0;
 
     private String name;
     private String email;

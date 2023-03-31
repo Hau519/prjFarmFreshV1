@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.prjfarmfreshv1.R;
+import com.example.prjfarmfreshv1.activity_Register;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,6 +42,7 @@ DatabaseReference databaseReference;
 
     }
 
+
     @Override
     public void onClick(View view) {
         int id=view.getId();
@@ -55,7 +57,8 @@ DatabaseReference databaseReference;
     }
 
     private void register() {
-
+        Intent i = new Intent(Login.this, activity_Register.class);
+        startActivity(i);
     }
 
     private void login() {

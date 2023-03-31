@@ -1,9 +1,14 @@
 package com.example.prjfarmfreshv1;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
+import com.example.prjfarmfreshv1.ui.home.Login;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -17,6 +22,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.prjfarmfreshv1.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
+
+    ImageView icon_account;
+
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
@@ -47,6 +55,17 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        icon_account = findViewById(R.id.icon_account);
+
+        icon_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this , Login.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -62,4 +81,6 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
 }
