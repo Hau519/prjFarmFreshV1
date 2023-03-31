@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/signup2"
-    tools:context=".Login">
+    tools:context=".ui.home.Login">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -106,7 +106,8 @@
             android:textAllCaps="false"
             android:layout_gravity="center"
             android:gravity="center"
-
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="35dp"
 
             />
 
@@ -125,6 +126,7 @@
             android:layout_weight="1"
             android:text="New User Register here"
             android:gravity="center"
+            android:textSize="25dp"
             android:layout_gravity="center"/>
 
         <Button
@@ -134,6 +136,7 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:text="Register"
+            android:layout_marginRight="30dp"
             android:textAllCaps="false"/>
 
     </LinearLayout>
