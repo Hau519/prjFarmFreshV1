@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.prjfarmfreshv1.R;
-import com.example.prjfarmfreshv1.activity_Register;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,15 +50,11 @@ DatabaseReference databaseReference;
                 login();
                 break;
             case R.id.btnRegister:
-                register();
+                startActivity(new Intent(this, Register.class));
                 break;
         }
     }
 
-    private void register() {
-        Intent i = new Intent(Login.this, activity_Register.class);
-        startActivity(i);
-    }
 
     private void login() {
         String email=edEmail.getText().toString();
