@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/Theme.PrjFarmFreshV1.AppBarOverlay">
@@ -14,9 +15,10 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.PrjFarmFreshV1.PopupOverlay" >
+            android:layout_height="60dp"
+            android:background="#4BAF48"
+            android:minHeight="80dp"
+            app:popupTheme="@style/Theme.PrjFarmFreshV1.PopupOverlay">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -26,16 +28,16 @@
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="5" />
 
                 <ImageView
                     android:id="@+id/imgLogo"
-                    android:layout_width="120dp"
-                    android:layout_height="70dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
                     android:layout_gravity="center"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="0dp"
                     app:srcCompat="@drawable/logo1" />
 
                 <Space
@@ -43,16 +45,12 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2" />
 
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
 
                 <ImageView
                     android:id="@+id/imageView5"
-                    android:layout_width="40dp"
+                    android:layout_width="70dp"
                     android:layout_height="40dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/account_circle" />
 
