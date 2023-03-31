@@ -58,7 +58,8 @@ DatabaseReference databaseReference;
 
 
     private void login() {
-        String email=edEmail.getText().toString();
+        String emailstr=edEmail.getText().toString();
+        String email = emailstr.replace(".com","");
         String password=edPassword.getText().toString();
         if(email.isEmpty()){
             edEmail.setError("Email is required");
@@ -67,7 +68,8 @@ DatabaseReference databaseReference;
         if(password.isEmpty()){
             edPassword.setError("Password is required");
         }
-        databaseReference.child("Users").addValueEventListener(this);
+        Toast.makeText(this, "email is "+email, Toast.LENGTH_SHORT).show();
+        databaseReference.child(email).addValueEventListener(this);
 
 
 
@@ -76,19 +78,23 @@ DatabaseReference databaseReference;
 
     @Override
     public void onDataChange(@NonNull DataSnapshot snapshot) {
-        String email=edEmail.getText().toString();
+       
         String password=edPassword.getText().toString();
-        if(snapshot.hasChild(email)){
-
-            String getPassword=snapshot.child(email).child("password").getValue(String.class);
+        if(snapshot.exists()){
+            Toast.makeText(this, "email correct", Toast.LENGTH_SHORT).show();
+            String getPassword=snapshot.child("password").getValue().toString();
         if(getPassword.equals(password)){
             Toast.makeText(this,"Logged in successfully",Toast.LENGTH_SHORT).show();
+
+
             Intent i=new Intent(this, ProfileActivity.class);
             startActivity(i);
         }else{
             Toast.makeText(this,"Incorrect email or password",Toast.LENGTH_SHORT).show();
         }
 
+        }else{
+            Toast.makeText(this, "Email not valid", Toast.LENGTH_SHORT).show();
         }
     }
 
