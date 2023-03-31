@@ -4,33 +4,24 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Order {
-    private int Id;
+    private static int Id;
+
+    private int clientId;
     private ArrayList<Product> productList;
     private LocalDateTime orderDate;
     private double total;
-
-    public Order() {
-    }
-
-    public Order(ArrayList<Product> productList, LocalDateTime orderDate, double total) {
-        this.productList = productList;
-        this.orderDate = orderDate;
-        this.total = total;
-    }
-
-    public Order(int id, ArrayList<Product> productList, LocalDateTime orderDate, double total) {
-        Id = id;
-        this.productList = productList;
-        this.orderDate = orderDate;
-        this.total = total;
-    }
 
     public int getId() {
         return Id;
     }
 
-    public void setId(int id) {
-        Id = id;
+
+    public int getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
     }
 
     public ArrayList<Product> getProductList() {
@@ -54,6 +45,22 @@ public class Order {
     }
 
     public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public Order(int clientId, ArrayList<Product> productList, LocalDateTime orderDate, double total) {
+        this.clientId = clientId;
+        this.productList = productList;
+        this.orderDate = orderDate;
+        this.total = total;
+        Id++;
+    }
+
+    public Order(int id, int clientId, ArrayList<Product> productList, LocalDateTime orderDate, double total) {
+        Id = id;
+        this.clientId = clientId;
+        this.productList = productList;
+        this.orderDate = orderDate;
         this.total = total;
     }
 }
