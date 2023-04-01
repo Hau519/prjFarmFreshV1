@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Order {
-    private static int Id;
+    private static int Id=0;
 
     private int clientId;
     private ArrayList<Product> productList;
