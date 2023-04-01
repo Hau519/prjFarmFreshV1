@@ -26,7 +26,7 @@ private ActivityProfileBinding binding;
      setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarProfile.toolbarProfiler);
-        binding.appBarProfile.fab.setOnClickListener(new View.OnClickListener() {
+        binding.appBarProfile.fabProfiler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -34,7 +34,7 @@ private ActivityProfileBinding binding;
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
-        NavigationView navigationView = binding.navView;
+        NavigationView navigationView = binding.navViewProfiler;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(

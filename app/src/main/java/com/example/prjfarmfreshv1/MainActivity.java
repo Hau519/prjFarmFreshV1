@@ -3,6 +3,7 @@ package com.example.prjfarmfreshv1;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.view.Menu;
 import android.widget.ImageButton;
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         icon_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this , Login.class);
+                Intent intent = new Intent(MainActivity.this , ProfileActivity.class);
                 startActivity(intent);
             }
         });
@@ -80,6 +81,12 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        binding = null;
     }
 
 
