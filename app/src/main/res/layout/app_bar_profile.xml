@@ -13,7 +13,7 @@
         android:theme="@style/Theme.PrjFarmFreshV1.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbarProfiler"
             android:layout_width = "match_parent"
             android:background="#009688"
               app:popupTheme="@style/Theme.PrjFarmFreshV1.PopupOverlay"

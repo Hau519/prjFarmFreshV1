@@ -25,7 +25,7 @@
                 android:layout_weight="1"
                 android:rotation="180"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/header2" />
+                 />
 
             <TextView
                 android:id="@+id/textView"

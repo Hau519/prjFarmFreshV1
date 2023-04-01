@@ -25,7 +25,7 @@ private ActivityProfileBinding binding;
      binding = ActivityProfileBinding.inflate(getLayoutInflater());
      setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.appBarProfile.toolbar);
+        setSupportActionBar(binding.appBarProfile.toolbarProfiler);
         binding.appBarProfile.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
