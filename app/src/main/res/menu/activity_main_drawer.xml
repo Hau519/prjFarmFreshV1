@@ -10,11 +10,11 @@
             android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_about_us"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/logo4"
             android:title="About Us" />
         <item
             android:id="@+id/nav_contact_us"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/baseline_email_24"
             android:title="Contact Us" />
     </group>
 </menu>

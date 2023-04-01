@@ -5,9 +5,54 @@
     android:layout_height="match_parent"
     tools:context=".ui.logout.LogoutFragment">
 
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_weight=".5"
 
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2">
+
+            <ImageView
+                android:id="@+id/imgBanner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:rotation="180"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/header2" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:layout_weight="1"
+                android:gravity="center"
+
+                android:text="You have succesfully log out"
+                android:textSize="35dp"
+                android:textStyle="bold|italic"
+                android:fontFamily="@font/poppins_black"
+                android:textColor="#C15735"
+                />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="92dp"
+                android:layout_marginTop="93dp"
+                android:text="Go back to home page" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
 </FrameLayout>
