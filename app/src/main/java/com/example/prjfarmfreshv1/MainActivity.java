@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         icon_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this , ProfileActivity.class);
+                Intent intent = new Intent(MainActivity.this , Login.class);
                 startActivity(intent);
             }
         });
