@@ -14,38 +14,20 @@
         android:orientation="vertical">
 
 
-     <!--   <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/teal_700"
-            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="5dp"
 
-                app:srcCompat="@drawable/logo1" />
+<!--            <ImageView-->
+<!--                android:id="@+id/logo"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginLeft="0dp"-->
+<!--                android:layout_marginTop="5dp"-->
 
-            <ImageView
-                android:id="@+id/iconOrders"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+<!--                app:srcCompat="@drawable/logo1" />-->
 
-                app:srcCompat="@drawable/ic_baseline_menu_24" />
-            <ImageView
-                android:id="@+id/iconLogout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:srcCompat="@drawable/baseline_logout_24" />
 
-        </LinearLayout>-->
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -59,8 +41,34 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:rotation="180"
-                android:scaleType="centerCrop"
+                android:scaleType="fitCenter"
                 app:srcCompat="@drawable/bg1" />
+
+            <ImageView
+                android:id="@+id/icLogOut"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="45dp"
+                android:layout_marginBottom="656dp"
+
+                android:background="#F1ECEC"
+                android:backgroundTint="#F4EBEB"
+                app:srcCompat="@drawable/baseline_logout_24" />
+
+            <ImageView
+                android:id="@+id/icOrderList"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="125dp"
+                android:layout_marginBottom="653dp"
+
+                android:background="#1B1919"
+                android:backgroundTint="#F3ECEC"
+                app:srcCompat="@android:drawable/ic_input_get" />
 
             <TextView
                 android:id="@+id/tvTitle"

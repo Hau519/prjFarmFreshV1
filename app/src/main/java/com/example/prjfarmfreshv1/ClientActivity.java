@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.prjfarmfreshv1.models.User;
@@ -18,6 +19,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
     TextView tvName, tvEmail;
     Button btnUpdate, btnShop;
 
+    ImageView icOrderList, iconLogout;
     User user;
 
     DatabaseReference usersTable;
@@ -46,6 +48,10 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
         btnShop.setOnClickListener(this);
         btnUpdate.setOnClickListener(this);
         usersTable= FirebaseDatabase.getInstance().getReference("Users");
+        iconLogout = findViewById(R.id.icLogOut);
+        icOrderList = findViewById(R.id.icOrderList);
+        iconLogout.setOnClickListener(this);
+        icOrderList.setOnClickListener(this);
     }
 
     @Override
@@ -79,6 +85,16 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                             Snackbar.LENGTH_LONG).show();
                 }
                 break;
+            case R.id.icLogOut:
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.icOrderList:
+                Intent intent1 = new Intent(this, OrderListActivity.class);
+                intent1.putExtra("user", user);
+                startActivity(intent1);
+                break;
+
         }
     }
 }
