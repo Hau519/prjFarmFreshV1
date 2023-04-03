@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Register extends AppCompatActivity implements View.OnClickListener, ValueEventListener {
     Button btnRegister, btnLogIn;
     EditText edFName, edEmail, edPassword;
-    DatabaseReference userDatabase, userChild;
+    DatabaseReference userDatabase;
 
 
 
@@ -67,7 +67,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
     private void register(View view) {
         try{
             String name = edFName.getText().toString();
-            String email = edEmail.getText().toString();
+            String emailstr = edEmail.getText().toString();
+            String newEmail = emailstr.substring(emailstr.indexOf("."), emailstr.length()-0);
+            String email = emailstr.replace(newEmail,"");
             String password = edPassword.getText().toString();
 
             if(TextUtils.isEmpty(name)){
@@ -81,13 +83,10 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
                 Toast.makeText(this, "Password is required", Toast.LENGTH_SHORT).show();
             }
 
-            User user = new User(name, email, password);
-            userDatabase.child(name).setValue(user).addOnSuccessListener((OnSuccessListener<? super Void>) this);
-            userDatabase.child(name).setValue(user).addOnFailureListener((OnFailureListener) this);
+            User user = new User(name, emailstr, password);
+            userDatabase.child(email).setValue(user);
+
             Snackbar.make(view, "User has registered successfully", Snackbar.LENGTH_LONG).show();
-
-
-
 
 
         }catch(Exception e){
@@ -95,14 +94,17 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
         }
 
 
-
-
     }
+
 
     @Override
     public void onDataChange(@NonNull DataSnapshot snapshot) {
+        if(snapshot.exists()){
+            Toast.makeText(this, "This email already exist.", Toast.LENGTH_SHORT).show();
+        }
 
     }
+
 
     @Override
     public void onCancelled(@NonNull DatabaseError error) {
