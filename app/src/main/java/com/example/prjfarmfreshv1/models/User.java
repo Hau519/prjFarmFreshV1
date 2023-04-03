@@ -1,6 +1,8 @@
 package com.example.prjfarmfreshv1.models;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private static int Id=0;
 
     private String name;
@@ -18,6 +20,7 @@ public class User {
         this.Password = password;
 
     }
+
 
     public User(String name, String email, String password) {
         this.name = name;

@@ -1,24 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/contact"
+    android:orientation="vertical"
     tools:context=".ui.contactUs.ContactUsFragment">
 
-<!--    UI for contact us-->
-
     <TextView
-        android:id="@+id/text_slideshow"
-        android:layout_width="match_parent"
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="Contact US"
+        android:layout_gravity="center"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        android:layout_marginTop="30dp"
+        android:textColor="#20252C"
+
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="0.5"
+        ></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="0.75">
+
+        <ImageView
+            android:id="@+id/tvlblLocation"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/location"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center"/>
+
+
+
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="123,Commercial Road,Montreal,L2G6L0"
+            android:textColor="#323333"
+            android:textSize="15sp"
+            android:textStyle="bold|italic"
+             android:gravity="center"
+            android:layout_marginLeft="20dp"
+
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="0.75"
+
+        >
+
+        <ImageView
+            android:id="@+id/tvlblPhone"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/phone"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="50dp"
+            android:layout_gravity="center"
+            />
+
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="1-343 222-3334"
+            android:textColor="#2B2F35"
+            android:textSize="15sp"
+            android:textStyle="bold|italic"
+            android:gravity="center"
+
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="0.75"
+        android:layout_marginLeft="20dp"
+        >
+
+        <ImageView
+            android:id="@+id/tvlblEmail"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/email"
+            android:layout_gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="44dp"
+            android:text="farmfresh@yahoo.com"
+            android:textColor="#232A33"
+            android:textSize="15sp"
+            android:textStyle="bold|italic"
+            android:gravity="center"
+
+
+            />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/imagefacebook"
+            android:layout_width="72dp"
+            android:layout_height="67dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginBottom="52dp"
+            android:src="@drawable/facebook1"
+
+
+            />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"/>
+
+        <ImageView
+            android:id="@+id/imagetwitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="52dp"
+            android:src="@drawable/twitter_icon"
+           />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.2" />
+
+        <ImageView
+            android:id="@+id/imageinsta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/instagram_icon"
+            android:layout_marginRight="30dp"
+           />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

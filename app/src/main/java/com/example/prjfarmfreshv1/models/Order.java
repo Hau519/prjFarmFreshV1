@@ -1,9 +1,10 @@
 package com.example.prjfarmfreshv1.models;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class Order {
+public class Order implements Serializable {
     private static int Id=0;
 
     private int clientId;
