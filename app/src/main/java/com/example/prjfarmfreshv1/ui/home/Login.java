@@ -72,8 +72,6 @@ DatabaseReference databaseReference;
         databaseReference.child(email).addValueEventListener(this);
 
 
-
-
     }
 
     @Override
