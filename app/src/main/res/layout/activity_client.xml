@@ -46,7 +46,7 @@
         app:layout_constraintHorizontal_bias="0.815"
         app:layout_constraintStart_toEndOf="@+id/logo"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_menu_24" />
+        app:srcCompat="@drawable/order_history" />
 
     <TextView
         android:id="@+id/tvTitle"
