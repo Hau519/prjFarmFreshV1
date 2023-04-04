@@ -8,7 +8,7 @@
     tools:context=".OrderListActivity">
 
     <ImageView
-        android:id="@+id/icon_account"
+        android:id="@+id/ivAccount"
         android:layout_width="68dp"
         android:layout_height="102dp"
         android:layout_marginStart="44dp"
@@ -58,14 +58,13 @@
         />
 
     <Button
-        android:id="@+id/btnShopNow"
+        android:id="@+id/btnShop"
         android:layout_width="164dp"
         android:layout_height="71dp"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="88dp"
         android:backgroundTint="@color/profile"
         android:padding="10dp"
-
         android:text="Shop now"
         android:textSize="23sp"
         app:layout_constraintBottom_toBottomOf="parent"
