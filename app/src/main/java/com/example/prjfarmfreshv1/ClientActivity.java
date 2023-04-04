@@ -16,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class ClientActivity extends AppCompatActivity implements View.OnClickListener{
 
-    TextView tvName, tvEmail;
+    TextView tvName, tvEmail, tvTitle;
     Button btnUpdate, btnShop;
 
     ImageView icOrderList, iconLogout;
@@ -36,6 +36,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
         user = (User)getIntent().getExtras().getSerializable("user");
         tvName.setText(user.getName());
         tvEmail.setText(user.getEmail());
+        tvTitle.setText("Welcome " + user.getName());
     }
 
     private void initialize() {
@@ -52,6 +53,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
         icOrderList = findViewById(R.id.icOrderList);
         iconLogout.setOnClickListener(this);
         icOrderList.setOnClickListener(this);
+        tvTitle = findViewById(R.id.tvTitle);
     }
 
     @Override
