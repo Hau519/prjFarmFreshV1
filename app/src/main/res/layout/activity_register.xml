@@ -43,7 +43,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.3"
-        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
 
@@ -223,6 +222,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.3"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="12dp"
         android:orientation="horizontal">
 
 
@@ -235,7 +236,7 @@
             android:id="@+id/btnRegister"
             android:layout_width="350dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="110dp"
+            android:layout_marginLeft="113dp"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
@@ -263,7 +264,7 @@
             android:layout_height="2dp"
             android:background="#352F2F"
 
-            android:layout_marginLeft="45dp"/>
+            android:layout_marginLeft="50dp"/>
 
         <TextView
             android:id="@+id/textView3"
