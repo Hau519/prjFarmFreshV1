@@ -68,27 +68,15 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
         try{
             String name = edName.getText().toString();
             String emailstr = edEmail.getText().toString();
-//            String newEmail = emailstr.substring(emailstr.indexOf("."), emailstr.length()-0);
-
             email = emailstr.replace(".","DOT");
             String password = edPassword.getText().toString();
 
             if(TextUtils.isEmpty(name)||TextUtils.isEmpty(emailstr)||TextUtils.isEmpty(password)){
-//                Toast.makeText(this,"Name is required" , Toast.LENGTH_SHORT).show();
-
                 Toast.makeText(this, "Plz fill all fields!", Toast.LENGTH_SHORT).show();
             }else{
                 user = new User(name, emailstr, password);
-
                 userDatabase.child(email).addValueEventListener(this);
             }
-
-
-
-
-
-
-
         }catch(Exception e){
             Snackbar.make(view, e.getMessage(), Snackbar.LENGTH_LONG).show();
         }
@@ -102,13 +90,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
 
         if(snapshot.exists()){
             if (!userAdded) {
-
               Toast.makeText(this, "This email already exist.", Toast.LENGTH_SHORT).show();
             }
         }else{
             userDatabase.child(email).setValue(user);
             userAdded=true;
-            Toast.makeText(this, "Register success", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Register success!", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, Login.class);
             i.putExtra("user", user);
             setResult(RESULT_OK, i);

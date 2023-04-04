@@ -26,9 +26,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity implements View.OnClickListener, ValueEventListener {
-EditText edEmail,edPassword;
-Button btnLogIn,btnRegister;
-DatabaseReference databaseReference;
+    EditText edEmail,edPassword;
+    Button btnLogIn,btnRegister;
+    DatabaseReference databaseReference;
     ActivityResultLauncher activityResultLauncher;
 
     @Override
@@ -58,9 +58,7 @@ DatabaseReference databaseReference;
         User user =(User) result.getData().getExtras().getSerializable("user");
         edEmail.setText(user.getEmail());
         edPassword.setText(user.getPassword());
-
     }
-
 
     @Override
     public void onClick(View view) {
