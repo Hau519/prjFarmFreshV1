@@ -58,7 +58,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
                 register(view);
                 break;
             case R.id.btnLogIn:
-                this.finish();
+                startActivity(new Intent(this, Login.class));
+
                 break;
         }
     }
@@ -75,7 +76,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
             if(TextUtils.isEmpty(name)){
                 Toast.makeText(this, "Name is required", Toast.LENGTH_SHORT).show();
             }
-            if(TextUtils.isEmpty(email)){
+            if(TextUtils.isEmpty(emailstr)){
                 Toast.makeText(this, "Email is required", Toast.LENGTH_SHORT).show();
             }
 
