@@ -1,10 +1,15 @@
 package com.example.prjfarmfreshv1.ui.home;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Instrumentation;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,7 +29,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Va
 EditText edEmail,edPassword;
 Button btnLogIn,btnRegister;
 DatabaseReference databaseReference;
-
+    ActivityResultLauncher activityResultLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,18 @@ DatabaseReference databaseReference;
         btnLogIn.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
         databaseReference= FirebaseDatabase.getInstance().getReference("Users");
+        activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),result -> {
+            if (result.getResultCode() == RESULT_OK&&result.getData()!=null) {
+               fillUserInfo(result);
+            }
+        });
+
+    }
+
+    private void fillUserInfo(ActivityResult result) {
+        User user =(User) result.getData().getExtras().getSerializable("user");
+        edEmail.setText(user.getEmail());
+        edPassword.setText(user.getPassword());
 
     }
 
@@ -53,27 +70,27 @@ DatabaseReference databaseReference;
                 login();
                 break;
             case R.id.btnRegister:
-                startActivity(new Intent(this, Register.class));
+                register();
                 break;
         }
+    }
+
+    private void register() {
+        activityResultLauncher.launch(new Intent(this, Register.class));
     }
 
 
     private void login() {
         String emailstr=edEmail.getText().toString();
-        String email = emailstr.replace(".com","");
+        String email = emailstr.replace(".","DOT");
         String password=edPassword.getText().toString();
         if(email.isEmpty()){
             edEmail.setError("Email is required");
-        }
-
-        if(password.isEmpty()){
+        } else if (password.isEmpty()){
             edPassword.setError("Password is required");
+        }else{
+            databaseReference.child(email).addValueEventListener(this);
         }
-        Toast.makeText(this, "email is "+email, Toast.LENGTH_SHORT).show();
-        databaseReference.child(email).addValueEventListener(this);
-
-
     }
 
     @Override
@@ -85,15 +102,16 @@ DatabaseReference databaseReference;
             String getPassword=snapshot.child("password").getValue().toString();
             String userId = snapshot.child("id").getValue().toString();
             String name = snapshot.child("name").getValue().toString();
-        if(getPassword.equals(password)){
-            Toast.makeText(this,"Logged in successfully",Toast.LENGTH_SHORT).show();
-            Intent i=new Intent(this, ClientActivity.class);
-            User user = new User(Integer.valueOf(userId), name, email, password);
-            i.putExtra("user", user);
-            startActivity(i);
-        }else{
-            Toast.makeText(this,"Incorrect email or password",Toast.LENGTH_SHORT).show();
-        }
+
+            if(getPassword.equals(password)){
+                Toast.makeText(this,"Logged in successfully",Toast.LENGTH_SHORT).show();
+                Intent i=new Intent(this, ClientActivity.class);
+                User user = new User(Integer.valueOf(userId), name, email, password);
+                i.putExtra("user", user);
+                startActivity(i);
+            }else{
+                Toast.makeText(this,"Incorrect email or password",Toast.LENGTH_SHORT).show();
+            }
 
         }else{
             Toast.makeText(this, "Email not valid", Toast.LENGTH_SHORT).show();

@@ -279,7 +279,7 @@
 
 
         <Button
-            android:id="@+id/btnLogIn2"
+            android:id="@+id/btnLogIn"
             android:layout_width="160dp"
             android:layout_height="5dp"
             android:layout_gravity="center"

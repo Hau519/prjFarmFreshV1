@@ -6,6 +6,9 @@ import java.util.ArrayList;
 
 public class Order implements Serializable {
     private static int Id=0;
+    private String orderId;
+
+
 
     private int clientId;
     private ArrayList<Product> productList;
@@ -49,12 +52,21 @@ public class Order implements Serializable {
         this.total = total;
     }
 
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
     public Order(int clientId, ArrayList<Product> productList, LocalDateTime orderDate, double total) {
         this.clientId = clientId;
         this.productList = productList;
         this.orderDate = orderDate;
         this.total = total;
         Id++;
+        orderId = "o" + Id;
     }
 
     public Order(int id, int clientId, ArrayList<Product> productList, LocalDateTime orderDate, double total) {

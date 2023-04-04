@@ -3,7 +3,7 @@ package com.example.prjfarmfreshv1.models;
 import java.io.Serializable;
 
 public class Product implements Serializable {
-    private int id;
+    private int productId;
     private String name;
     private String category;
     private String description;
@@ -12,19 +12,19 @@ public class Product implements Serializable {
     public Product() {}
 
     public Product(int id, String name, String category, String description, float price) {
-        this.id = id;
+        this.productId = id;
         this.name = name;
         this.category = category;
         this.description = description;
         this.price = price;
     }
 
-    public int getId() {
-        return id;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public String getName() {

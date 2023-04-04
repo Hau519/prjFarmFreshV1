@@ -63,4 +63,10 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/edSearchProductCategory"
         app:layout_constraintStart_toStartOf="@+id/btnSearchProductName" />
 
+    <GridView
+        android:layout_width="409dp"
+        android:layout_height="553dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="177dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

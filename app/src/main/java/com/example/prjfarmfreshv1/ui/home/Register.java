@@ -13,8 +13,6 @@ import android.widget.Toast;
 
 import com.example.prjfarmfreshv1.R;
 import com.example.prjfarmfreshv1.models.User;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,12 +22,13 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Register extends AppCompatActivity implements View.OnClickListener, ValueEventListener {
     Button btnRegister, btnLogIn;
-    EditText edFName, edEmail, edPassword;
+    EditText edName, edEmail, edPassword;
     DatabaseReference userDatabase;
 
 
-
-
+    User user;
+    String email;
+    boolean userAdded = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +39,10 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
 
     private void initialize(){
         btnRegister = findViewById(R.id.btnRegister);
-        btnLogIn = findViewById(R.id.btnRegister);
+        btnLogIn = findViewById(R.id.btnLogIn);
         btnRegister.setOnClickListener(this);
         btnLogIn.setOnClickListener(this);
-        edFName = findViewById(R.id.edFName);
+        edName = findViewById(R.id.edFName);
         edEmail = findViewById(R.id.edEmail);
         edPassword = findViewById(R.id.edPassword);
         userDatabase= FirebaseDatabase.getInstance().getReference("Users");
@@ -67,27 +66,27 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
 
     private void register(View view) {
         try{
-            String name = edFName.getText().toString();
+            String name = edName.getText().toString();
             String emailstr = edEmail.getText().toString();
-            String newEmail = emailstr.substring(emailstr.indexOf("."), emailstr.length()-0);
-            String email = emailstr.replace(newEmail,"");
+//            String newEmail = emailstr.substring(emailstr.indexOf("."), emailstr.length()-0);
+
+            email = emailstr.replace(".","DOT");
             String password = edPassword.getText().toString();
 
-            if(TextUtils.isEmpty(name)){
-                Toast.makeText(this, "Name is required", Toast.LENGTH_SHORT).show();
-            }
-            if(TextUtils.isEmpty(emailstr)){
-                Toast.makeText(this, "Email is required", Toast.LENGTH_SHORT).show();
+            if(TextUtils.isEmpty(name)||TextUtils.isEmpty(emailstr)||TextUtils.isEmpty(password)){
+//                Toast.makeText(this,"Name is required" , Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(this, "Plz fill all fields!", Toast.LENGTH_SHORT).show();
+            }else{
+                user = new User(name, emailstr, password);
+
+                userDatabase.child(email).addValueEventListener(this);
             }
 
-            if(TextUtils.isEmpty(password)){
-                Toast.makeText(this, "Password is required", Toast.LENGTH_SHORT).show();
-            }
 
-            User user = new User(name, emailstr, password);
-            userDatabase.child(email).setValue(user);
 
-            Snackbar.make(view, "User has registered successfully", Snackbar.LENGTH_LONG).show();
+
+
 
 
         }catch(Exception e){
@@ -100,8 +99,21 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
 
     @Override
     public void onDataChange(@NonNull DataSnapshot snapshot) {
+
         if(snapshot.exists()){
-            Toast.makeText(this, "This email already exist.", Toast.LENGTH_SHORT).show();
+            if (!userAdded) {
+
+              Toast.makeText(this, "This email already exist.", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            userDatabase.child(email).setValue(user);
+            userAdded=true;
+            Toast.makeText(this, "Register success", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(this, Login.class);
+            i.putExtra("user", user);
+            setResult(RESULT_OK, i);
+            finish();
+
         }
 
     }
