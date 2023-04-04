@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/aboutus"
+    android:background="@drawable/aboutus1"
     tools:context=".ui.aboutUs.AboutUsFragment">
 
 <!--    design for about us//-->
@@ -44,23 +44,15 @@
         android:layout_marginTop="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
+        android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold|italic"
         android:textColor="#D9DEE3"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
 
-        android:text="Many Quebec farms offer exciting on-farm activities,
- ranging from pick-your-own to agri-tainment
-  (e.g. wagon rides, corn mazes, etc.).Coupled with the fact that many quebecers are including
-  local food in their diets and supporting quebec farmers,
-  it’s no wonder that more and more consumers
-    are visiting Quebec farms for the fresh produce,
-   family fun and unique experience.
-
-   Farm fresh is one of the such farm supporting platform.
-
-" />
+        android:text="@string/aboutus_content"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
