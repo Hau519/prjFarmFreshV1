@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg122"
+    tools:context=".Payment">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PAYMENT"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="110dp"
+        android:textSize="35sp"
+        android:textColor="#3F51B5"
+        android:textStyle="bold|italic"/>
+
+    <EditText
+        android:id="@+id/edcardNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:hint="CARD NUMBER"
+        android:textColor="#FF5722"
+        android:minHeight="48dp"
+        android:text=""
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        tools:ignore="DuplicateClickableBoundsCheck" />
+
+
+    <EditText
+        android:id="@+id/edName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:hint="NAME ON CARD"
+        android:minHeight="48dp"
+        android:text=""
+        app:layout_constraintStart_toStartOf="@id/edcardNumber"
+        app:layout_constraintTop_toBottomOf="@id/edcardNumber" />
+
+    <EditText
+        android:id="@+id/edExpDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="6"
+        android:text=""
+        android:hint="EXP DATE"
+        app:layout_constraintTop_toBottomOf="@id/edName"
+        app:layout_constraintStart_toStartOf="@id/edcardNumber"
+        android:layout_marginTop="50dp"
+        />
+
+    <EditText
+        android:id="@+id/edCVV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:ems="6"
+        android:hint="CVV"
+        android:minHeight="48dp"
+        android:text=""
+        app:layout_constraintStart_toStartOf="@id/edcardNumber"
+        app:layout_constraintTop_toBottomOf="@id/edExpDate" />
+
+    <Button
+        android:id="@+id/btnPay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PAY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginBottom="90dp"
+        android:background="@drawable/button_pressed"
+
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
