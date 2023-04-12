@@ -10,9 +10,10 @@
 
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="32dp"
         android:layout_weight="1"
         android:fontFamily="@font/poppins_black"
         android:gravity="center"
@@ -20,9 +21,9 @@
         android:textColor="@color/profile"
         android:textSize="45sp"
         android:textStyle="bold|italic"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="30dp"
-         />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
                 android:id="@+id/tvLblId"
@@ -114,32 +115,34 @@
         android:textSize="30sp"
         android:textStyle="bold" />
 
-            <ListView
-                android:id="@+id/lvProducts"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_above="@+id/btnReturn"
-                android:layout_below="@+id/tvLblDate"
-                android:layout_marginTop="54dp"
-                android:layout_marginBottom="224dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvLblDate" />
+    <ListView
+        android:id="@+id/lvProducts"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_above="@+id/btnReturn"
+        android:layout_below="@+id/tvLblDate"
+        android:layout_marginTop="44dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLblTotal" />
 
-            <Button
-                android:id="@+id/btnReturn"
-                android:layout_width="164dp"
-                android:layout_height="71dp"
-                android:layout_below="@+id/tvTitle"
-                android:layout_alignParentStart="true"
+    <Button
+        android:id="@+id/btnReturn"
+        android:layout_width="164dp"
+        android:layout_height="71dp"
+        android:layout_below="@+id/tvTitle"
+        android:layout_alignParentStart="true"
 
-                android:layout_marginTop="23dp"
-                android:backgroundTint="@color/profile"
-                app:layout_constraintTop_toBottomOf="@id/lvProducts"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:padding="10dp"
-                android:text="Return"
-                android:textSize="23sp" />
+        android:layout_marginTop="52dp"
+        android:backgroundTint="@color/profile"
+        android:padding="10dp"
+        android:text="Return"
+        android:textSize="23sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lvProducts"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
