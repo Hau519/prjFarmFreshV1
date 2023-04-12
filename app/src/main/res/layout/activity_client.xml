@@ -74,13 +74,13 @@
         android:textColor="@color/profile"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/tvName"
+        app:layout_constraintEnd_toStartOf="@+id/tvProductName"
         android:layout_marginLeft="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
     <EditText
-        android:id="@+id/tvName"
+        android:id="@+id/tvProductName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvTitle"
