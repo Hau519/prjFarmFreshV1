@@ -3,19 +3,26 @@ package com.example.prjfarmfreshv1.models;
 import java.io.Serializable;
 
 public class Product implements Serializable {
-    private int productId;
+    private String productId;
     private String name;
     private String category;
     private String description;
     private float price ;
 
     private String photo;
+    private static int sequence=0;
     public Product() {}
 
+    public Product( String name, String category, String description, float price, String photo) {
+        this.productId = "p"+(++sequence);
+        this.name = name;
+        this.category = category;
+        this.description = description;
+        this.price = price;
+    }
 
-
-    public Product(int id, String name, String category, String description, float price, String photo) {
-        this.productId = id;
+    public Product(String productId, String name, String category, String description, float price, String photo) {
+        this.productId = productId;
         this.name = name;
         this.category = category;
         this.description = description;
@@ -28,11 +35,11 @@ public class Product implements Serializable {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
-    public int getProductId() {
+    public String getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(String productId) {
         this.productId = productId;
     }
 

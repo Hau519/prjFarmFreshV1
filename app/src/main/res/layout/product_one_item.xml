@@ -41,10 +41,10 @@
         android:id="@+id/tvPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
+        android:layout_marginStart="20dp"
         android:text="12"
         app:layout_constraintBottom_toBottomOf="@+id/tvProductName"
-        app:layout_constraintStart_toEndOf="@+id/tvProductName"
+        app:layout_constraintStart_toEndOf="@+id/tvPriceLable"
         app:layout_constraintTop_toTopOf="@+id/tvProductName" />
 
     <TextView
@@ -69,29 +69,28 @@
         android:id="@+id/tvQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="108dp"
         android:text="Quantity:"
         app:layout_constraintBottom_toBottomOf="@+id/tvCategory"
-        app:layout_constraintStart_toEndOf="@+id/tvCategory" />
+        app:layout_constraintStart_toStartOf="@+id/tvPriceLable" />
 
     <TextView
         android:id="@+id/tvPriceLable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="108dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginStart="56dp"
         android:text="Price:"
-        app:layout_constraintBottom_toBottomOf="@+id/tvCategory"
-        app:layout_constraintStart_toEndOf="@+id/tvCategory" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvProductName"
+        app:layout_constraintStart_toEndOf="@+id/tvProductName"
+        app:layout_constraintTop_toTopOf="@+id/tvProductName" />
 
     <EditText
         android:id="@+id/edQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="3"
+        android:ems="2"
         android:inputType="number"
         app:layout_constraintBaseline_toBaselineOf="@+id/tvQuantity"
-        app:layout_constraintStart_toEndOf="@+id/tvQuantity" />
+        app:layout_constraintStart_toStartOf="@+id/tvPrice" />
 
     <TextView
         android:id="@+id/tvQuantityUnit"
@@ -109,7 +108,7 @@
         android:textAllCaps="false"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="@+id/imPhoto"
-        app:layout_constraintStart_toEndOf="@+id/tvQuantity" />
+        app:layout_constraintStart_toStartOf="@+id/tvQuantity" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

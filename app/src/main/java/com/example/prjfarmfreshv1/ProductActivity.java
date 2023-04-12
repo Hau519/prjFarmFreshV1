@@ -31,20 +31,22 @@ public class ProductActivity extends AppCompatActivity {
 
     private void initialize() {
         lvProducts = findViewById(R.id.lvProducts);
-
+        productList = new ArrayList<Product>();
 //        playerList = FileManagement.readFile("players.txt",this );
         getPlayerList();
-        productAdapter = new ProductAdapter(this, productList);
-        lvProducts.setAdapter(productAdapter);
+
     }
 
     private void getPlayerList() {
-//        productsDB = FirebaseDatabase.getInstance().getReference("Products");
-        productsDB = FirebaseDatabase.getInstance().getReference(Product.class.getSimpleName()+"s");
+        productsDB = FirebaseDatabase.getInstance().getReference("Products");
+//        productsDB = FirebaseDatabase.getInstance().getReference(Product.class.getSimpleName()+"s");
         productsDB.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+                Product product = snapshot.getValue(Product.class);
+                productList.add(product);
+                productAdapter = new ProductAdapter(ProductActivity.this, productList);
+                lvProducts.setAdapter(productAdapter);
             }
 
             @Override
