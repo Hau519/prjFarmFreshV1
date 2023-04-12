@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imPhoto"
+        android:layout_width="113dp"
+        android:layout_height="115dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/tomato" />
+
+    <TextView
+        android:id="@+id/tvProductName"
+        app:layout_constraintStart_toEndOf="@+id/imPhoto"
+        app:layout_constraintTop_toTopOf="@id/imPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tomato"
+        android:textColor="#01163E"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="107dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/tvCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vegie"
+        android:textColor="#EA1B0C"
+        android:textSize="15sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="@+id/tvProductName"
+        app:layout_constraintTop_toBottomOf="@+id/tvProductName" />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12"
+        tools:layout_editor_absoluteX="316dp"
+        tools:layout_editor_absoluteY="7dp" />
+
+    <TextView
+        android:id="@+id/TvPriceUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$/Kg"
+        tools:layout_editor_absoluteX="332dp"
+        tools:layout_editor_absoluteY="7dp" />
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Green Biology Product"
+        app:layout_constraintStart_toEndOf="@+id/imPhoto"
+        app:layout_constraintTop_toBottomOf="@+id/tvCategory" />
+
+    <TextView
+        android:id="@+id/tvQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quantity:"
+        tools:layout_editor_absoluteX="260dp"
+        tools:layout_editor_absoluteY="40dp" />
+
+    <EditText
+        android:id="@+id/edQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="3"
+        android:inputType="number"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvQuantity"
+        app:layout_constraintStart_toEndOf="@+id/tvQuantity" />
+
+    <TextView
+        android:id="@+id/tvQuantityUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kg"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edQuantity"
+        app:layout_constraintStart_toEndOf="@+id/edQuantity" />
+
+    <Button
+        android:id="@+id/btnAddToCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add To Cart"
+        android:textAllCaps="false"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imPhoto"
+        app:layout_constraintStart_toEndOf="@+id/tvQuantity" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

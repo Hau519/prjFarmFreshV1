@@ -40,7 +40,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void initialize() {
-        tvName = findViewById(R.id.tvName);
+        tvName = findViewById(R.id.tvProductName);
         tvName.setEnabled(false);
         tvEmail = findViewById(R.id.tvEmail);
         tvEmail.setEnabled(false);
