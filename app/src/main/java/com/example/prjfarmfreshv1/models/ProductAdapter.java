@@ -1,6 +1,7 @@
 package com.example.prjfarmfreshv1.models;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.prjfarmfreshv1.R;
+import com.example.prjfarmfreshv1.ShoppingCart;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -61,7 +63,7 @@ public class ProductAdapter extends BaseAdapter {
         tvDesc = oneItem.findViewById(R.id.tvDesc);
         tvPrice = oneItem.findViewById(R.id.tvPrice);
         imPhoto = oneItem.findViewById(R.id.imPhoto);
-
+        edQuantity = oneItem.findViewById(R.id.edQuantity);
         product = productList.get(i);
         tvName.setText(product.getName());
         tvCategory.setText(product.getCategory());
@@ -74,6 +76,20 @@ public class ProductAdapter extends BaseAdapter {
 
         //find photo by url in cloud
         Picasso.with(context).load(urlPhoto).into(imPhoto);
+
+        btnAddToCart = oneItem.findViewById(R.id.btnAddToCart);
+        btnAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ShoppingCart.class);
+                intent.putExtra("product", productList.get(i));
+                intent.putExtra("quantity", Integer.valueOf(edQuantity.getText().toString()));
+
+                context.startActivity(intent);
+
+
+            }
+        });
 
         return oneItem;
     }
