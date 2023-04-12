@@ -37,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:layout_marginRight="16dp"
+        android:fontFamily="serif"
         android:text="Order history"
         android:textColor="@color/profile"
         android:textSize="45sp"
@@ -47,13 +48,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgLogo" />
 
+    <TextView
+        android:id="@+id/tvLable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="30sp"
+        android:textColor="@color/profile"
+        android:text="Id            Date        Total"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
     <ListView
         android:id="@+id/lvOrders"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
+        android:textAlignment="textStart"
+
+        android:textSize="25sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+        app:layout_constraintTop_toBottomOf="@id/tvLable" />
 
     <Button
         android:id="@+id/btnShop"
@@ -62,6 +79,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="88dp"
         android:backgroundTint="@color/profile"
+        android:fontFamily="serif"
         android:padding="10dp"
         android:text="Shop now"
         android:textSize="23sp"

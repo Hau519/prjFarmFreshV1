@@ -52,9 +52,9 @@ public class OrderInfor implements Serializable {
 
     @Override
     public String toString() {
-        return ", orderId=" + orderId+
-                ", date='" + date + '\'' +
-                ", total=" + total
+        return "           " + orderId+
+                "           " + date +
+                "        " + total
                 ;
     }
 }
