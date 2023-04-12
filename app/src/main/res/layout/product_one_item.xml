@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/imPhoto"
@@ -41,17 +41,20 @@
         android:id="@+id/tvPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
         android:text="12"
-        tools:layout_editor_absoluteX="316dp"
-        tools:layout_editor_absoluteY="7dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvProductName"
+        app:layout_constraintStart_toEndOf="@+id/tvProductName"
+        app:layout_constraintTop_toTopOf="@+id/tvProductName" />
 
     <TextView
         android:id="@+id/TvPriceUnit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
         android:text="$/Kg"
-        tools:layout_editor_absoluteX="332dp"
-        tools:layout_editor_absoluteY="7dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvPrice"
+        app:layout_constraintStart_toEndOf="@+id/tvPrice" />
 
     <TextView
         android:id="@+id/tvDesc"
@@ -66,9 +69,20 @@
         android:id="@+id/tvQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
         android:text="Quantity:"
-        tools:layout_editor_absoluteX="260dp"
-        tools:layout_editor_absoluteY="40dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvCategory"
+        app:layout_constraintStart_toEndOf="@+id/tvCategory" />
+
+    <TextView
+        android:id="@+id/tvPriceLable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:layout_marginBottom="28dp"
+        android:text="Price:"
+        app:layout_constraintBottom_toBottomOf="@+id/tvCategory"
+        app:layout_constraintStart_toEndOf="@+id/tvCategory" />
 
     <EditText
         android:id="@+id/edQuantity"
