@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import com.example.prjfarmfreshv1.R;
 import com.example.prjfarmfreshv1.ShoppingCart;
 import com.squareup.picasso.Picasso;
@@ -81,11 +83,11 @@ public class ProductAdapter extends BaseAdapter {
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, ShoppingCart.class);
+                Intent intent = new Intent("selectedOneProduct");
                 intent.putExtra("product", productList.get(i));
                 intent.putExtra("quantity", Integer.valueOf(edQuantity.getText().toString()));
+                LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
 
-                context.startActivity(intent);
 
 
             }
