@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg115"
-    tools:context=".ShoppingCart">
+    tools:context=".ShoppingCartActivity">
 
     <TextView
         android:id="@+id/tvTitle"

@@ -2,7 +2,6 @@ package com.example.prjfarmfreshv1.models;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.example.prjfarmfreshv1.R;
-import com.example.prjfarmfreshv1.ShoppingCart;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

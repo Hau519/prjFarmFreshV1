@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.example.prjfarmfreshv1.models.Product;
 import com.example.prjfarmfreshv1.models.ProductAdapter;
+import com.example.prjfarmfreshv1.models.ShoppingCartRecord;
+import com.example.prjfarmfreshv1.models.User;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,7 +27,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class ProductActivity extends AppCompatActivity implements View.OnClickListener {
     ListView lvProducts;
@@ -34,19 +35,26 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     ProductAdapter productAdapter;
     DatabaseReference productsDB;
 
-    ArrayList<HashMap<Product,Integer>> selectedProducts = new ArrayList<>();
+//    ArrayList<HashMap<Product,Integer>> selectedProducts = new ArrayList<>();
 
+    ArrayList<ShoppingCartRecord> selectedProducts = new ArrayList<>();
     public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             // Get extra data included in the Intent
             int quantity = intent.getIntExtra("quantity",0);
             Product selectedProduct= (Product)intent.getExtras().getSerializable("product");
-            HashMap<Product,Integer > oneProductQuantity  = new HashMap<Product,Integer>() {{
-                put(selectedProduct,quantity);
-            }};
-            selectedProducts.add(oneProductQuantity);
-            Toast.makeText(ProductActivity.this, quantity +" "+selectedProduct.toString() ,Toast.LENGTH_SHORT).show();
+//            HashMap<Product,Integer > oneProductQuantity  = new HashMap<Product,Integer>() {{
+//                put(selectedProduct,quantity);
+//            }};
+            String productId = selectedProduct.getProductId();
+            String productName = selectedProduct.getName();
+            float productPrice = selectedProduct.getPrice();
+            float total = quantity * productPrice;
+
+            ShoppingCartRecord scRecord = new ShoppingCartRecord(productId, productName, productPrice, quantity, total);
+            selectedProducts.add(scRecord);
+            Toast.makeText(ProductActivity.this, quantity +" "+ scRecord,Toast.LENGTH_SHORT).show();
         };
     };
     @Override
@@ -62,8 +70,8 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
                 new IntentFilter("selectedOneProduct"));
         lvProducts = findViewById(R.id.lvProducts);
         productList = new ArrayList<Product>();
-//        playerList = FileManagement.readFile("players.txt",this );
-        getPlayerList();
+
+        getProductList();
         btnSearchProductName = findViewById(R.id.btnSearchProductName);
         btnSearchProductCategory = findViewById(R.id.btnSearchProductCategory);
         btnGoToShoppingCart = findViewById(R.id.btnGoToShoppingCart);
@@ -75,7 +83,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
-    private void getPlayerList() {
+    private void getProductList() {
         productsDB = FirebaseDatabase.getInstance().getReference("Products");
 //        productsDB = FirebaseDatabase.getInstance().getReference(Product.class.getSimpleName()+"s");
         productsDB.addChildEventListener(new ChildEventListener() {
@@ -111,6 +119,33 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
+        int vId = v.getId();
+        switch (vId) {
+            case R.id.btnGoToShoppingCart:
+                goToShoppingCart();
+                break;
+            case R.id.btnSearchProductName:
+                searchProductName();
+                break;
+            case R.id.btnSearchProductCategory:
+                searchProductCategory();
+                break;
+
+        }
+    }
+
+    private void searchProductCategory() {
+    }
+
+    private void searchProductName() {
+    }
+
+    private void goToShoppingCart() {
+        User user =(User) getIntent().getExtras().getSerializable("user");
+        Intent intent = new Intent(this, ShoppingCartActivity.class);
+        intent.putExtra("user", user);
+        intent.putExtra("selectedProducts", selectedProducts);
+        startActivity(intent);
 
     }
 }
