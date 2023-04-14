@@ -42,19 +42,28 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         @Override
         public void onReceive(Context context, Intent intent) {
             // Get extra data included in the Intent
-            int quantity = intent.getIntExtra("quantity",0);
+            int finalQuantity = intent.getIntExtra("quantity",0);
             Product selectedProduct= (Product)intent.getExtras().getSerializable("product");
 //            HashMap<Product,Integer > oneProductQuantity  = new HashMap<Product,Integer>() {{
 //                put(selectedProduct,quantity);
 //            }};
+            Toast.makeText(context, selectedProduct.toString(), Toast.LENGTH_SHORT).show();
+            for (ShoppingCartRecord scRec:selectedProducts) {
+                if ((selectedProduct.getName()).equals(scRec.getProductName())){
+                    finalQuantity+=scRec.getProductQuantity();
+                    scRec.setProductQuantity(finalQuantity);
+                    return;
+                }
+            }
+
             String productId = selectedProduct.getProductId();
             String productName = selectedProduct.getName();
             float productPrice = selectedProduct.getPrice();
-            float total = quantity * productPrice;
+            float total = finalQuantity * productPrice;
 
-            ShoppingCartRecord scRecord = new ShoppingCartRecord(productId, productName, productPrice, quantity, total);
+            ShoppingCartRecord scRecord = new ShoppingCartRecord(productId, productName, productPrice, finalQuantity, total);
             selectedProducts.add(scRecord);
-            Toast.makeText(ProductActivity.this, quantity +" "+ scRecord,Toast.LENGTH_SHORT).show();
+            Toast.makeText(ProductActivity.this, finalQuantity +" "+ scRecord,Toast.LENGTH_SHORT).show();
         };
     };
     @Override

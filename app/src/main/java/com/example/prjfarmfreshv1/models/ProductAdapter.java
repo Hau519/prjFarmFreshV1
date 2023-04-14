@@ -80,7 +80,10 @@ public class ProductAdapter extends BaseAdapter {
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent("selectedOneProduct");
+
+
                 intent.putExtra("product", productList.get(i));
                 intent.putExtra("quantity", Integer.valueOf(edQuantity.getText().toString()));
                 LocalBroadcastManager.getInstance(context).sendBroadcast(intent);

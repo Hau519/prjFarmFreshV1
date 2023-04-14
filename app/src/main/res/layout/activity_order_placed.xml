@@ -38,7 +38,7 @@
 
                 android:gravity="center"
                 android:text="Order Placed Successfully"
-                android:textColor="#4CAF50"
+                android:textColor="#8BC34A"
                 android:textSize="35dp"
                 android:textStyle="bold|italic" />
 

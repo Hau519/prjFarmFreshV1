@@ -17,19 +17,17 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="190dp"
         android:textSize="35sp"
-        android:textColor="#2196F3"
+        android:textColor="#3F51B5"
         android:textStyle="bold|italic"/>
 
     <ListView
         android:id="@+id/lvCart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="260dp"
-        android:layout_marginBottom="80dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginTop="260dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
 
         >
 
@@ -37,27 +35,54 @@
 
     <Button
         android:id="@+id/btnCS"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Continue Shopping"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="15dp"
-        android:background="@drawable/button_pressed"
-        android:backgroundTint="@color/material_dynamic_primary70"
-        />
+        android:text="Continue Shopping"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/tcSubtotalLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SubTotal:"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="576dp" />
+
+    <TextView
+        android:id="@+id/tcSubtotalLabel2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QST"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="612dp" />
+
+    <TextView
+        android:id="@+id/tvSubtotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="..."
+        tools:layout_editor_absoluteX="87dp"
+        tools:layout_editor_absoluteY="576dp" />
+
+    <TextView
+        android:id="@+id/tvSubtotal2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="..."
+        tools:layout_editor_absoluteX="87dp"
+        tools:layout_editor_absoluteY="612dp" />
 
     <Button
         android:id="@+id/btnCheckout"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="15dp"
-        android:text="Checkout"
-        android:background="@drawable/button_pressed"
-        android:backgroundTint="@color/material_dynamic_primary70"/>
+        android:text="Checkout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
