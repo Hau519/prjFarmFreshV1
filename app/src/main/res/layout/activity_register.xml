@@ -286,7 +286,7 @@
         <Button
             android:id="@+id/btnLogIn"
             android:layout_width="160dp"
-            android:layout_height="5sp"
+            android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:text="Log in"
