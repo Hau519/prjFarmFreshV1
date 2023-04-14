@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg122"
     tools:context=".ui.logout.LogoutFragment">
 
 
@@ -31,24 +32,27 @@
                 android:id="@+id/tvLogoutMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="150dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/poppins_black"
 
                 android:gravity="center"
-                android:text="You have succesfully log out"
+                android:text="You have succesfully logged out"
                 android:textColor="#C15735"
-                android:textSize="35dp"
+                android:textSize="40sp"
                 android:textStyle="bold|italic" />
 
             <Button
                 android:id="@+id/btnBackToHome"
-                android:layout_width="wrap_content"
+                android:layout_width="275dp"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_below="@+id/tvLogoutMessage"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="92dp"
+                android:layout_marginStart="80dp"
                 android:layout_marginTop="158dp"
+                android:textSize="22sp"
+                android:background="@drawable/button_pressed"
                 android:text="Go back to home page" />
 
         </RelativeLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg126"
+    android:background="@drawable/bg130"
     tools:context=".OrderActivity">
 
 
@@ -13,12 +13,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="50dp"
         android:layout_weight="1"
         android:fontFamily="serif"
         android:gravity="center"
-        android:text="Order"
-        android:textColor="@color/profile"
+        android:text="Order Details"
+        android:textColor="@color/teal_700"
         android:textSize="45sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +33,7 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="40dp"
                 android:text="Order No: "
-                android:textColor="@color/profile"
+                android:textColor="@color/teal_700"
                 app:layout_constraintTop_toBottomOf="@id/tvTitle"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:textSize="30sp"
@@ -51,7 +51,7 @@
                 android:text="....."
                 app:layout_constraintBaseline_toBaselineOf="@id/tvLblId"
                 app:layout_constraintStart_toEndOf="@id/tvLblId"
-                android:textColor="@color/profile"
+                android:textColor="@color/teal_700"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
@@ -65,7 +65,7 @@
                 android:layout_marginTop="29dp"
                 android:text="Date order: "
                 app:layout_constraintTop_toBottomOf="@id/tvLblId"
-                android:textColor="@color/profile"
+                android:textColor="@color/teal_700"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent" />
@@ -79,7 +79,7 @@
         android:layout_marginStart="20dp"
         android:layout_toEndOf="@+id/tvLblId"
         android:text="....."
-        android:textColor="@color/profile"
+        android:textColor="@color/teal_700"
         android:textSize="30sp"
         android:textStyle="bold"
 
@@ -96,7 +96,7 @@
         android:layout_marginTop="29dp"
         android:text="Total: "
         app:layout_constraintTop_toBottomOf="@id/tvLblDate"
-        android:textColor="@color/profile"
+        android:textColor="@color/teal_700"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent" />
@@ -111,7 +111,7 @@
         android:text="....."
         app:layout_constraintStart_toEndOf="@id/tvLblTotal"
         app:layout_constraintBaseline_toBaselineOf="@id/tvLblTotal"
-        android:textColor="@color/profile"
+        android:textColor="@color/teal_700"
         android:textSize="30sp"
         android:textStyle="bold" />
 
@@ -122,7 +122,7 @@
         android:layout_marginTop="30dp"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:textColor="@color/profile"
+        android:textColor="@color/black"
         android:text="Name    Unit Price   Quantity    Total"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -147,7 +147,7 @@
         android:layout_alignParentStart="true"
 
         android:layout_marginTop="52dp"
-        android:backgroundTint="@color/profile"
+        android:backgroundTint="@color/teal_700"
         android:padding="10dp"
         android:text="Return"
         android:textSize="23sp"
@@ -156,7 +156,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lvProducts"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:background="@drawable/button_pressed"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

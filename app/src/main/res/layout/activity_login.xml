@@ -36,7 +36,7 @@
             android:text="LogIn"
             android:textColor="#4B7027"
             android:textStyle="bold|italic"
-            android:textSize="35sp"
+            android:textSize="55sp"
             android:layout_gravity="center"
             android:gravity="center"
             />
@@ -108,6 +108,7 @@
             android:gravity="center"
             android:text="LogIn"
             android:textAllCaps="false"
+            android:textSize="30sp"
 
             tools:ignore="TextSizeCheck"
             android:background="@drawable/button_pressed"/>
@@ -127,7 +128,7 @@
             android:layout_weight="1"
             android:text="New User Register here"
             android:gravity="center"
-            android:textSize="25dp"
+            android:textSize="20dp"
             android:layout_gravity="center"/>
 
         <Button
@@ -137,6 +138,7 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:text="Register"
+            android:textSize="30sp"
             android:layout_marginRight="30dp"
             android:textAllCaps="false"
             android:background="@drawable/button_pressed"/>

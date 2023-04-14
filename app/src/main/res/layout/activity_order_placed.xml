@@ -44,13 +44,14 @@
 
             <Button
                 android:id="@+id/btnBackToHome"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvLogoutMessage"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="92dp"
+                android:layout_marginStart="120dp"
                 android:layout_marginTop="158dp"
-                android:text="Go back to home page"
+
+                android:text="Goto home page"
                 android:background="@drawable/button_pressed"
                 />
 
