@@ -14,7 +14,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class ClientActivity extends AppCompatActivity implements View.OnClickListener , {
+public class ClientActivity extends AppCompatActivity implements View.OnClickListener  {
 
     TextView tvName, tvEmail, tvTitle;
     Button btnUpdate, btnShop;
