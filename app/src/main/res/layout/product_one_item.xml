@@ -108,7 +108,8 @@
         android:textAllCaps="false"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="@+id/imPhoto"
-        app:layout_constraintStart_toStartOf="@+id/tvQuantity" />
+        app:layout_constraintStart_toStartOf="@+id/tvQuantity"
+        android:background="@drawable/button_pressed"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

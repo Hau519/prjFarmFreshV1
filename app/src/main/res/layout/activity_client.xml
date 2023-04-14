@@ -117,6 +117,7 @@
         android:layout_below="@+id/tvTitle"
         android:layout_toEndOf="@+id/tvLblName"
         android:text="....."
+
         android:textColor="@color/profile"
         android:textSize="30sp"
         android:layout_marginLeft="30dp"
@@ -136,6 +137,7 @@
         android:text="Shop now"
         android:textSize="23sp"
         app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/button_pressed"
 
         app:layout_constraintHorizontal_bias="0.886"
         app:layout_constraintStart_toStartOf="parent"
@@ -151,6 +153,8 @@
         android:backgroundTint="@color/profile"
         android:padding="10dp"
         android:text="Update"
+        android:background="@drawable/button_pressed"
+
         android:textSize="23sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

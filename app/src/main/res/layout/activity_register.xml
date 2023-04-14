@@ -243,7 +243,8 @@
             android:text="Register"
             android:textSize="18dp"
             android:layout_marginTop="-15dp"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:background="@drawable/button_pressed"/>
 
         <Space
             android:layout_width="match_parent"
@@ -291,7 +292,8 @@
             android:text="Log in"
             android:textSize="17dp"
             android:layout_marginTop="-35dp"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:background="@drawable/button_pressed"/>
 
         <Space
             android:layout_width="match_parent"
