@@ -52,8 +52,8 @@ public class OrderInfor implements Serializable {
 
     @Override
     public String toString() {
-        return "           " + orderId+
-                "           " + date +
+        return "         " + orderId+
+                "                   " + date +
                 "        " + total
                 ;
     }

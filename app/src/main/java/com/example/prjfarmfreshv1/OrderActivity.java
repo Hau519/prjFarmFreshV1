@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.prjfarmfreshv1.models.Order;
 import com.example.prjfarmfreshv1.models.OrderInfor;
 import com.example.prjfarmfreshv1.models.OrderProduct;
+import com.example.prjfarmfreshv1.models.OrderProductAdapter;
 import com.example.prjfarmfreshv1.models.Product;
 import com.example.prjfarmfreshv1.models.User;
 import com.google.firebase.database.ChildEventListener;
@@ -35,10 +36,9 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
     OrderInfor orderInfor;
     ListView lvProducts;
     User user;
-    ArrayList<String> orderProductList;
-
-    ArrayAdapter<String> arrayAdapter;
-
+    ArrayList<OrderProduct> orderProductList;
+    OrderProductAdapter orderProductAdapter;
+    OrderProduct orderProduct;
     DatabaseReference orderProductDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,16 +64,16 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         tvDate.setText(String.valueOf(orderInfor.getDate()));
         tvTotal.setText(String.valueOf(orderInfor.getTotal()));
         orderProductList = new ArrayList<>();
-        arrayAdapter = new ArrayAdapter<>(this, R.layout.one_item, orderProductList);
-        lvProducts.setAdapter(arrayAdapter);
+        orderProductAdapter = new OrderProductAdapter(this, orderProductList);
+        lvProducts.setAdapter(orderProductAdapter);
         orderProductDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 OrderProduct value = (OrderProduct) snapshot.getValue(OrderProduct.class);
                 String orderId = value.getOrderId();
                 if (orderId.equals(orderInfor.getOrderId())){
-                    orderProductList.add(value.toString());
-                    arrayAdapter.notifyDataSetChanged();
+                    orderProductList.add(value);
+                    orderProductAdapter.notifyDataSetChanged();
                 }
             }
 
