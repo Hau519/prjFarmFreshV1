@@ -76,7 +76,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                         String name = tvName.getText().toString();
                         User updateUser = new User(user.getId(), name, email, user.getPassword());
                         usersTable.child(String.valueOf(user.getId())).setValue(updateUser);
-                        Snackbar.make(view, "Your information is updated succesffully",
+                        Snackbar.make(view, "Your information is updated successfully",
                                 Snackbar.LENGTH_LONG).show();
                         tvEmail.setEnabled(false);
                         tvName.setEnabled(false);

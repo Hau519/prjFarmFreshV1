@@ -28,9 +28,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="28dp"
-
-        android:background="#F1ECEC"
-        android:backgroundTint="#F4EBEB"
+        android:backgroundTint="#F4EBEE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/baseline_logout_24" />
@@ -61,6 +59,7 @@
         android:textColor="@android:color/holo_green_light"
         android:textSize="40sp"
         android:textStyle="bold|italic"
+
         app:layout_constraintTop_toBottomOf="@+id/logo"
         tools:layout_editor_absoluteX="0dp" />
 

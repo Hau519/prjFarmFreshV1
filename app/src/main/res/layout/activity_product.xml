@@ -26,7 +26,8 @@
         android:layout_marginTop="10dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Search by Name"
+        android:hint="Enter Product Name"
+        android:textColorHint="#80121111"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvProductTitle" />
 
@@ -51,16 +52,16 @@
         android:layout_weight="1"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Search by Category"
+        android:text="Filter"
         app:layout_constraintStart_toStartOf="@+id/edSearchProductName"
         app:layout_constraintTop_toBottomOf="@+id/edSearchProductName" />
 
     <Button
-        android:id="@+id/btnSearchProductCategory"
+        android:id="@+id/btnReset"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Search"
+        android:text="Reset"
         android:textSize="20sp"
         android:background="@drawable/button_pressed"
         android:textAllCaps="false"

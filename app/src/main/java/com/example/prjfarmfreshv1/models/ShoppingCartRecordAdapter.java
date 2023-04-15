@@ -68,8 +68,8 @@ public class ShoppingCartRecordAdapter extends BaseAdapter {
         float price = scRecord.getProductPrice();
         tvProductPrice.setText(price+"");
 
-        float total = price * productQuantity;
-        tvProductTotal.setText(total+"");
+//        float total = price * productQuantity;
+        tvProductTotal.setText(scRecord.getProductTotal()+"");
 
 
 
