@@ -98,13 +98,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Va
         if(snapshot.exists()){
             Toast.makeText(this, "email correct", Toast.LENGTH_SHORT).show();
             String getPassword=snapshot.child("password").getValue().toString();
-            String userId = snapshot.child("id").getValue().toString();
+//            String userId = snapshot.child("id").getValue().toString();
             String name = snapshot.child("name").getValue().toString();
 
             if(getPassword.equals(password)){
                 Toast.makeText(this,"Logged in successfully",Toast.LENGTH_SHORT).show();
                 Intent i=new Intent(this, ClientActivity.class);
-                User user = new User(Integer.valueOf(userId), name, email, password);
+//                User user = new User(Integer.valueOf(userId), name, email, password);
+                User user = new User( name, email, password);
                 i.putExtra("user", user);
                 startActivity(i);
             }else{

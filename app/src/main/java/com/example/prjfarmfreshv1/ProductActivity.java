@@ -6,9 +6,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,17 +31,23 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class ProductActivity extends AppCompatActivity implements View.OnClickListener {
+public class ProductActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     ListView lvProducts;
     Button btnSearchProductName, btnReset, btnGoToShoppingCart;
     EditText edSearchProductName;
-    ArrayList<Product> productList;
+    Spinner spinnerProductFilter;
+    String[] categories = {"All","Vegetable","Meat","Fruit"};
+
+
+
+    ArrayList<Product> fullProductList;
     ProductAdapter productAdapter;
     DatabaseReference productsDB;
 
 //    ArrayList<HashMap<Product,Integer>> selectedProducts = new ArrayList<>();
 
     ArrayList<ShoppingCartRecord> selectedProducts = new ArrayList<>();
+
     public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -81,13 +90,27 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
     private void initialize() {
 
+        //transfer data from Adapter
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, new IntentFilter("selectedOneProduct"));
-        lvProducts = findViewById(R.id.lvProducts);
+
         edSearchProductName = (EditText) findViewById(R.id.edSearchProductName);
 
-        productList = new ArrayList<Product>();
 
-        getProductList();
+        //filter
+        spinnerProductFilter = (Spinner) findViewById(R.id.spinnerProductFilter);
+        spinnerProductFilter.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categories));
+        spinnerProductFilter.setOnItemSelectedListener(this);
+
+
+
+
+        //listView
+        lvProducts = findViewById(R.id.lvProducts);
+        getFullProductList();
+        productAdapter = new ProductAdapter(ProductActivity.this, fullProductList);
+        lvProducts.setAdapter(productAdapter);
+
+        //button
         btnSearchProductName = findViewById(R.id.btnSearchProductName);
         btnReset = findViewById(R.id.btnReset);
         btnGoToShoppingCart = findViewById(R.id.btnGoToShoppingCart);
@@ -95,43 +118,37 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         btnSearchProductName.setOnClickListener(this);
         btnGoToShoppingCart.setOnClickListener(this);
 
-//        productAdapter = new ProductAdapter(ProductActivity.this, productList);
-//        lvProducts.setAdapter(productAdapter);
     }
 
-    private void getProductList() {
-        productList.clear();
+    private void getFullProductList() {
+
+        fullProductList = new ArrayList<Product>();
         productsDB = FirebaseDatabase.getInstance().getReference("Products");
 //        productsDB = FirebaseDatabase.getInstance().getReference(Product.class.getSimpleName()+"s");
         productsDB.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Product product = snapshot.getValue(Product.class);
-                productList.add(product);
+                fullProductList.add(product);
             }
-
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
             }
-
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
 
             }
-
             @Override
             public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-        productAdapter = new ProductAdapter(ProductActivity.this, productList);
-        lvProducts.setAdapter(productAdapter);
+
     }
 
     @Override
@@ -153,8 +170,10 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void reset() {
-        getProductList();
+        productAdapter = new ProductAdapter(ProductActivity.this, fullProductList);
+        lvProducts.setAdapter(productAdapter);
         edSearchProductName.setText(null);
+        spinnerProductFilter.setSelection(0);
     }
 
     private void searchProductName() {
@@ -179,7 +198,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         ArrayList<Product> searchResultList = new ArrayList<Product>();
         String searchedName = edSearchProductName.getText().toString();
 
-        for (Product product : productList) {
+        for (Product product : fullProductList) {
             if ((product.getName().toLowerCase()).contains(searchedName.toLowerCase())) {
                 searchResultList.add(product);
             }
@@ -197,5 +216,31 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         intent.putExtra("selectedProducts", selectedProducts);
         startActivity(intent);
 
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        if (position >= 0 && position < categories.length) {
+            getSelectedCategories(position);
+        } else {
+            Toast.makeText(this, "Selected Category not Exist", Toast.LENGTH_SHORT).show();
+        }
+    }
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {}
+
+    private void getSelectedCategories(int categoryID) {
+        if (categoryID == 0) {
+            productAdapter = new ProductAdapter(ProductActivity.this, fullProductList);
+        } else {
+            ArrayList<Product> categorizedProductList = new ArrayList<>();
+            for (Product product : fullProductList) {
+                if (product.getCategory().equals(categories[categoryID])) {
+                    categorizedProductList.add(product);
+                }
+            }
+            productAdapter = new ProductAdapter(this, categorizedProductList);
+        }
+        lvProducts.setAdapter(productAdapter);
     }
 }
