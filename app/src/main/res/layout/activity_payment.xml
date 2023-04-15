@@ -11,7 +11,7 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PAYMENT"
+        android:text="Order details"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -19,6 +19,88 @@
         android:textSize="35sp"
         android:textColor="#3F51B5"
         android:textStyle="bold|italic"/>
+
+    <TextView
+        android:id="@+id/tvLblDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvLblId"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="29dp"
+        android:text="Date order: "
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        android:textColor="@color/profile"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTitle"
+        android:layout_marginStart="20dp"
+        android:text="....."
+        android:textColor="@color/profile"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvLblDate"
+        app:layout_constraintStart_toEndOf="@id/tvLblDate"
+        />
+
+    <TextView
+        android:id="@+id/tvLblTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="29dp"
+        android:text="Total: "
+        app:layout_constraintTop_toBottomOf="@id/tvLblDate"
+        android:textColor="@color/profile"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="138dp"
+        android:text="....."
+        app:layout_constraintStart_toEndOf="@id/tvLblTotal"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvLblTotal"
+        android:textColor="@color/profile"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvProductLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/profile"
+        android:text="Name    Unit Price   Quantity    Total"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTotal" />
+
+    <ListView
+        android:id="@+id/lvProducts"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_above="@+id/btnOrder"
+        android:layout_below="@+id/tvLblDate"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvProductLabel" />
+<!--
 
     <EditText
         android:id="@+id/edcardNumber"
@@ -71,12 +153,13 @@
         android:text=""
         app:layout_constraintStart_toStartOf="@id/edcardNumber"
         app:layout_constraintTop_toBottomOf="@id/edExpDate" />
+-->
 
     <Button
-        android:id="@+id/btnPay"
+        android:id="@+id/btnOrder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PAY"
+        android:text="Proceed order"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

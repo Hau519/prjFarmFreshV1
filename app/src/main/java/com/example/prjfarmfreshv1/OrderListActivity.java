@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.prjfarmfreshv1.models.Order;
 import com.example.prjfarmfreshv1.models.OrderInfor;
+import com.example.prjfarmfreshv1.models.OrderListAdapter;
 import com.example.prjfarmfreshv1.models.User;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.ChildEventListener;
@@ -36,9 +37,8 @@ public class OrderListActivity extends AppCompatActivity implements AdapterView.
     Button btnShop;
     User user;
     OrderInfor orderInfor;
-    ArrayList<String> orderList;
     ArrayList<OrderInfor> orderInforList;
-    ArrayAdapter<String> arrayAdapter;
+    OrderListAdapter orderListAdapter;
     DatabaseReference orderListDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,16 +51,14 @@ public class OrderListActivity extends AppCompatActivity implements AdapterView.
         lvOrders = findViewById(R.id.lvOrders);
         lvOrders.setOnItemClickListener(this);
         ivAccount = findViewById(R.id.ivAccount);
-
         orderListDatabase = FirebaseDatabase.getInstance().getReference("OrderList");
-        orderList = new ArrayList<>();
         orderInforList = new ArrayList<OrderInfor>();
         user = (User)getIntent().getExtras().getSerializable("user");
         ivAccount.setOnClickListener(this);
         btnShop = findViewById(R.id.btnShop);
         orderInfor = new OrderInfor();
-        arrayAdapter = new ArrayAdapter<>(this, R.layout.one_item, orderList);
-        lvOrders.setAdapter(arrayAdapter);
+        orderListAdapter = new OrderListAdapter(this, orderInforList);
+        lvOrders.setAdapter(orderListAdapter);
 
         orderListDatabase.addChildEventListener(new ChildEventListener() {
             @Override
@@ -68,9 +66,8 @@ public class OrderListActivity extends AppCompatActivity implements AdapterView.
                 OrderInfor value = (OrderInfor) snapshot.getValue(OrderInfor.class);
                 String email = value.getClientId();
                 if (email.equals(user.getEmail())){
-                    orderList.add(value.toString());
                     orderInforList.add(value);
-                    arrayAdapter.notifyDataSetChanged();
+                    orderListAdapter.notifyDataSetChanged();
                 }
 
             }
@@ -111,7 +108,7 @@ public class OrderListActivity extends AppCompatActivity implements AdapterView.
         int id = v.getId();
         switch (id){
             case R.id.btnShop:
-                Intent i = new Intent(this, MainActivity.class); //TODO : change to product activity when Luke's done
+                Intent i = new Intent(this, ProductActivity.class); //TODO : change to product activity when Luke's done
                 i.putExtra("user", user);
                 startActivity(i);
                 break;
