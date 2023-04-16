@@ -14,6 +14,8 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,6 +46,8 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     ProductAdapter productAdapter;
     DatabaseReference productsDB;
 
+    ActivityResultLauncher actResLauncher;
+
 //    ArrayList<HashMap<Product,Integer>> selectedProducts = new ArrayList<>();
 
     ArrayList<ShoppingCartRecord> selectedProducts = new ArrayList<>();
@@ -71,9 +75,9 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
             String productName = selectedProduct.getName();
             float productPrice = selectedProduct.getPrice();
             float total = quantity * productPrice;
+            String productPhoto = selectedProduct.getPhoto();
 
-            ShoppingCartRecord scRecord = new ShoppingCartRecord(productId, productName, productPrice, quantity, total);
-            Toast.makeText(context, "total after for loop:" + total, Toast.LENGTH_SHORT).show();
+            ShoppingCartRecord scRecord = new ShoppingCartRecord(productId, productName, productPrice, quantity, total,productPhoto);
             selectedProducts.add(scRecord);
             Toast.makeText(ProductActivity.this, quantity + " " + scRecord, Toast.LENGTH_SHORT).show();
         }
@@ -118,6 +122,11 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         btnSearchProductName.setOnClickListener(this);
         btnGoToShoppingCart.setOnClickListener(this);
 
+
+        actResLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+
+
+        });
     }
 
     private void getFullProductList() {
@@ -214,7 +223,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         Intent intent = new Intent(this, ShoppingCartActivity.class);
         intent.putExtra("user", user);
         intent.putExtra("selectedProducts", selectedProducts);
-        startActivity(intent);
+        actResLauncher.launch(intent);
 
     }
 

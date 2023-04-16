@@ -7,17 +7,23 @@ public class ShoppingCartRecord implements Serializable {
     private String productName;
     private float productPrice;
     private int productQuantity;
-    private  float productTotal;
+    private float productTotal;
+    private String productPhoto;
 
-    public ShoppingCartRecord() {}
 
-    public ShoppingCartRecord(String productId, String productName, float productPrice, int productQuantity, float productTotal) {
+    public ShoppingCartRecord() {
+    }
+
+
+    public ShoppingCartRecord(String productId, String productName, float productPrice, int productQuantity, float productTotal, String productPhoto) {
         this.productId = productId;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productQuantity = productQuantity;
         this.productTotal = productTotal;
+        this.productPhoto = productPhoto;
     }
+
 
     public String getProductId() {
         return productId;
@@ -57,5 +63,13 @@ public class ShoppingCartRecord implements Serializable {
 
     public void setProductTotal(float productTotal) {
         this.productTotal = productTotal;
+    }
+
+    public String getProductPhoto() {
+        return productPhoto;
+    }
+
+    public void setProductPhoto(String productPhoto) {
+        this.productPhoto = productPhoto;
     }
 }

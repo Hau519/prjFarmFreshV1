@@ -56,7 +56,7 @@ public class ProductAdapter extends BaseAdapter {
 
         //1-inflate layout
         LayoutInflater inflater = LayoutInflater.from(context);
-        oneItem = inflater.inflate(R.layout.product_one_item, parent, false);
+        oneItem = inflater.inflate(R.layout.product_item, parent, false);
 
         // 2-- Access and populate each widget of this view : OneItem
         tvName = oneItem.findViewById(R.id.tvProductName);
