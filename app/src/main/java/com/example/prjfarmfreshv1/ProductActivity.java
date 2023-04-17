@@ -147,6 +147,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
                         int finalQuantity = quantity;
                         scRec.setProductQuantity(finalQuantity);
                         scRec.setProductTotal(finalQuantity * scRec.getProductPrice());
+                        Toast.makeText(context, "Change Quantity Success!", Toast.LENGTH_SHORT).show();
                         return;
                     }
                 }
@@ -172,8 +173,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     private void getFullProductList() {
 
         fullProductList = new ArrayList<Product>();
-        productsDB = FirebaseDatabase.getInstance().getReference("Products");
-//        productsDB = FirebaseDatabase.getInstance().getReference(Product.class.getSimpleName()+"s");
+        productsDB = FirebaseDatabase.getInstance().getReference(Product.class.getSimpleName()+"s");
         productsDB.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {

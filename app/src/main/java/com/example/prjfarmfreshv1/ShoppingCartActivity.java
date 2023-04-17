@@ -117,7 +117,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
     }
     private void setDeleteAlert() {
         alertD = new AlertDialog.Builder(this);
-        alertD.setTitle("Remove country");
+        alertD.setTitle("Remove Product");
         alertD.setMessage("Do you want to remove (Yes/NO)?");
         alertD.setPositiveButton("Yes", this);
         alertD.setNegativeButton("No",this);
