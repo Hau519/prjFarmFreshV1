@@ -1,14 +1,21 @@
 package com.example.prjfarmfreshv1.models;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.example.prjfarmfreshv1.R;
 import com.squareup.picasso.Picasso;
@@ -18,7 +25,6 @@ import java.util.ArrayList;
 public class ShoppingCartRecordAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<ShoppingCartRecord> scRecordList;
-    ShoppingCartRecord scRecord;
 
 
     public ShoppingCartRecordAdapter(Context context, ArrayList<ShoppingCartRecord> scRecordList) {
@@ -49,7 +55,8 @@ public class ShoppingCartRecordAdapter extends BaseAdapter {
         TextView tvProductName, tvProductPrice,tvProductTotal;
         ImageView imProduct;
         EditText edProductQuantity;
-        Button btnRemove;
+        Button btnEdit;
+        ImageButton imPlus, imMinus;
 
 
         //1-inflate layout
@@ -63,12 +70,10 @@ public class ShoppingCartRecordAdapter extends BaseAdapter {
         tvProductTotal = oneItem.findViewById(R.id.tvProductTotal);
 
         edProductQuantity = oneItem.findViewById(R.id.edProductQuantity);
-        scRecord = scRecordList.get(i);
-
-        String urlPhoto = scRecord.getProductPhoto();
-
+        ShoppingCartRecord scRecord= scRecordList.get(i);
 
         //find photo by url in cloud
+        String urlPhoto = scRecord.getProductPhoto();
         Picasso.with(context).load(urlPhoto).into(imProduct);
 
         tvProductName.setText(scRecord.getProductName());
@@ -78,17 +83,81 @@ public class ShoppingCartRecordAdapter extends BaseAdapter {
         tvProductPrice.setText(price+"");
         tvProductTotal.setText(scRecord.getProductTotal()+"");
 
+        imPlus = oneItem.findViewById(R.id.imPlus);
+        imPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int quantity = Integer.valueOf(edProductQuantity.getText().toString());
+                edProductQuantity.setText(quantity+1+"");
+
+            }
+        });
+
+        imMinus = oneItem.findViewById(R.id.imMinus);
+        imMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int quantity = Integer.valueOf(edProductQuantity.getText().toString());
+                if (quantity==1) {
+                    Toast.makeText(context, "Quantity must be more than 0, cannot Minus!", Toast.LENGTH_SHORT).show();
+                }else
+                    edProductQuantity.setText(quantity-1+"");
+
+            }
+        });
 
 
+
+        btnEdit = oneItem.findViewById(R.id.btnEdit);
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (btnEdit.getText().toString().equalsIgnoreCase("edit")) {
+                    edProductQuantity.setEnabled(true);
+
+                    imMinus.setVisibility(View.VISIBLE);
+                    imPlus.setVisibility(View.VISIBLE);
+                    btnEdit.setText("Save");
+                }else if (btnEdit.getText().toString().equalsIgnoreCase("save")) {
+
+
+                    edProductQuantity.setEnabled(false);
+                    imMinus.setVisibility(View.INVISIBLE);
+                    imPlus.setVisibility(View.INVISIBLE);
+                    btnEdit.setText("Edit");
+                    try{
+                        int newQuantity = Integer.valueOf(edProductQuantity.getText().toString());
+                        float newTotal = newQuantity * price;
+                        tvProductTotal.setText(String.format("%.2f", newTotal));
+                        scRecord.setProductQuantity(newQuantity);
+                        scRecord.setProductTotal(newTotal);
+
+                        Intent intent = new Intent("changedScRecordList");
+                        intent.putExtra("newScRecordList", scRecordList);
+                        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+
+                    }catch(Exception e){
+                        Log.d("ShoppingCartRecordAdapter", e.toString());
+                    }
+
+                }
+
+            }
+        });
+
+
+/*
         btnRemove = oneItem.findViewById(R.id.btnRemoveProduct);
         btnRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                scRecordList.remove(i);
-
+//                scRecordList.remove(i);
+                Intent intent = new Intent("selectedOneShoppingCartRecord");
+                intent.putExtra("scRecord", scRecordList.get(i));
+                LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
             }
         });
+*/
 
         return oneItem;
     }

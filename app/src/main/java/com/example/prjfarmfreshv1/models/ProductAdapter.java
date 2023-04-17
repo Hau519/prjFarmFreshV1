@@ -3,6 +3,7 @@ package com.example.prjfarmfreshv1.models;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,15 +83,25 @@ public class ProductAdapter extends BaseAdapter {
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            try{
 
                 if (TextUtils.isEmpty(edQuantity.getText().toString())) {
                     Toast.makeText(context, "Plz enter a quantity!", Toast.LENGTH_SHORT).show();
-                }else{
-                    Intent intent = new Intent("selectedOneProduct");
-                    intent.putExtra("product", productList.get(i));
-                    intent.putExtra("quantity", Integer.valueOf(edQuantity.getText().toString()));
-                    LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+                } else{
+                    int quantity = Integer.valueOf(edQuantity.getText().toString());
+                    if(quantity<=0) {
+                        Toast.makeText(context, "Quantity must be more than 0!", Toast.LENGTH_SHORT).show();
+                    } else{
+                        Intent intent = new Intent("selectedOneProduct");
+                        intent.putExtra("product", productList.get(i));
+                        intent.putExtra("quantity", quantity);
+                        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+                    }
                 }
+            }catch(Exception e){
+                Log.d("ProductAdapter", e.toString());
+            }
+
 
 
 

@@ -18,24 +18,61 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:srcCompat="@drawable/vegetables" />
+            app:srcCompat="@drawable/vegetables"
+            android:focusableInTouchMode="false"
+            android:clickable="false"
+            android:focusable="false"
+            />
 
         <TextView
             android:id="@+id/tvProductName"
             style="@style/style_shoppingCartListHeader"
-            android:text="Tomato" />
+            android:text="Tomato"
+            />
 
         <TextView
             android:id="@+id/tvProductPrice"
             style="@style/style_shoppingCartListHeader"
             android:text="1.99" />
 
+        <ImageButton
+            android:id="@+id/imPlus"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/icon_plus_button"
+            android:visibility="invisible"/>
+
         <EditText
             android:id="@+id/edProductQuantity"
             style="@style/style_shoppingCartListHeader"
-            android:ems="2"
-            android:inputType="number"
-            android:text="3" />
+            android:layout_weight="0.5"
+            android:textSize="12sp"
+            android:ems="1"
+            android:inputType="number|textNoSuggestions"
+            android:text="3"
+            android:enabled="false"
+            android:background="@null"
+
+
+
+
+            />
+
+        <ImageButton
+            android:id="@+id/imMinus"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:adjustViewBounds="true"
+            android:visibility="invisible"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/icon_minus_button" />
 
         <TextView
             android:id="@+id/tvProductTotal"
@@ -43,9 +80,9 @@
             android:text="5.97" />
 
         <Button
-            android:id="@+id/btnRemoveProduct"
+            android:id="@+id/btnEdit"
             style="@style/style_shoppingCartListHeader"
-            android:text="Remove"
+            android:text="Edit"
             android:textAllCaps="false"
 
             android:background="@drawable/button_pressed"/>
