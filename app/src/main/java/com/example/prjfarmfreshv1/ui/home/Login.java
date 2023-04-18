@@ -116,7 +116,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Va
                 String emailKey = email.replace(".", "DOT");
                 i.putExtra("user", user);
                 databaseReference.child(emailKey).removeEventListener(this);
-                Toast.makeText(this, "afd", Toast.LENGTH_SHORT).show();
+
                 startActivity(i);
             }else{
                 Toast.makeText(this,"Incorrect email or password",Toast.LENGTH_SHORT).show();
