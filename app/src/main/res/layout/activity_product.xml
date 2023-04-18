@@ -69,12 +69,12 @@
 
     <Button
         android:id="@+id/btnGoToShoppingCart"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="37dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/button_pressed"
-        android:text="Go To Shppping Cart"
+        android:layout_marginBottom="676dp"
+        android:background="@drawable/baseline_shopping_cart_24"
+
         android:textAllCaps="false"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
