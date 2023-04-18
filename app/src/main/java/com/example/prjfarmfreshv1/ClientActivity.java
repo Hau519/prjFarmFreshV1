@@ -83,7 +83,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
 
                         usersTable.child(emailKey).setValue(user);
 
-
+                        Toast.makeText(this, "this is android group", Toast.LENGTH_SHORT).show();
                         Snackbar.make(view, "Your information is updated successfully",
                                 Snackbar.LENGTH_LONG).show();
                         tvEmail.setEnabled(false);
