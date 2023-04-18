@@ -48,59 +48,69 @@ public class OrderListActivity extends AppCompatActivity implements AdapterView.
     }
 
     private void initialize() {
-        lvOrders = findViewById(R.id.lvOrders);
-        lvOrders.setOnItemClickListener(this);
-        ivAccount = findViewById(R.id.ivAccount);
-        orderListDatabase = FirebaseDatabase.getInstance().getReference("OrderList");
-        orderInforList = new ArrayList<OrderInfor>();
-        user = (User)getIntent().getExtras().getSerializable("user");
-        ivAccount.setOnClickListener(this);
-        btnShop = findViewById(R.id.btnShop);
-        orderInfor = new OrderInfor();
-        orderListAdapter = new OrderListAdapter(this, orderInforList);
-        lvOrders.setAdapter(orderListAdapter);
+        try{
+            lvOrders = findViewById(R.id.lvOrders);
+            lvOrders.setOnItemClickListener(this);
+            ivAccount = findViewById(R.id.ivAccount);
+            orderListDatabase = FirebaseDatabase.getInstance().getReference("OrderList");
+            orderInforList = new ArrayList<OrderInfor>();
+            user = (User)getIntent().getExtras().getSerializable("user");
+            ivAccount.setOnClickListener(this);
+            btnShop = findViewById(R.id.btnShop);
+            orderInfor = new OrderInfor();
+            orderListAdapter = new OrderListAdapter(this, orderInforList);
+            lvOrders.setAdapter(orderListAdapter);
 
-        orderListDatabase.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                OrderInfor value = (OrderInfor) snapshot.getValue(OrderInfor.class);
-                String email = value.getClientId();
-                if (email.equals(user.getEmail())){
-                    orderInforList.add(value);
-                    orderListAdapter.notifyDataSetChanged();
+            orderListDatabase.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    OrderInfor value = (OrderInfor) snapshot.getValue(OrderInfor.class);
+                    String email = value.getClientId();
+                    if (email.equals(user.getEmail())){
+                        orderInforList.add(value);
+                        orderListAdapter.notifyDataSetChanged();
+                    }
+
+                }
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
                 }
 
-            }
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
 
-            }
+                }
 
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-            }
+                }
 
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
+                }
+            });
+        }catch(Exception ex){
+            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+        }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
 
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        OrderInfor orderInfo = orderInforList.get(i);
-        Intent intent2 = new Intent(this, OrderActivity.class);
-        intent2.putExtra("order", orderInfo);
-        intent2.putExtra("user", user);
-        startActivity(intent2);
+        try{
+            OrderInfor orderInfo = orderInforList.get(i);
+            Intent intent2 = new Intent(this, OrderActivity.class);
+            intent2.putExtra("order", orderInfo);
+            intent2.putExtra("user", user);
+            startActivity(intent2);
+        }catch(Exception ex){
+            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @Override
@@ -108,9 +118,14 @@ public class OrderListActivity extends AppCompatActivity implements AdapterView.
         int id = v.getId();
         switch (id){
             case R.id.btnShop:
-                Intent i = new Intent(this, ProductActivity.class); //TODO : change to product activity when Luke's done
-                i.putExtra("user", user);
-                startActivity(i);
+                try{
+                    Intent i = new Intent(this, ProductActivity.class);
+                    i.putExtra("user", user);
+                    startActivity(i);
+                }catch (Exception ex){
+                    Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
                 break;
             case R.id.ivAccount:
                 finish();

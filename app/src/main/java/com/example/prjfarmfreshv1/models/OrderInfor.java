@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class OrderInfor implements Serializable {
     private String clientId;
     private String date;
-    private float total;
+    private double total;
     private String orderId;
 
     public String getClientId() {
@@ -24,11 +24,11 @@ public class OrderInfor implements Serializable {
         this.date = date;
     }
 
-    public float getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(float total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 
@@ -43,7 +43,7 @@ public class OrderInfor implements Serializable {
     public OrderInfor() {
     }
 
-    public OrderInfor(String clientId, String date, float total, String orderId) {
+    public OrderInfor(String clientId, String date, double total, String orderId) {
         this.clientId = clientId;
         this.date = date;
         this.total = total;

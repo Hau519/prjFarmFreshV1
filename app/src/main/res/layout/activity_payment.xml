@@ -11,7 +11,7 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Order details"
+        android:text="Order summary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -24,7 +24,7 @@
         android:id="@+id/tvLblDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvLblId"
+
         android:layout_marginLeft="40dp"
         android:layout_marginTop="29dp"
         android:text="Date order: "
@@ -77,19 +77,69 @@
         android:textSize="30sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tvProductLabel"
-        android:layout_width="wrap_content"
+<!--    <TextView-->
+<!--        android:id="@+id/tvProductLabel"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        android:textSize="25sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textColor="@color/profile"-->
+<!--        android:text="Name    Unit Price   Quantity    Total"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvTotal" />-->
+
+    <LinearLayout
+        android:id="@+id/llCartHeader"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="@color/profile"
-        android:text="Name    Unit Price   Quantity    Total"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_goneMarginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTotal" />
+        app:layout_constraintTop_toBottomOf="@id/tvTotal"
+        >
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/style_shoppingCartListHeader"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="IMAGE" />
+
+        <TextView
+            android:id="@+id/textView5"
+            style="@style/style_shoppingCartListHeader"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="PRODUCT" />
+
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/style_shoppingCartListHeader"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="PRICE" />
+
+        <TextView
+            android:id="@+id/textView7"
+            style="@style/style_shoppingCartListHeader"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_weight="1.5"
+            android:text="QUANTITY" />
+
+        <TextView
+            android:id="@+id/textView8"
+            style="@style/style_shoppingCartListHeader"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:text="SUBTOTAL" />
+
+
+    </LinearLayout>
 
     <ListView
         android:id="@+id/lvProducts"
@@ -99,7 +149,7 @@
         android:layout_below="@+id/tvLblDate"
         android:layout_marginTop="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProductLabel" />
+        app:layout_constraintTop_toBottomOf="@id/llCartHeader" />
 <!--
 
     <EditText
@@ -160,6 +210,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Proceed order"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

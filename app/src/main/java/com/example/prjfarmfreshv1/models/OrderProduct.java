@@ -1,6 +1,8 @@
 package com.example.prjfarmfreshv1.models;
 
-public class OrderProduct {
+import java.io.Serializable;
+
+public class OrderProduct implements Serializable {
     private String orderId;
     private String productName;
     private float unitPrice;

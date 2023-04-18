@@ -26,11 +26,16 @@ public class ShoppingCartRecordAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<ShoppingCartRecord> scRecordList;
 
+    private int type=0;
 
     public ShoppingCartRecordAdapter(Context context, ArrayList<ShoppingCartRecord> scRecordList) {
         this.context = context;
         this.scRecordList = scRecordList;
-
+    }
+    public ShoppingCartRecordAdapter(Context context, ArrayList<ShoppingCartRecord> scRecordList, int type) {
+        this.context = context;
+        this.scRecordList = scRecordList;
+        this.type = type;
     }
 
     @Override
@@ -57,7 +62,6 @@ public class ShoppingCartRecordAdapter extends BaseAdapter {
         EditText edProductQuantity;
         Button btnEdit;
         ImageButton imPlus, imMinus;
-
 
         //1-inflate layout
         LayoutInflater inflater = LayoutInflater.from(context);
@@ -144,6 +148,10 @@ public class ShoppingCartRecordAdapter extends BaseAdapter {
 
             }
         });
+
+        if (this.type==1){
+            btnEdit.setVisibility(View.GONE);
+        }
 
 
 /*

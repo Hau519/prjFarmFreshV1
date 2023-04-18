@@ -3,35 +3,21 @@ package com.example.prjfarmfreshv1.models;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private static int Id=0;
 
     private String name;
     private String Email;
     private String Password;
 
-    public User() {
-        Id++;
-    }
 
-    public User(int id, String name, String email, String password) {
-        Id = id;
-        this.name = name;
-        this.Email = email;
-        this.Password = password;
-
-    }
+    public User(){}
 
 
     public User(String name, String email, String password) {
         this.name = name;
         this.Email = email;
         this.Password = password;
-        Id++;
     }
 
-    public int getId() {
-        return Id;
-    }
 
 
     public String getName() {

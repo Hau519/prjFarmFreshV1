@@ -6,18 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.prjfarmfreshv1.models.Order;
 import com.example.prjfarmfreshv1.models.OrderInfor;
 import com.example.prjfarmfreshv1.models.OrderProduct;
 import com.example.prjfarmfreshv1.models.OrderProductAdapter;
-import com.example.prjfarmfreshv1.models.Product;
 import com.example.prjfarmfreshv1.models.User;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -48,55 +45,57 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void initialize() {
-        tvId = findViewById(R.id.tvId);
-        tvDate = findViewById(R.id.tvDate);
-        tvTotal = findViewById(R.id.tvTotal);
-        btnReturn = findViewById(R.id.btnReturn);
-        lvProducts = findViewById(R.id.lvProducts);
-        btnReturn.setOnClickListener(this);
-        orderProductDatabase = FirebaseDatabase.getInstance().getReference("OrderProduct");
-
-        user = (User)getIntent().getExtras().getSerializable("user");
-        orderInfor = (OrderInfor) getIntent().getExtras().getSerializable("order");
-
-        tvId.setText(orderInfor.getOrderId());
-
-        tvDate.setText(String.valueOf(orderInfor.getDate()));
-        tvTotal.setText(String.valueOf(orderInfor.getTotal()));
-        orderProductList = new ArrayList<>();
-        orderProductAdapter = new OrderProductAdapter(this, orderProductList);
-        lvProducts.setAdapter(orderProductAdapter);
-        orderProductDatabase.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                OrderProduct value = (OrderProduct) snapshot.getValue(OrderProduct.class);
-                String orderId = value.getOrderId();
-                if (orderId.equals(orderInfor.getOrderId())){
-                    orderProductList.add(value);
-                    orderProductAdapter.notifyDataSetChanged();
+        try{
+            tvId = findViewById(R.id.tvId);
+            tvDate = findViewById(R.id.tvDate);
+            tvTotal = findViewById(R.id.tvTotal);
+            btnReturn = findViewById(R.id.btnReturn);
+            lvProducts = findViewById(R.id.lvProducts);
+            btnReturn.setOnClickListener(this);
+            orderProductDatabase = FirebaseDatabase.getInstance().getReference("OrderProduct");
+            user = (User)getIntent().getExtras().getSerializable("user");
+            orderInfor = (OrderInfor) getIntent().getExtras().getSerializable("order");
+            tvId.setText(orderInfor.getOrderId());
+            tvDate.setText(String.valueOf(orderInfor.getDate()));
+            tvTotal.setText(String.valueOf(orderInfor.getTotal()));
+            orderProductList = new ArrayList<>();
+            orderProductAdapter = new OrderProductAdapter(this, orderProductList);
+            lvProducts.setAdapter(orderProductAdapter);
+            orderProductDatabase.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    OrderProduct value = (OrderProduct) snapshot.getValue(OrderProduct.class);
+                    String orderId = value.getOrderId();
+                    if (orderId.equals(orderInfor.getOrderId())){
+                        orderProductList.add(value);
+                        orderProductAdapter.notifyDataSetChanged();
+                    }
                 }
-            }
 
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-            }
+                }
 
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
 
-            }
+                }
 
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-            }
+                }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+                }
+            });
+        }catch(Exception ex){
+            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @Override

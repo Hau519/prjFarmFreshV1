@@ -37,6 +37,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
 
     AlertDialog.Builder alertD;
     int position=-1;
+    double total=0;
 
     ActivityResultLauncher arl;
 
@@ -101,7 +102,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         tvQST.setText(String.format("%.2f",QST));
         double GST = subtotal * 0.05;
         tvGST.setText(String.format("%.2f",GST));
-        double total = subtotal + QST + GST;
+        total = subtotal + QST + GST;
         tvTotal.setText(String.format("%.2f",total));
 
 
@@ -169,6 +170,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         Intent intent = new Intent(this, Payment.class);
         User user = (User) getIntent().getExtras().getSerializable("user");
         intent.putExtra("user", user);
+        intent.putExtra("total", total);
         intent.putExtra("shoppingCartList",shoppingCartList);
         Toast.makeText(this, user.toString()+"\n"+shoppingCartList.toString(), Toast.LENGTH_SHORT).show();
        arl.launch(intent);

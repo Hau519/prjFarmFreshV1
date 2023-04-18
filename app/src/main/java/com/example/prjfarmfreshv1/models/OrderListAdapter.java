@@ -5,8 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.prjfarmfreshv1.R;
@@ -56,7 +54,7 @@ public class OrderListAdapter extends BaseAdapter {
         orderInfor = orderInforList.get(position);
         tvOrderNumber.setText(orderInfor.getOrderId());
         tvDate.setText(orderInfor.getDate());
-        tvTotal.setText(String.valueOf(orderInfor.getTotal()));
+        tvTotal.setText(String.format("%.2f", orderInfor.getTotal()));
         return oneItem;
 
     }

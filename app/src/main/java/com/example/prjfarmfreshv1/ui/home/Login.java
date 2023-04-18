@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.prjfarmfreshv1.AdminProfileActivity;
 import com.example.prjfarmfreshv1.ClientActivity;
 import com.example.prjfarmfreshv1.ProfileActivity;
 import com.example.prjfarmfreshv1.R;
@@ -95,8 +96,15 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Va
     public void onDataChange(@NonNull DataSnapshot snapshot) {
         String email = edEmail.getText().toString();
         String password=edPassword.getText().toString();
+        if(email.equalsIgnoreCase("admin@farmfresh.com") && password.equalsIgnoreCase("123")){
+            Toast.makeText(this,"Welcome back Admin!",Toast.LENGTH_SHORT).show();
+            Intent i=new Intent(this, AdminProfileActivity.class);
+            i.putExtra("user", "admin");
+            startActivity(i);
+        }
+
         if(snapshot.exists()){
-            Toast.makeText(this, "email correct", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "email correct", Toast.LENGTH_SHORT).show();
             String getPassword=snapshot.child("password").getValue().toString();
 //            String userId = snapshot.child("id").getValue().toString();
             String name = snapshot.child("name").getValue().toString();
@@ -104,8 +112,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Va
             if(getPassword.equals(password)){
                 Toast.makeText(this,"Logged in successfully",Toast.LENGTH_SHORT).show();
                 Intent i=new Intent(this, ClientActivity.class);
-//                User user = new User(Integer.valueOf(userId), name, email, password);
-                User user = new User( name, email, password);
+                User user = new User(name, email, password);
                 i.putExtra("user", user);
                 startActivity(i);
             }else{
