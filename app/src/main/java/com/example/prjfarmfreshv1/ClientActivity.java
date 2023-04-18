@@ -80,7 +80,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
 //                        User updateUser = new User(name, email, user.getPassword());
                         user.setName(name);
                         String emailKey = email.replace(".", "DOT");
-
+//hjjjjj
                         usersTable.child(emailKey).setValue(user);
 
                         Toast.makeText(this, "this is android group", Toast.LENGTH_SHORT).show();
