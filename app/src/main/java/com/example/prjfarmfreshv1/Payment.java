@@ -53,6 +53,7 @@ public class Payment extends AppCompatActivity implements View.OnClickListener {
         intialize();
     }
 
+
     @SuppressLint("DefaultLocale")
     private void intialize() {
         orderListDatabase = FirebaseDatabase.getInstance().getReference("OrderList");

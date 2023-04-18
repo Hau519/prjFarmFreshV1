@@ -57,6 +57,7 @@ public class OrderListActivity extends AppCompatActivity implements AdapterView.
             user = (User)getIntent().getExtras().getSerializable("user");
             ivAccount.setOnClickListener(this);
             btnShop = findViewById(R.id.btnShop);
+            btnShop.setOnClickListener(this);
             orderInfor = new OrderInfor();
             orderListAdapter = new OrderListAdapter(this, orderInforList);
             lvOrders.setAdapter(orderListAdapter);

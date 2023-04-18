@@ -8,11 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.prjfarmfreshv1.models.User;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ClientActivity extends AppCompatActivity implements View.OnClickListener  {
 
@@ -68,14 +70,20 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnUpdate:
                 try{
                     if (btnUpdate.getText().toString().equals("Update")){
-                        tvEmail.setEnabled(true);
+//                        tvEmail.setEnabled(false);
                         tvName.setEnabled(true);
                         btnUpdate.setText("Save");
                     }else if(btnUpdate.getText().toString().equals("Save")){
-                        String email = tvEmail.getText().toString();
+
+                        String email = user.getEmail();
                         String name = tvName.getText().toString();
-                        User updateUser = new User(name, email, user.getPassword());
-                        usersTable.child(String.valueOf(user.getEmail())).setValue(updateUser);
+//                        User updateUser = new User(name, email, user.getPassword());
+                        user.setName(name);
+                        String emailKey = email.replace(".", "DOT");
+
+                        usersTable.child(emailKey).setValue(user);
+
+
                         Snackbar.make(view, "Your information is updated successfully",
                                 Snackbar.LENGTH_LONG).show();
                         tvEmail.setEnabled(false);
@@ -93,6 +101,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.icOrderList:
                 Intent intent1 = new Intent(this, OrderListActivity.class);
+                Toast.makeText(this, user.getPassword(), Toast.LENGTH_SHORT).show();
                 intent1.putExtra("user", user);
                 startActivity(intent1);
                 break;
