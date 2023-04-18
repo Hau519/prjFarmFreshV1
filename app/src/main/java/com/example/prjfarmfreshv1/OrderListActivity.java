@@ -125,7 +125,6 @@ public class OrderListActivity extends AppCompatActivity implements AdapterView.
                 }catch (Exception ex){
                     Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-
                 break;
             case R.id.ivAccount:
                 finish();

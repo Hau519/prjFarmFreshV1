@@ -11,6 +11,9 @@ public class OrderProduct implements Serializable {
     private float productTotal;
 
     public String getOrderId() {
+        if (orderId.length()>5){
+            return orderId.substring(0,5);
+        }
         return orderId;
     }
 

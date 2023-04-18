@@ -11,24 +11,24 @@ import com.example.prjfarmfreshv1.R;
 
 import java.util.ArrayList;
 
-public class OrderProductAdapter extends BaseAdapter {
+public class ClientListAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<OrderProduct> orderProductList;
-    OrderProduct orderProduct;
+    private ArrayList<User> clientList;
+    User user;
 
-    public OrderProductAdapter(Context context, ArrayList<OrderProduct> orderProductList) {
+    public ClientListAdapter(Context context, ArrayList<User> clientList) {
         this.context = context;
-        this.orderProductList = orderProductList;
+        this.clientList = clientList;
     }
 
     @Override
     public int getCount() {
-        return orderProductList.size();
+        return clientList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return orderProductList.get(position);
+        return clientList.get(position);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class OrderProductAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View oneItem = null;
 
-        TextView tvName, tvUnitPrice, tvQuanity, tvTotal;
+        TextView tvName, tvEmail;
 
         //1-inflate layout
         LayoutInflater inflater = LayoutInflater.from(context);
@@ -48,15 +48,10 @@ public class OrderProductAdapter extends BaseAdapter {
 
         // 2-- Access and populate each widget of this view : OneItem
         tvName = oneItem.findViewById(R.id.tvName);
-        tvUnitPrice = oneItem.findViewById(R.id.tvUnitPrice);
-        tvQuanity = oneItem.findViewById(R.id.tvQuantity);
-        tvTotal = oneItem.findViewById(R.id.tvTotal);
-        orderProduct=orderProductList.get(position);
-        tvName.setText(orderProduct.getProductName());
-        tvUnitPrice.setText(String.format("%.2f", orderProduct.getUnitPrice()));
-        tvQuanity.setText(String.valueOf(orderProduct.getQuantity()));
-        tvTotal.setText(String.format("%.2f", orderProduct.getProductTotal()));
+        tvEmail = oneItem.findViewById(R.id.tvEmail);
+        user = clientList.get(position);
+        tvName.setText(user.getName());
+        tvEmail.setText(user.getEmail());
         return oneItem;
-
     }
 }

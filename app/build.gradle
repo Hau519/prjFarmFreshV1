@@ -34,7 +34,14 @@ android {
     viewBinding{
         enabled =true;
     }
+
+    packagingOptions {
+        pickFirst 'META-INF/LICENSE.txt' // picks the JavaMail license file
+    }
 }
+
+
+
 
 dependencies {
 
@@ -50,6 +57,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-database-ktx:20.1.0'
     implementation 'com.google.firebase:firebase-database:20.0.4'
     implementation 'androidx.annotation:annotation:1.3.0'
+    implementation files('src\\androidTest\\java\\com\\example\\libs\\activation.jar')
+    implementation files('src\\androidTest\\java\\com\\example\\libs\\additionnal.jar')
+    implementation files('src\\androidTest\\java\\com\\example\\libs\\mail.jar')
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -62,4 +72,6 @@ dependencies {
             because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
         }
     }
+
+
 }

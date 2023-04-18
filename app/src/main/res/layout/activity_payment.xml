@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg100"
+    android:background="@drawable/bg121webp"
     tools:context=".Payment">
 <!--    android:background="@drawable/bg122"-->
     <TextView
@@ -144,7 +144,7 @@
     <ListView
         android:id="@+id/lvProducts"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/btnOrder"
         android:layout_below="@+id/tvLblDate"
         android:layout_marginTop="10dp"
@@ -209,15 +209,31 @@
         android:id="@+id/btnOrder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="120dp"
+        android:backgroundTint="#80D160"
         android:text="Proceed order"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginBottom="90dp"
-        android:background="@drawable/button_pressed"
+        android:textColor="#2C2725"
+        app:layout_constraintRight_toRightOf="parent" />
 
-        />
+    <Button
+        android:id="@+id/btnReturn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="96dp"
+        android:layout_marginBottom="48dp"
+        android:backgroundTint="#80D160"
+        android:text="Return to shopping cart"
+        android:textColor="#2C2725"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnOrder"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
