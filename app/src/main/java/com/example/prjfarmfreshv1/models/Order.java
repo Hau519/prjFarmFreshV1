@@ -11,6 +11,8 @@ public class Order implements Serializable {
 
 
     private int clientId;
+    private int clientd;
+    private int clienE;
     private ArrayList<Product> productList;
     private LocalDateTime orderDate;
     private double total;

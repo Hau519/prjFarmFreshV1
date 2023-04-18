@@ -53,22 +53,16 @@
             android:layout_weight="0.5"
             android:textSize="12sp"
             android:ems="1"
-            android:inputType="number"
+            android:inputType="number|textNoSuggestions"
             android:text="3"
             android:enabled="false"
+            android:background="@null"
+
+
+
 
             />
-<!--        <EditText-->
-<!--            android:id="@+id/edProductQuantity"-->
-<!--            style="@style/style_shoppingCartListHeader"-->
-<!--            android:layout_weight="0.5"-->
-<!--            android:textSize="12sp"-->
-<!--            android:ems="1"-->
-<!--            android:inputType="number|textNoSuggestions"-->
-<!--            android:text="3"-->
-<!--            android:enabled="false"-->
-<!--            android:background="@null"-->
-<!--            />-->
+
         <ImageButton
             android:id="@+id/imMinus"
             android:layout_width="0dp"
