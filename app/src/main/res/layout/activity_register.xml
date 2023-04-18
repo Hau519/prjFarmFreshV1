@@ -244,6 +244,7 @@
             android:textSize="18dp"
             android:layout_marginTop="-15dp"
             android:textAllCaps="false"
+            android:backgroundTint="@android:color/holo_green_light"
             android:background="@drawable/button_pressed"/>
 
         <Space
@@ -293,6 +294,7 @@
             android:textSize="17dp"
             android:layout_marginTop="-35dp"
             android:textAllCaps="false"
+            android:backgroundTint="@android:color/holo_green_light"
             android:background="@drawable/button_pressed"/>
 
         <Space
