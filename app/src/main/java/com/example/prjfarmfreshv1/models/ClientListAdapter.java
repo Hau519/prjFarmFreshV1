@@ -60,16 +60,16 @@ public class ClientListAdapter extends BaseAdapter{
         tvName.setText(user.getName());
         tvEmail.setText(user.getEmail());
 
-        btnOrders.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+//        btnOrders.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
 //                Intent intent2 = new Intent(, AdminOrderActivity.class);
 //                intent2.putExtra("order", orderInfo);
 //                intent2.putExtra("user", user);
 //                startActivity(intent2);
 
-            }
-        });
+//            }
+//        });
 
 
 
