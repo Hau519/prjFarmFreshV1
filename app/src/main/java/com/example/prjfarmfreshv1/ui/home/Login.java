@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import com.example.prjfarmfreshv1.AdminProfileActivity;
 import com.example.prjfarmfreshv1.ClientActivity;
-import com.example.prjfarmfreshv1.ProfileActivity;
 import com.example.prjfarmfreshv1.R;
 import com.example.prjfarmfreshv1.models.User;
 import com.google.firebase.database.DataSnapshot;
