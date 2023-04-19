@@ -55,7 +55,7 @@
                 />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnShopHome"
                 android:layout_width="500dp"
                 android:layout_height="60dp"
                 android:layout_below="@+id/textView"
