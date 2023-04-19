@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ import com.example.prjfarmfreshv1.models.User;
 
 public class OrderPlaced extends AppCompatActivity implements View.OnClickListener{
     TextView tvMessage;
+    ImageView ivLogo;
     Button btnHomePage, btnProfile, btnLogout;
     User user;
     String orderNumber;
@@ -25,6 +27,7 @@ public class OrderPlaced extends AppCompatActivity implements View.OnClickListen
     }
 
     private void initialize() {
+        ivLogo = findViewById(R.id.imgLogo);
         tvMessage = findViewById(R.id.tvMessage);
         btnHomePage = findViewById(R.id.btnBackToHome);
         btnProfile = findViewById(R.id.btnBackToProfile);
@@ -35,6 +38,7 @@ public class OrderPlaced extends AppCompatActivity implements View.OnClickListen
 
         btnHomePage.setOnClickListener(this);
         btnProfile.setOnClickListener(this);
+        ivLogo.setOnClickListener(this);
     }
 
     @Override
@@ -42,6 +46,7 @@ public class OrderPlaced extends AppCompatActivity implements View.OnClickListen
         int id = view.getId();
         switch (id){
             case R.id.btnBackToHome:
+            case R.id.ivLogo:
                 try{
                     Intent i = new Intent(this, MainActivity.class);
                     i.putExtra("user", user);
@@ -67,6 +72,7 @@ public class OrderPlaced extends AppCompatActivity implements View.OnClickListen
                     Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
                 }
                 break;
+
         }
     }
 }

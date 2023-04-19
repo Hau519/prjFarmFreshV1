@@ -13,10 +13,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.prjfarmfreshv1.AdminProfileActivity;
 import com.example.prjfarmfreshv1.ClientActivity;
+import com.example.prjfarmfreshv1.MainActivity;
 import com.example.prjfarmfreshv1.R;
 import com.example.prjfarmfreshv1.models.User;
 import com.google.firebase.database.DataSnapshot;
@@ -26,11 +28,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity implements View.OnClickListener, ValueEventListener {
+
+    ImageView ivLogo;
     EditText edEmail,edPassword;
     Button btnLogIn,btnRegister;
     DatabaseReference databaseReference;
     ActivityResultLauncher activityResultLauncher;
 
+    User user = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,12 +44,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Va
     }
 
     private void initialize() {
+        ivLogo = findViewById(R.id.ivLogo);
         edEmail=findViewById(R.id.edEmail);
         edPassword=findViewById(R.id.edPassword);
         btnLogIn=findViewById(R.id.btnLogIn);
         btnRegister=findViewById(R.id.btnRegister);
         btnLogIn.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
+        ivLogo.setOnClickListener(this);
         databaseReference= FirebaseDatabase.getInstance().getReference("Users");
         activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),result -> {
             if (result.getResultCode() == RESULT_OK&&result.getData()!=null) {
@@ -70,6 +77,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Va
             case R.id.btnRegister:
                 register();
                 break;
+            case R.id.ivLogo:
+                Intent i=new Intent(this, MainActivity.class);
+                i.putExtra("user", user);
+                startActivity(i);
         }
     }
 

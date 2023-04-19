@@ -55,7 +55,7 @@
                 />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnShop"
                 android:layout_width="500dp"
                 android:layout_centerHorizontal="true"
                 android:layout_height="wrap_content"

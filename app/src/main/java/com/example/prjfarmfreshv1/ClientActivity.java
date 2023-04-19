@@ -15,7 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class ClientActivity extends AppCompatActivity implements View.OnClickListener  {
-
+    ImageView ivLogo;
     TextView tvName, tvEmail, tvTitle;
     Button btnUpdate, btnShop;
 
@@ -41,6 +41,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void initialize() {
+        ivLogo = findViewById(R.id.ivLogo);
         tvName = findViewById(R.id.tvProductName);
         tvName.setEnabled(false);
         tvEmail = findViewById(R.id.tvEmail);
@@ -53,6 +54,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
         iconLogout = findViewById(R.id.icLogOut);
         icOrderList = findViewById(R.id.icOrderList);
         iconLogout.setOnClickListener(this);
+        ivLogo.setOnClickListener(this);
         icOrderList.setOnClickListener(this);
         tvTitle = findViewById(R.id.tvTitle);
     }
@@ -100,7 +102,10 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                 intent1.putExtra("user", user);
                 startActivity(intent1);
                 break;
-
+            case R.id.ivLogo:
+                Intent intent2 =new Intent(this, MainActivity.class);
+                intent2.putExtra("user", user);
+                startActivity(intent2);
         }
     }
 }

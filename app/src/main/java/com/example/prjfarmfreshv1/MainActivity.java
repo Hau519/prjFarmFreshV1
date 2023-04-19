@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.ImageView;
 
+import com.example.prjfarmfreshv1.models.User;
 import com.example.prjfarmfreshv1.ui.home.Login;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     ImageView icon_account;
 
-
+    User user=null;
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
@@ -34,13 +35,17 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        Intent intent = getIntent();
+        if (intent.hasExtra("user")){
+            user = (User)getIntent().getExtras().getSerializable("user");
+        }
         setSupportActionBar(binding.appBarMain.toolbar);
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent i = new Intent(MainActivity.this, SendUsMessageActivity.class);
+                i.putExtra("user", user);
+                startActivity(i);
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
@@ -57,11 +62,19 @@ public class MainActivity extends AppCompatActivity {
 
         icon_account = findViewById(R.id.icon_account);
 
+
         icon_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this , Login.class);
+                if (user==null){
+                    Intent intent = new Intent(MainActivity.this , Login.class);
                     startActivity(intent);
+                }else{
+                    Intent i = new Intent(MainActivity.this, ClientActivity.class);
+                    i.putExtra("user", user);
+                    startActivity(i);
+                }
+
             }
         });
 

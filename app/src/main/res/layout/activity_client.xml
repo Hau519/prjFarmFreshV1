@@ -9,8 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/logo"
-
+        android:id="@+id/ivLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -41,7 +40,7 @@
         android:backgroundTint="#F3ECEC"
         app:layout_constraintEnd_toStartOf="@+id/icLogOut"
         app:layout_constraintHorizontal_bias="0.815"
-        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintStart_toEndOf="@+id/ivLogo"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/order_history" />
 
@@ -59,7 +58,7 @@
         android:textSize="40sp"
         android:textStyle="bold|italic"
 
-        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo"
         tools:layout_editor_absoluteX="88dp" />
 
     <TextView
