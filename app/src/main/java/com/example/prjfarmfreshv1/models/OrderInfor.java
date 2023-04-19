@@ -33,9 +33,6 @@ public class OrderInfor implements Serializable {
     }
 
     public String getOrderId() {
-        if (orderId.length()>5){
-            return orderId.substring(0,5);
-        }
         return orderId;
     }
 

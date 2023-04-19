@@ -15,7 +15,7 @@ public class OrderListAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<OrderInfor> orderInforList;
     OrderInfor orderInfor;
-
+    String orderNumberDisplay;
     public OrderListAdapter(Context context, ArrayList<OrderInfor> orderInforList) {
         this.context = context;
         this.orderInforList = orderInforList;
@@ -52,7 +52,10 @@ public class OrderListAdapter extends BaseAdapter {
         tvTotal = oneItem.findViewById(R.id.tvTotal);
 
         orderInfor = orderInforList.get(position);
-        tvOrderNumber.setText(orderInfor.getOrderId());
+        if (orderInfor.getOrderId().length()>5){
+            orderNumberDisplay = orderInfor.getOrderId().substring(0,5);
+        }
+        tvOrderNumber.setText(orderNumberDisplay);
         tvDate.setText(orderInfor.getDate());
         tvTotal.setText(String.format("%.2f", orderInfor.getTotal()));
         return oneItem;

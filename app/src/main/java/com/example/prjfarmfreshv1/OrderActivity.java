@@ -37,6 +37,8 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
     OrderProductAdapter orderProductAdapter;
     OrderProduct orderProduct;
     DatabaseReference orderProductDatabase;
+
+    String orderNumberDisplay;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +57,12 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
             orderProductDatabase = FirebaseDatabase.getInstance().getReference("OrderProduct");
             user = (User)getIntent().getExtras().getSerializable("user");
             orderInfor = (OrderInfor) getIntent().getExtras().getSerializable("order");
-            tvId.setText(orderInfor.getOrderId());
+            if (orderInfor.getOrderId().length()>5){
+                orderNumberDisplay = orderInfor.getOrderId().substring(0,5);
+            }
+            tvId.setText(orderNumberDisplay);
             tvDate.setText(String.valueOf(orderInfor.getDate()));
-            tvTotal.setText(String.valueOf(orderInfor.getTotal()));
+            tvTotal.setText(String.format("%.2f", orderInfor.getTotal()));
             orderProductList = new ArrayList<>();
             orderProductAdapter = new OrderProductAdapter(this, orderProductList);
             lvProducts.setAdapter(orderProductAdapter);
