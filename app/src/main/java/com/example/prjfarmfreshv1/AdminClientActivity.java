@@ -97,7 +97,7 @@ public class AdminClientActivity extends AppCompatActivity implements AdapterVie
 
     private void setDeleteAlert() {
         alertD = new AlertDialog.Builder(this);
-        alertD.setTitle("Remove Product");
+        alertD.setTitle("Remove Client");
         alertD.setMessage("Do you want to remove (Yes/NO)?");
         alertD.setPositiveButton("Yes", this);
         alertD.setNegativeButton("No",this);

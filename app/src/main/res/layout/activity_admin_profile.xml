@@ -130,21 +130,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnClientList" />
 
-    <Button
-        android:id="@+id/btnProductList"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_below="@+id/tvTitle"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="64dp"
-        android:backgroundTint="@android:color/holo_green_light"
-        android:padding="10dp"
-        android:text="Manage product"
-        android:textSize="23sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnOrderList" />
 
     <Button
         android:id="@+id/btnClientList"

@@ -55,7 +55,6 @@
         android:gravity="center"
         android:text="Welcome back!"
         android:textColor="#4B7027"
-
         android:textSize="35sp"
         android:textStyle="bold|italic"
 

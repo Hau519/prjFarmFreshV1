@@ -22,6 +22,8 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
     ImageView icOrderList, iconLogout;
     User user;
 
+    String admin="";
+
     DatabaseReference usersTable;
 
     @Override
@@ -29,7 +31,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client);
         initialize();
-        fillInformation();
+
     }
 
     private void fillInformation() {
@@ -57,6 +59,16 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
         ivLogo.setOnClickListener(this);
         icOrderList.setOnClickListener(this);
         tvTitle = findViewById(R.id.tvTitle);
+        fillInformation();
+        Intent intent = getIntent();
+        if (intent.hasExtra("admin")){
+            admin = getIntent().getExtras().getString("admin");
+        }
+        if (!admin.isEmpty()){
+            tvTitle.setText("Welcome admin!");
+            iconLogout.setVisibility(View.INVISIBLE);
+            btnShop.setText("Go back to working station");
+        }
     }
 
     @Override
@@ -64,9 +76,13 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
         int id = view.getId();
         switch (id){
             case R.id.btnShopNow:
-                Intent i = new Intent(this, ProductActivity.class);
-                i.putExtra("user", user);
-                startActivity(i);
+                if (admin.isEmpty()){
+                    Intent i = new Intent(this, ProductActivity.class);
+                    i.putExtra("user", user);
+                    startActivity(i);
+                }else{
+                    finish();
+                }
                 break;
             case R.id.btnUpdate:
                 try{
