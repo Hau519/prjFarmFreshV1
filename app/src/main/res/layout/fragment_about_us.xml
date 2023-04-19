@@ -4,46 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg101"
     tools:context=".ui.aboutUs.AboutUsFragment">
 
 <!--    design for about us//-->
 
 
 
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/top_background"
 
+        />
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="About Us"
-       app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:textSize="40sp"
-        android:textColor="#673AB7"
+        android:layout_marginRight="160dp"
+        android:textSize="52sp"
+        android:textColor="#EAECE8"
+
         android:textStyle="bold|italic"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         />
 
-    <TextView
-        android:id="@+id/textGallery"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <TableLayout
+        android:id="@+id/TableLayout01"
+        android:layout_width="320dp"
+        android:layout_height="480dp"
+        android:background="@drawable/table_radius"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="40dp"
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        app:layout_constraintLeft_toLeftOf="@id/tvTitle"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold|italic"
-        android:textColor="#673AB7"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        >
+        <TextView
+            android:id="@+id/textGallery"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintLeft_toLeftOf="@id/tvTitle"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            android:textColor="#597040"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
 
-        android:text="@string/aboutus_content"
-        />
+            android:text="@string/aboutus_content"
+            />
+    </TableLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,13 +10,12 @@
 
     <ImageView
         android:id="@+id/ivLogo"
-
-        android:layout_width="117dp"
-        android:layout_height="85dp"
+        android:layout_width="180dp"
+        android:layout_height="105dp"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginRight="180dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.209"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo1" />
@@ -41,7 +40,7 @@
         android:backgroundTint="#F3ECEC"
         app:layout_constraintEnd_toStartOf="@+id/icLogOut"
         app:layout_constraintHorizontal_bias="0.815"
-        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintStart_toEndOf="@+id/ivLogo"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/order_history" />
 
