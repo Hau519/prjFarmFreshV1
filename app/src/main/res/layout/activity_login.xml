@@ -5,23 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/bg125"
+
     tools:context=".ui.home.Login">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".5"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/ivLogo"
-            android:layout_width="match_parent"
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:scaleType="centerCrop"
             android:layout_marginRight="5dp"
-            app:srcCompat="@drawable/logo1"
-            android:layout_marginTop="5dp"
+            app:srcCompat="@drawable/top_background"
             />
 
     </LinearLayout>
@@ -37,10 +36,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="LogIn"
+            android:text="Login"
             android:textColor="#4B7027"
-            android:textStyle="bold|italic"
-            android:textSize="55sp"
+            android:textStyle="bold"
+            android:textSize="58sp"
             android:layout_gravity="center"
             android:gravity="center"
             />
@@ -55,16 +54,38 @@
         android:layout_weight="0.5"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/edEmail"
-            android:layout_width="wrap_content"
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="137dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
             android:layout_weight="1"
-            android:ems="8"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:hint="Email" />
+            android:text="Email: "
+            android:textColor="#272525"
+            android:textSize="20sp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:backgroundTint="#F1F1F1"
+            android:layout_gravity="center"
+            app:cardCornerRadius="10dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1" >
+
+            <EditText
+                android:id="@+id/edEmail"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                 />
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 
@@ -74,17 +95,39 @@
         android:layout_weight="0.5"
         android:orientation="horizontal">
 
-
-        <EditText
-            android:id="@+id/edPassword"
-            android:layout_width="397dp"
+        <TextView
+            android:id="@+id/tvPassword"
+            android:layout_width="225dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
             android:layout_weight="1"
-            android:ems="6"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:minHeight="48dp" />
+            android:text="Password: "
+            android:textColor="#272525"
+
+            android:textSize="20dp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="375dp"
+            android:layout_height="40dp"
+            android:backgroundTint="#F1F1F1"
+            android:layout_gravity="center"
+            app:cardCornerRadius="10dp"
+            android:layout_marginLeft="30dp"
+
+            android:layout_marginRight="20dp"
+            android:layout_weight="1" >
+
+            <EditText
+                android:id="@+id/edPassword"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                 />
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 
     <LinearLayout
@@ -99,7 +142,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.25"
+        android:layout_weight="0.5"
         android:orientation="horizontal">
 
         <Button
@@ -112,29 +155,13 @@
             android:layout_weight="0.25"
             android:gravity="center"
             android:text="Log in"
+            android:textColor="#ddd"
             android:textAllCaps="false"
-            android:textSize="25sp"
+            android:textSize="28sp"
             tools:ignore="TextSizeCheck"
-            android:backgroundTint="@android:color/holo_green_light"
+            android:backgroundTint="#068151"
+
             android:background="@drawable/button_pressed"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tvForgetPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="Forget your password? Click here!"
-            android:gravity="center"
-            android:textSize="15dp"
-            android:layout_gravity="center"/>
 
     </LinearLayout>
 
@@ -149,14 +176,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="New User Register here"
+            android:text="Don't have account ?"
             android:gravity="center"
-            android:textSize="30dp"
+            android:layout_marginTop="30dp"
+            android:textSize="20dp"
             android:layout_gravity="center"/>
+
 
     </LinearLayout>
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"/>
 
+    <View
+        android:layout_width="320dp"
+        android:layout_height="2dp"
+        android:background="#352F2F"
+        android:layout_marginLeft="50dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -171,12 +209,12 @@
             android:layout_gravity="center"
             android:layout_marginLeft="90dp"
             android:layout_marginRight="90dp"
-            android:layout_weight="0.5"
-            android:backgroundTint="@android:color/holo_green_light"
+            android:layout_weight="1"
+            android:backgroundTint="#068151"
+            android:textColor="#ddd"
             android:background="@drawable/button_pressed"
             android:text="Register"
             android:textAllCaps="false"
-
             android:textSize="25sp" />
     </LinearLayout>
 
