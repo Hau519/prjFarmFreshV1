@@ -59,44 +59,44 @@ public class ResetPassword extends AppCompatActivity implements View.OnClickList
         int id = v.getId();
         switch (id) {
             case R.id.btnClick:
-                if (btnClick.getText().toString().equalsIgnoreCase("Get code")) {
-                    email = edEmail.getText().toString();
-                    emailKey = email.replace(".", "DOT");
-                    if (email.isEmpty()){
-                        Toast.makeText(ResetPassword.this, "Please fill in your email", Toast.LENGTH_SHORT).show();
-                    }else{
-                        usersTable.child(emailKey).addValueEventListener(this);
-                    }
-                }else if(btnClick.getText().toString().equalsIgnoreCase("Confirm code")){
-                    inputCode = Integer.valueOf(edCode.getText().toString());
-                    usersTable.child(emailKey).removeEventListener(this);
 
-                    if (inputCode != code){
-                        Toast.makeText(ResetPassword.this, "Wrong code, please check", Toast.LENGTH_SHORT).show();
-                    }else{
-                        edEmail.setText(email);
-                        edCode.setText("");
-                        edCode.setHint("Enter your new password");
-                        btnClick.setText("Reset");
+                try {
+                    if (btnClick.getText().toString().equalsIgnoreCase("Get code")) {
+                        email = edEmail.getText().toString();
+                        emailKey = email.replace(".", "DOT");
+                        if (email.isEmpty()){
+                            Toast.makeText(ResetPassword.this, "Please fill in your email", Toast.LENGTH_SHORT).show();
+                        }else{
+                            usersTable.child(emailKey).addValueEventListener(this);
+                        }
+                    }else if(btnClick.getText().toString().equalsIgnoreCase("Confirm code")){
+                        inputCode = Integer.valueOf(edCode.getText().toString());
+                        usersTable.child(emailKey).removeEventListener(this);
+
+                        if (inputCode != code){
+                            Toast.makeText(ResetPassword.this, "Wrong code, please check", Toast.LENGTH_SHORT).show();
+                        }else{
+                            edEmail.setText(email);
+                            edCode.setText("");
+                            edCode.setHint("Enter your new password");
+                            btnClick.setText("Reset");
+                        }
+                    }else if(btnClick.getText().toString().equalsIgnoreCase("Reset")) {
+                        newPassword = edCode.getText().toString();
+                        user.setPassword(newPassword);
+                        usersTable.child(emailKey).setValue(user);
+                        Snackbar.make(v, "Your password is reset successfully",
+                                Snackbar.LENGTH_LONG).show();
+                        Intent i = new Intent(this, Login.class);
+                        i.putExtra("user", user);
+                        setResult(RESULT_OK, i);
+                        finish();
+
                     }
-                }else if(btnClick.getText().toString().equalsIgnoreCase("Reset")) {
-                    newPassword = edCode.getText().toString();
-                    user.setPassword(newPassword);
-                    usersTable.child(emailKey).setValue(user);
-                    Snackbar.make(v, "Your password is reset successfully",
+                } catch (Exception ex) {
+                    Snackbar.make(v, ex.getMessage(),
                             Snackbar.LENGTH_LONG).show();
-                    Intent i = new Intent(this, Login.class);
-                    i.putExtra("user", user);
-                    setResult(RESULT_OK, i);
-                    finish();
                 }
-//                try {
-//
-//                    }
-//                } catch (Exception ex) {
-//                    Snackbar.make(v, ex.getMessage(),
-//                            Snackbar.LENGTH_LONG).show();
-//                }
                 break;
             case R.id.btnLogin:
                 finish();

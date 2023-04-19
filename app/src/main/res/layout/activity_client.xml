@@ -9,7 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/logo"
+        android:id="@+id/ivLogo"
 
         android:layout_width="117dp"
         android:layout_height="85dp"
@@ -60,7 +60,7 @@
         android:textSize="35sp"
         android:textStyle="bold|italic"
 
-        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo"
         tools:layout_editor_absoluteX="88dp" />
 
 

@@ -99,6 +99,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
             Intent i = new Intent(this, Login.class);
             i.putExtra("user", user);
             setResult(RESULT_OK, i);
+            userDatabase.child(email).removeEventListener(this);
             finish();
 
         }
