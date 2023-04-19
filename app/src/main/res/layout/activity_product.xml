@@ -71,14 +71,14 @@
         android:id="@+id/btnGoToShoppingCart"
         android:layout_width="48dp"
         android:layout_height="37dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="676dp"
-        android:background="@drawable/baseline_shopping_cart_24"
+        android:layout_marginEnd="28dp"
 
+        android:background="@drawable/baseline_shopping_cart_24"
         android:textAllCaps="false"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvProductTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvProductTitle" />
 
     <Spinner
         android:id="@+id/spinnerProductFilter"

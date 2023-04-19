@@ -160,7 +160,7 @@ public class Payment extends AppCompatActivity implements View.OnClickListener {
         public String buildConfirmMessage(){
         String greeting = "Dear " + user.getName() + " !\n\n";
         String thankMessage = "Thank you for shopping with us!"+ "\n\nYour order details are as follow: \n";
-        @SuppressLint("DefaultLocale") String orderDetails = "Order number: " + orderInfor.getOrderId() + ".\nTotal amount: $"+ String.format("%.2f",total) + ".\nOrder date: "+ dateOrder;
+        @SuppressLint("DefaultLocale") String orderDetails = "Order number: " + orderInfor.getOrderId().substring(0,5) + ".\nTotal amount: $"+ String.format("%.2f",total) + ".\nOrder date: "+ dateOrder;
         String goodbye = "\n\nYour order will be deliver within 24 hours. \n\nKindest regards, Thank you!\n From FarmFresh with love.";
         return greeting + thankMessage + orderDetails + goodbye;
     }
