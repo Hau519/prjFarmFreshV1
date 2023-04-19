@@ -18,7 +18,6 @@
         app:layout_constraintRight_toRightOf="parent"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/top_background"
-
         />
     <TextView
         android:id="@+id/tvTitle"
