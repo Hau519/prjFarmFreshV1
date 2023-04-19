@@ -65,6 +65,7 @@ public class Payment extends AppCompatActivity implements View.OnClickListener {
         btnReturn = findViewById(R.id.btnReturn);
 
         btnPlaceOrder.setOnClickListener(this);
+        btnReturn.setOnClickListener(this);
 
         user = (User)getIntent().getExtras().getSerializable("user");
         total = (Double)getIntent().getExtras().getDouble("total");

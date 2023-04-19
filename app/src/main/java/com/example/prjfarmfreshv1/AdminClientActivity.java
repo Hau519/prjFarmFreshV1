@@ -7,12 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.prjfarmfreshv1.models.ClientListAdapter;
-import com.example.prjfarmfreshv1.models.OrderInfor;
 import com.example.prjfarmfreshv1.models.User;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;

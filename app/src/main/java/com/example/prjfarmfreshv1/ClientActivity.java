@@ -8,13 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.prjfarmfreshv1.models.User;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class ClientActivity extends AppCompatActivity implements View.OnClickListener  {
 
@@ -38,7 +36,8 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
         user = (User)getIntent().getExtras().getSerializable("user");
         tvName.setText(user.getName());
         tvEmail.setText(user.getEmail());
-        tvTitle.setText("Welcome " + user.getName());
+        String welcome = "Welcome " + user.getName();
+        tvTitle.setText(welcome);
     }
 
     private void initialize() {
@@ -80,10 +79,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
 //                        User updateUser = new User(name, email, user.getPassword());
                         user.setName(name);
                         String emailKey = email.replace(".", "DOT");
-//hjjjjj
                         usersTable.child(emailKey).setValue(user);
-
-                        Toast.makeText(this, "this is android group", Toast.LENGTH_SHORT).show();
                         Snackbar.make(view, "Your information is updated successfully",
                                 Snackbar.LENGTH_LONG).show();
                         tvEmail.setEnabled(false);
@@ -101,7 +97,6 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.icOrderList:
                 Intent intent1 = new Intent(this, OrderListActivity.class);
-                Toast.makeText(this, user.getPassword(), Toast.LENGTH_SHORT).show();
                 intent1.putExtra("user", user);
                 startActivity(intent1);
                 break;

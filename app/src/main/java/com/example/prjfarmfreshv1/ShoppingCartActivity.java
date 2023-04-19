@@ -18,15 +18,14 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.prjfarmfreshv1.models.Product;
+
 import com.example.prjfarmfreshv1.models.ShoppingCartRecord;
 import com.example.prjfarmfreshv1.models.ShoppingCartRecordAdapter;
 import com.example.prjfarmfreshv1.models.User;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+
 
 public class ShoppingCartActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemLongClickListener, DialogInterface.OnClickListener {
     Button btnCheckout, btnCS;
@@ -70,10 +69,6 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
 
         lvCart = findViewById(R.id.lvCart);
 
-
-
-
-
         shoppingCartList = (ArrayList<ShoppingCartRecord>) getIntent().getExtras().getSerializable("selectedProducts");
         scAdapter = new ShoppingCartRecordAdapter(this, shoppingCartList);
         lvCart.setAdapter(scAdapter);
@@ -91,10 +86,10 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void setCartTotalTable( ArrayList<ShoppingCartRecord> shoppingCartList) {
-        tvSubtotal= (TextView) findViewById(R.id.tvCartSubtotal);
-        tvQST= (TextView) findViewById(R.id.tvQST);
-        tvGST= (TextView) findViewById(R.id.tvGST);
-        tvTotal= (TextView) findViewById(R.id.tvTotal);
+        tvSubtotal=  findViewById(R.id.tvCartSubtotal);
+        tvQST=  findViewById(R.id.tvQST);
+        tvGST=  findViewById(R.id.tvGST);
+        tvTotal= findViewById(R.id.tvTotal);
 
         double subtotal = getSubtotal(shoppingCartList);
         tvSubtotal.setText(String.format("%.2f",subtotal));
@@ -104,8 +99,6 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         tvGST.setText(String.format("%.2f",GST));
         total = subtotal + QST + GST;
         tvTotal.setText(String.format("%.2f",total));
-
-
 
     }
 
@@ -172,7 +165,6 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         intent.putExtra("user", user);
         intent.putExtra("total", total);
         intent.putExtra("shoppingCartList",shoppingCartList);
-        Toast.makeText(this, user.toString()+"\n"+shoppingCartList.toString(), Toast.LENGTH_SHORT).show();
        arl.launch(intent);
     }
 

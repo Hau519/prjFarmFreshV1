@@ -76,7 +76,6 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
                         orderProductAdapter.notifyDataSetChanged();
                     }
                 }
-
                 @Override
                 public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
