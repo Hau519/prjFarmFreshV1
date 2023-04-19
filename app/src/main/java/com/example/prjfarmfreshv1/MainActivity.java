@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnShopHome = findViewById(R.id.btnShopHome);
+
         btnShopHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

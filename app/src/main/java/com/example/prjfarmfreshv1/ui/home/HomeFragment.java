@@ -33,8 +33,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         View root = binding.getRoot();
         final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        btnShop = binding.btnShopHome;
-        btnShop.setOnClickListener(this);
+        //the link hau sent
+//        btnShop = binding.btnShopHome;
+//        btnShop.setOnClickListener(this);
         return root;
     }
 

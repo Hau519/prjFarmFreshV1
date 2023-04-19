@@ -190,11 +190,16 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
             dialogType = "checkout";
             alertCheckOut.create().show();
         }else{
-            Intent intent = new Intent(this, Payment.class);
-            intent.putExtra("user", user);
-            intent.putExtra("total", total);
-            intent.putExtra("shoppingCartList",shoppingCartList);
-            arl.launch(intent);
+            if (shoppingCartList.isEmpty()) {
+                Toast.makeText(this, "Please select a product to check out!", Toast.LENGTH_SHORT).show();
+            }else{
+                Intent intent = new Intent(this, Payment.class);
+                intent.putExtra("user", user);
+                intent.putExtra("total", total);
+                intent.putExtra("shoppingCartList",shoppingCartList);
+                arl.launch(intent);
+            }
+
         }
 
     }
