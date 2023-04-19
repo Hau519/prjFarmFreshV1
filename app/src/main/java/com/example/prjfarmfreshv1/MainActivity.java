@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.prjfarmfreshv1.models.User;
@@ -24,6 +25,7 @@ import com.example.prjfarmfreshv1.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     ImageView icon_account;
+    Button btnShopHome;
 
     User user=null;
     private AppBarConfiguration mAppBarConfiguration;
@@ -75,6 +77,16 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(i);
                 }
 
+            }
+        });
+
+        btnShopHome = findViewById(R.id.btnShopHome);
+        btnShopHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this , ProductActivity.class);
+                intent.putExtra("user", (java.io.Serializable) null);
+                startActivity(intent);
             }
         });
 

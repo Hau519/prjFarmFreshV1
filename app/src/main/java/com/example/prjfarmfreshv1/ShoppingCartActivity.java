@@ -18,11 +18,13 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.prjfarmfreshv1.models.ShoppingCartRecord;
 import com.example.prjfarmfreshv1.models.ShoppingCartRecordAdapter;
 import com.example.prjfarmfreshv1.models.User;
+import com.example.prjfarmfreshv1.ui.home.Login;
 
 import java.util.ArrayList;
 
@@ -33,11 +35,11 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
     ShoppingCartRecordAdapter scAdapter;
     ArrayList<ShoppingCartRecord> shoppingCartList;
     TextView tvSubtotal,tvQST,tvGST, tvTotal;
-
-    AlertDialog.Builder alertD;
+    User user = null;
+    AlertDialog.Builder alertD,alertCheckOut;
     int position=-1;
     double total=0;
-
+    String dialogType=null;
     ActivityResultLauncher arl;
 
     public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
@@ -78,12 +80,18 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
 
         setCartTotalTable(shoppingCartList);
         setDeleteAlert();
+        setCheckOutAlert();
         arl = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-
+            if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                shoppingCartList = (ArrayList<ShoppingCartRecord>) result.getData().getExtras().getSerializable("returnedScRecordList");
+                user = (User)result.getData().getExtras().getSerializable("user");
+            }
 
         });
 
     }
+
+
 
     private void setCartTotalTable( ArrayList<ShoppingCartRecord> shoppingCartList) {
         tvSubtotal=  findViewById(R.id.tvCartSubtotal);
@@ -116,10 +124,20 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         alertD.setPositiveButton("Yes", this);
         alertD.setNegativeButton("No",this);
     }
+
+    private void setCheckOutAlert() {
+        alertCheckOut= new AlertDialog.Builder(this);
+        alertCheckOut.setTitle("Go to Login");
+        alertCheckOut.setMessage("Sorry, You need login first to check out\nDo you want to go to login(Yes/NO)?");
+        alertCheckOut.setPositiveButton("Yes", this);
+        alertCheckOut.setNegativeButton("No",this);
+    }
+
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int i, long id) {
 
         position = i;
+        dialogType = "delete";
         alertD.create().show();
         return true;
     }
@@ -128,9 +146,15 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
     public void onClick(DialogInterface dialog, int which) {
         switch (which) {
             case Dialog.BUTTON_POSITIVE:
-                shoppingCartList.remove(position);
-                scAdapter.notifyDataSetChanged();
-                setCartTotalTable(shoppingCartList);
+                if (dialogType.equals("delete")) {
+                    shoppingCartList.remove(position);
+                    scAdapter.notifyDataSetChanged();
+                    setCartTotalTable(shoppingCartList);
+                }else if (dialogType.equals("checkout")) {
+                    Intent intent = new Intent(this, Login.class);
+                    startActivity(intent);
+                }
+
                 break;
             case Dialog.BUTTON_NEGATIVE:
                 break;
@@ -160,12 +184,19 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void checkOut() {
-        Intent intent = new Intent(this, Payment.class);
         User user = (User) getIntent().getExtras().getSerializable("user");
-        intent.putExtra("user", user);
-        intent.putExtra("total", total);
-        intent.putExtra("shoppingCartList",shoppingCartList);
-       arl.launch(intent);
+
+        if (user == null) {
+            dialogType = "checkout";
+            alertCheckOut.create().show();
+        }else{
+            Intent intent = new Intent(this, Payment.class);
+            intent.putExtra("user", user);
+            intent.putExtra("total", total);
+            intent.putExtra("shoppingCartList",shoppingCartList);
+            arl.launch(intent);
+        }
+
     }
 
 

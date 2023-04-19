@@ -55,6 +55,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
     ArrayList<ShoppingCartRecord> selectedProductRecords = new ArrayList<>();
 
+    User user=null;
     public BroadcastReceiver mMessageReceiver;
 
 
@@ -85,8 +86,9 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
         //listView
         lvProducts = findViewById(R.id.lvProducts);
-        getFullProductList();
+        fullProductList = new ArrayList<Product>();
         productAdapter = new ProductAdapter(ProductActivity.this, fullProductList);
+        getFullProductList();
         lvProducts.setAdapter(productAdapter);
 
         //button
@@ -172,13 +174,14 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
     private void getFullProductList() {
 
-        fullProductList = new ArrayList<Product>();
+
         productsDB = FirebaseDatabase.getInstance().getReference(Product.class.getSimpleName()+"s");
         productsDB.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Product product = snapshot.getValue(Product.class);
                 fullProductList.add(product);
+                productAdapter.notifyDataSetChanged();
             }
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -259,7 +262,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void goToShoppingCart() {
-        User user = (User) getIntent().getExtras().getSerializable("user");
+        user = (User) getIntent().getExtras().getSerializable("user");
         Intent intent = new Intent(this, ShoppingCartActivity.class);
         intent.putExtra("user", user);
         intent.putExtra("selectedProducts", selectedProductRecords);
