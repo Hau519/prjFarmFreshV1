@@ -59,7 +59,7 @@ public class ClientListAdapter extends BaseAdapter{
         user = clientList.get(position);
         tvName.setText(user.getName());
         tvEmail.setText(user.getEmail());
-
+//afdaf
 //        btnOrders.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
