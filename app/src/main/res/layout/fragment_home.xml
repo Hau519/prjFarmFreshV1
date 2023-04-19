@@ -48,26 +48,28 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Welcome to FarmFresh"
-                android:textSize="50sp"
+                android:textSize="55sp"
                 android:textStyle="bold|italic"
                 android:fontFamily="@font/poppins_black"
-                android:textColor="#FF5722"
+                android:textColor="#3B973B"
                 />
 
             <Button
-                android:id="@+id/btnShopHome"
+                android:id="@+id/button"
                 android:layout_width="500dp"
-                android:layout_centerHorizontal="true"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_below="@+id/textView"
+                android:layout_centerHorizontal="true"
                 android:layout_marginStart="155dp"
-                android:layout_marginTop="100dp"
-                android:text="Shop now"
-                android:textSize="30sp"
-                android:textStyle="italic"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="56dp"
                 android:background="@drawable/button_pressed"
-
-                android:layout_marginLeft="100dp"/>
+                android:backgroundTint="#068151"
+                android:text="Shop now"
+                android:textAllCaps="false"
+                android:textColor="#EDF1EC"
+                android:textSize="30sp"
+                android:textStyle="" />
 
         </RelativeLayout>
 
