@@ -14,12 +14,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.prjfarmfreshv1.AdminProfileActivity;
 import com.example.prjfarmfreshv1.ClientActivity;
 import com.example.prjfarmfreshv1.MainActivity;
 import com.example.prjfarmfreshv1.R;
+import com.example.prjfarmfreshv1.ResetPassword;
 import com.example.prjfarmfreshv1.models.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,6 +37,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Va
     DatabaseReference databaseReference;
     ActivityResultLauncher activityResultLauncher;
 
+    TextView tvForgetPassword;
+
     User user = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +53,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Va
         edPassword=findViewById(R.id.edPassword);
         btnLogIn=findViewById(R.id.btnLogIn);
         btnRegister=findViewById(R.id.btnRegister);
+        tvForgetPassword = findViewById(R.id.tvForgetPassword);
+        tvForgetPassword.setOnClickListener(this);
         btnLogIn.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
         ivLogo.setOnClickListener(this);
         databaseReference= FirebaseDatabase.getInstance().getReference("Users");
+
         activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),result -> {
             if (result.getResultCode() == RESULT_OK&&result.getData()!=null) {
                fillUserInfo(result);
@@ -81,6 +88,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Va
                 Intent i=new Intent(this, MainActivity.class);
                 i.putExtra("user", user);
                 startActivity(i);
+            case R.id.tvForgetPassword:
+                Intent i1=new Intent(this, ResetPassword.class);
+                startActivity(i1);
         }
     }
 
@@ -126,7 +136,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Va
                 String emailKey = email.replace(".", "DOT");
                 i.putExtra("user", user);
                 databaseReference.child(emailKey).removeEventListener(this);
-
                 startActivity(i);
             }else{
                 Toast.makeText(this,"Incorrect email or password",Toast.LENGTH_SHORT).show();

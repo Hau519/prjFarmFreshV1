@@ -64,7 +64,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
         int id = view.getId();
         switch (id){
             case R.id.btnShopNow:
-                Intent i = new Intent(this, ProductActivity.class); //TODO : change to product activity when Luke's done
+                Intent i = new Intent(this, ProductActivity.class);
                 i.putExtra("user", user);
                 startActivity(i);
                 break;
