@@ -121,6 +121,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Va
             Intent i=new Intent(this, AdminProfileActivity.class);
             i.putExtra("user", "admin");
             startActivity(i);
+            return;
         }
 
         if(snapshot.exists()){

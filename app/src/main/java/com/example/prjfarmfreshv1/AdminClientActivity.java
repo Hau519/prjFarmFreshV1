@@ -2,15 +2,21 @@ package com.example.prjfarmfreshv1;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.prjfarmfreshv1.models.ClientListAdapter;
 import com.example.prjfarmfreshv1.models.User;
+import com.example.prjfarmfreshv1.ui.home.Login;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class AdminClientActivity extends AppCompatActivity implements View.OnClickListener {
+public class AdminClientActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener, DialogInterface.OnClickListener {
 
     Button orderList, btnReturn;
     ListView lvClient;
@@ -27,7 +33,8 @@ public class AdminClientActivity extends AppCompatActivity implements View.OnCli
     User user;
     ArrayList<User> clientList;
     ClientListAdapter clientListAdapter;
-
+    AlertDialog.Builder alertD;
+    int position=-1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +47,8 @@ public class AdminClientActivity extends AppCompatActivity implements View.OnCli
         btnReturn = findViewById(R.id.btnReturn);
         lvClient = findViewById(R.id.lvClients);
 
+        lvClient.setOnItemClickListener(this);
+        setDeleteAlert();
         usersDatabase= FirebaseDatabase.getInstance().getReference("Users");
         clientList = new ArrayList<>();
         clientListAdapter = new ClientListAdapter(this, clientList);
@@ -78,5 +87,32 @@ public class AdminClientActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
+        position = i;
+        alertD.create().show();
+    }
+
+    private void setDeleteAlert() {
+        alertD = new AlertDialog.Builder(this);
+        alertD.setTitle("Remove Product");
+        alertD.setMessage("Do you want to remove (Yes/NO)?");
+        alertD.setPositiveButton("Yes", this);
+        alertD.setNegativeButton("No",this);
+    }
+
+    @Override
+    public void onClick(DialogInterface dialog, int which) {
+        switch (which) {
+            case Dialog.BUTTON_POSITIVE:
+                clientList.remove(position);
+                clientListAdapter.notifyDataSetChanged();
+                usersDatabase.child(clientList.get(position).getEmail()).removeValue();
+                break;
+            case Dialog.BUTTON_NEGATIVE:
+                break;
+        }
     }
 }
