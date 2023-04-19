@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 
 public class AdminProfileActivity extends AppCompatActivity implements View.OnClickListener {
-    Button clientList, orderList, productList;
+    Button clientList, orderList;
     String user;
 
     @Override
@@ -19,10 +19,10 @@ public class AdminProfileActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_admin_profile);
         clientList = findViewById(R.id.btnClientList);
         orderList = findViewById(R.id.btnOrderList);
-        productList = findViewById(R.id.btnProductList);
+
         clientList.setOnClickListener(this);
         orderList.setOnClickListener(this);
-        productList.setOnClickListener(this);
+
         user = getIntent().getExtras().getString("user");
     }
 

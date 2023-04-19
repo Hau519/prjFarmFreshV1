@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.example.prjfarmfreshv1.AdminClientActivity;
+import com.example.prjfarmfreshv1.ClientActivity;
 import com.example.prjfarmfreshv1.OrderActivity;
 import com.example.prjfarmfreshv1.R;
 
@@ -47,7 +49,8 @@ public class ClientListAdapter extends BaseAdapter{
         View oneItem = null;
 
         TextView tvName, tvEmail;
-        Button btnOrders;
+        Button btnDetails;
+
         //1-inflate layout
         LayoutInflater inflater = LayoutInflater.from(context);
         oneItem = inflater.inflate(R.layout.admin_one_client, parent, false);
@@ -55,23 +58,19 @@ public class ClientListAdapter extends BaseAdapter{
         // 2-- Access and populate each widget of this view : OneItem
         tvName = oneItem.findViewById(R.id.tvName);
         tvEmail = oneItem.findViewById(R.id.tvEmail);
-        btnOrders = oneItem.findViewById(R.id.btnOrderList);
+        btnDetails = oneItem.findViewById(R.id.btnDetails);
         user = clientList.get(position);
         tvName.setText(user.getName());
         tvEmail.setText(user.getEmail());
-//afdaf
-//        btnOrders.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent2 = new Intent(, AdminOrderActivity.class);
-//                intent2.putExtra("order", orderInfo);
-//                intent2.putExtra("user", user);
-//                startActivity(intent2);
-
-//            }
-//        });
-
-
+        btnDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, ClientActivity.class);
+                i.putExtra("user",user);
+                i.putExtra("admin", "admin");
+                context.startActivity(i);
+            }
+        });
 
         return oneItem;
     }

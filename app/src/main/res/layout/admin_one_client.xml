@@ -8,7 +8,10 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5" />
 
 
         <TextView
@@ -17,7 +20,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
             android:gravity="center"
-            android:text="hau@gmail.com" />
+            android:text="hau@gmail.com"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"/>
 
         <Space
             android:layout_width="0dp"
@@ -30,7 +36,10 @@
             android:gravity="left"
             android:layout_height="wrap_content"
             android:layout_weight="0.7"
-            android:text="Hau" />
+            android:text="Hau"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"/>
         <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -38,17 +47,16 @@
 
 
         <Button
-            android:id="@+id/btnOrders"
+            android:id="@+id/btnDetails"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Orders"
+            android:text="Details"
             android:textAllCaps="false"
             android:textStyle="bold"
             android:gravity="center"
             android:textSize="18sp"
-            android:backgroundTint="@color/profile"
-
+            android:background="@color/profile"
             />
 
 

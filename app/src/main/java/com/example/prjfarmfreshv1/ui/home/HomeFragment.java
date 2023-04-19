@@ -18,7 +18,7 @@ import com.example.prjfarmfreshv1.SendUsMessageActivity;
 import com.example.prjfarmfreshv1.databinding.FragmentHomeBinding;
 import com.example.prjfarmfreshv1.models.User;
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
+public class HomeFragment extends Fragment  {
 
     Button btnShop;
     User user=null;
@@ -33,9 +33,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         View root = binding.getRoot();
         final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        //the link hau sent
-//        btnShop = binding.btnShopHome;
-//        btnShop.setOnClickListener(this);
+
         return root;
     }
 
@@ -45,9 +43,4 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         binding = null;
     }
 
-    @Override
-    public void onClick(View v) {
-        Intent i = new Intent(getActivity(), ProductActivity.class);
-        startActivity(i);
-    }
 }
