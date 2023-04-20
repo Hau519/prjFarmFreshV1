@@ -57,6 +57,9 @@
             android:gravity="center"
             android:textSize="18sp"
             android:background="@color/profile"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"
             />
 
 

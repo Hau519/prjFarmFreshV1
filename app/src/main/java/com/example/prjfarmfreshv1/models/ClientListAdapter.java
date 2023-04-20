@@ -66,6 +66,7 @@ public class ClientListAdapter extends BaseAdapter{
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context, ClientActivity.class);
+                user = clientList.get(position);
                 i.putExtra("user",user);
                 i.putExtra("admin", "admin");
                 context.startActivity(i);

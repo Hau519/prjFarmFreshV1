@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.prjfarmfreshv1.models.ClientListAdapter;
 import com.example.prjfarmfreshv1.models.User;
@@ -49,6 +50,7 @@ public class AdminClientActivity extends AppCompatActivity implements AdapterVie
 
         lvClient.setOnItemClickListener(this);
         setDeleteAlert();
+
         usersDatabase= FirebaseDatabase.getInstance().getReference("Users");
         clientList = new ArrayList<>();
         clientListAdapter = new ClientListAdapter(this, clientList);
@@ -107,9 +109,11 @@ public class AdminClientActivity extends AppCompatActivity implements AdapterVie
     public void onClick(DialogInterface dialog, int which) {
         switch (which) {
             case Dialog.BUTTON_POSITIVE:
-                clientList.remove(position);
                 clientListAdapter.notifyDataSetChanged();
-                usersDatabase.child(clientList.get(position).getEmail()).removeValue();
+                String email = clientList.get(position).getEmail();
+                String emailKey = email.replace(".", "DOT");
+                usersDatabase.child(emailKey).removeValue();
+                clientList.remove(position);
                 break;
             case Dialog.BUTTON_NEGATIVE:
                 break;

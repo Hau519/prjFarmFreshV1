@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminOrderDetailsActivity">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order details"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="110dp"
+        android:textSize="35sp"
+        android:textColor="#3F51B5"
+        android:textStyle="bold|italic"/>
+
+    <TextView
+        android:id="@+id/tvLblDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="29dp"
+        android:text="Date order: "
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        android:textColor="@color/profile"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTitle"
+        android:layout_marginStart="20dp"
+        android:text="....."
+        android:textColor="@color/profile"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvLblDate"
+        app:layout_constraintStart_toEndOf="@id/tvLblDate"
+        />
+
+    <TextView
+        android:id="@+id/tvLblTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="29dp"
+        android:text="Total: "
+        app:layout_constraintTop_toBottomOf="@id/tvLblDate"
+        android:textColor="@color/profile"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="138dp"
+        android:text="....."
+        app:layout_constraintStart_toEndOf="@id/tvLblTotal"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvLblTotal"
+        android:textColor="@color/profile"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvLblClientId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="29dp"
+        android:text="Client ID: "
+        app:layout_constraintTop_toBottomOf="@id/tvLblTotal"
+        android:textColor="@color/profile"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvClientId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="138dp"
+        android:text="....."
+        app:layout_constraintStart_toEndOf="@id/tvLblClientId"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvLblClientId"
+        android:textColor="@color/profile"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+
+
+    <LinearLayout
+        android:id="@+id/llCartHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_goneMarginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvClientId"
+        >
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/style_shoppingCartListHeader"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:text="IMAGE" />
+
+        <TextView
+            android:id="@+id/textView5"
+            style="@style/style_shoppingCartListHeader"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:text="PRODUCT" />
+
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/style_shoppingCartListHeader"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:text="PRICE" />
+
+        <TextView
+            android:id="@+id/textView7"
+            style="@style/style_shoppingCartListHeader"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_weight="1.5"
+            android:text="QUANTITY" />
+
+        <TextView
+            android:id="@+id/textView8"
+            style="@style/style_shoppingCartListHeader"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:text="SUBTOTAL" />
+
+        <TextView
+            android:id="@+id/textView10"
+            style="@style/style_shoppingCartListHeader"
+            android:textSize="13sp"
+            android:text="EDIT" />
+
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lvProducts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnOrder"
+        android:layout_below="@+id/tvLblDate"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llCartHeader" />
+    <!--
+
+        <EditText
+            android:id="@+id/edcardNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="50dp"
+            android:ems="10"
+            android:hint="CARD NUMBER"
+            android:textColor="#FF5722"
+            android:minHeight="48dp"
+            android:text=""
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            tools:ignore="DuplicateClickableBoundsCheck" />
+
+
+        <EditText
+            android:id="@+id/edName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:ems="10"
+            android:hint="NAME ON CARD"
+            android:minHeight="48dp"
+            android:text=""
+            app:layout_constraintStart_toStartOf="@id/edcardNumber"
+            app:layout_constraintTop_toBottomOf="@id/edcardNumber" />
+
+        <EditText
+            android:id="@+id/edExpDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="6"
+            android:text=""
+            android:hint="EXP DATE"
+            app:layout_constraintTop_toBottomOf="@id/edName"
+            app:layout_constraintStart_toStartOf="@id/edcardNumber"
+            android:layout_marginTop="50dp"
+            />
+
+        <EditText
+            android:id="@+id/edCVV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:ems="6"
+            android:hint="CVV"
+            android:minHeight="48dp"
+            android:text=""
+            app:layout_constraintStart_toStartOf="@id/edcardNumber"
+            app:layout_constraintTop_toBottomOf="@id/edExpDate" />
+    -->
+
+    <Button
+        android:id="@+id/btnWorkingStation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="120dp"
+        android:backgroundTint="#80D160"
+        android:text="Working Station"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textColor="#2C2725"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/btnReturn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="172dp"
+        android:layout_marginBottom="44dp"
+        android:backgroundTint="#80D160"
+        android:text="Return"
+        android:textColor="#2C2725"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnWorkingStation"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,8 +2,11 @@ package com.example.prjfarmfreshv1;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +23,7 @@ import com.example.prjfarmfreshv1.models.Order;
 import com.example.prjfarmfreshv1.models.OrderInfor;
 import com.example.prjfarmfreshv1.models.OrderListAdapter;
 import com.example.prjfarmfreshv1.models.User;
+import com.example.prjfarmfreshv1.ui.home.Login;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -30,7 +34,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class OrderListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
+public class OrderListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener, AdapterView.OnItemLongClickListener, DialogInterface.OnClickListener {
 
     ListView lvOrders;
     ImageView ivAccount;
@@ -40,6 +44,11 @@ public class OrderListActivity extends AppCompatActivity implements AdapterView.
     ArrayList<OrderInfor> orderInforList;
     OrderListAdapter orderListAdapter;
     DatabaseReference orderListDatabase;
+
+    AlertDialog.Builder alertD;
+    int position=-1;
+
+    String admin="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,16 +60,26 @@ public class OrderListActivity extends AppCompatActivity implements AdapterView.
         try{
             lvOrders = findViewById(R.id.lvOrders);
             lvOrders.setOnItemClickListener(this);
+            lvOrders.setOnItemLongClickListener(this);
             ivAccount = findViewById(R.id.ivAccount);
+
             orderListDatabase = FirebaseDatabase.getInstance().getReference("OrderList");
             orderInforList = new ArrayList<OrderInfor>();
+
             user = (User)getIntent().getExtras().getSerializable("user");
+
             ivAccount.setOnClickListener(this);
             btnShop = findViewById(R.id.btnShop);
             btnShop.setOnClickListener(this);
             orderInfor = new OrderInfor();
             orderListAdapter = new OrderListAdapter(this, orderInforList);
             lvOrders.setAdapter(orderListAdapter);
+            Intent intent = getIntent();
+            if (intent.hasExtra("admin")){
+                admin = getIntent().getExtras().getString("admin");
+                btnShop.setText("Return");
+                setDeleteAlert();
+            }
 
             orderListDatabase.addChildEventListener(new ChildEventListener() {
                 @Override
@@ -99,15 +118,33 @@ public class OrderListActivity extends AppCompatActivity implements AdapterView.
 
     }
 
+    private void setDeleteAlert() {
+        alertD = new AlertDialog.Builder(this);
+        alertD.setTitle("Remove Product");
+        alertD.setMessage("Do you want to remove (Yes/NO)?");
+        alertD.setPositiveButton("Yes", this);
+        alertD.setNegativeButton("No",this);
+    }
+
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         try{
-            OrderInfor orderInfo = orderInforList.get(i);
-            Intent intent2 = new Intent(this, OrderActivity.class);
-            intent2.putExtra("order", orderInfo);
-            intent2.putExtra("user", user);
-            startActivity(intent2);
+            if (admin.isEmpty()){
+                OrderInfor orderInfo = orderInforList.get(i);
+                Intent intent2 = new Intent(this, OrderActivity.class);
+                intent2.putExtra("order", orderInfo);
+                intent2.putExtra("user", user);
+                startActivity(intent2);
+            }else if(admin.equalsIgnoreCase("admin")){
+                OrderInfor orderInfo = orderInforList.get(i);
+                Intent intent2 = new Intent(this, AdminOrderDetailsActivity.class);
+                intent2.putExtra("order", orderInfo);
+                intent2.putExtra("user", user);
+                intent2.putExtra("admin", "admin");
+                startActivity(intent2);
+            }
+
         }catch(Exception ex){
             Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
@@ -120,15 +157,44 @@ public class OrderListActivity extends AppCompatActivity implements AdapterView.
         switch (id){
             case R.id.btnShop:
                 try{
-                    Intent i = new Intent(this, ProductActivity.class);
-                    i.putExtra("user", user);
-                    startActivity(i);
+                    if(btnShop.getText().toString().equalsIgnoreCase("SHOP NOW")){
+                        Intent i = new Intent(this, ProductActivity.class);
+                        i.putExtra("user", user);
+                        startActivity(i);
+                    }else if(btnShop.getText().toString().equalsIgnoreCase("Return")){
+                        finish();
+                    }
+
                 }catch (Exception ex){
                     Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.ivAccount:
                 finish();
+                break;
+        }
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int i, long id) {
+        if(!admin.isEmpty()){
+            position = i;
+            alertD.create().show();
+            return true;
+        }
+        return false;
+
+    }
+
+    @Override
+    public void onClick(DialogInterface dialog, int which) {
+        switch (which) {
+            case Dialog.BUTTON_POSITIVE:
+                orderListDatabase.child(orderInforList.get(position).getOrderId()).removeValue();
+                orderInforList.remove(position);
+                orderListAdapter.notifyDataSetChanged();
+                break;
+            case Dialog.BUTTON_NEGATIVE:
                 break;
         }
     }
