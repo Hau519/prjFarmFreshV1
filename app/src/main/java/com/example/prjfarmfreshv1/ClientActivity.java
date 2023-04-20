@@ -66,7 +66,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
             user = (User) getIntent().getExtras().getSerializable("user");
         }
         if (!admin.isEmpty()){
-            tvTitle.setText("Welcome admin!");
+            tvTitle.setText("Welcome admin!" + admin);
             iconLogout.setVisibility(View.INVISIBLE);
             btnShop.setText("Working station");
         }
@@ -115,10 +115,18 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(intent);
                 break;
             case R.id.icOrderList:
-                Intent intent1 = new Intent(this, OrderListActivity.class);
-                intent1.putExtra("user", user);
-                intent1.putExtra("admin", admin);
-                startActivity(intent1);
+                 if (admin.equalsIgnoreCase("")){
+                    Intent intent1 = new Intent(this, OrderListActivity.class);
+                    intent1.putExtra("user", user);
+                    //intent1.putExtra("admin", admin);
+                    startActivity(intent1);
+                }else{
+                    Intent intent1 = new Intent(this, AdminOrderActivity.class);
+                    intent1.putExtra("user", user);
+                    intent1.putExtra("admin", admin);
+                    startActivity(intent1);
+                }
+
                 break;
             case R.id.ivLogo:
                 Intent intent2 =new Intent(this, MainActivity.class);

@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class AdminProfileActivity extends AppCompatActivity implements View.OnClickListener {
     Button clientList, orderList;
-    String user;
+    String admin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class AdminProfileActivity extends AppCompatActivity implements View.OnCl
         clientList.setOnClickListener(this);
         orderList.setOnClickListener(this);
 
-        user = getIntent().getExtras().getString("user");
+        admin = getIntent().getExtras().getString("admin");
     }
 
     @Override
@@ -33,7 +33,7 @@ public class AdminProfileActivity extends AppCompatActivity implements View.OnCl
             case R.id.btnClientList:
                 try{
                     Intent i = new Intent(this, AdminClientActivity.class);
-                    i.putExtra("user", user);
+                    i.putExtra("user", admin);
                     startActivity(i);
                 }catch (Exception ex){
                     Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
@@ -42,7 +42,7 @@ public class AdminProfileActivity extends AppCompatActivity implements View.OnCl
             case R.id.btnOrderList:
                 try{
                     Intent i = new Intent(this, AdminOrderActivity.class);
-                    i.putExtra("user", user);
+                    i.putExtra("admin", admin);
                     startActivity(i);
                 }catch (Exception ex){
                     Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
