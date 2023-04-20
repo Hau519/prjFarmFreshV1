@@ -165,7 +165,7 @@
 
 
     <TextView
-        android:id="@+id/tvDate"
+        android:id="@+id/tvDateAdminOrderDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvTitle"
@@ -194,7 +194,7 @@
 
 
     <TextView
-        android:id="@+id/tvTotal"
+        android:id="@+id/tvTotalAdminDetailOrder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="38dp"

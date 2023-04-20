@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -58,8 +56,8 @@ public class Payment extends AppCompatActivity implements View.OnClickListener {
         orderListDatabase = FirebaseDatabase.getInstance().getReference("OrderList");
         orderProductDatabase = FirebaseDatabase.getInstance().getReference("OrderProduct");
 
-        tvDate = findViewById(R.id.tvDate);
-        tvTotal = findViewById(R.id.tvTotal);
+        tvDate = findViewById(R.id.tvDateAdminOrderDetails);
+        tvTotal = findViewById(R.id.tvTotalAdminDetailOrder);
         lvProducts = findViewById(R.id.lvProducts);
         btnPlaceOrder = findViewById(R.id.btnOrder);
         btnReturn = findViewById(R.id.btnReturn);

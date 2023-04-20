@@ -45,7 +45,7 @@
 
 
         <TextView
-            android:id="@+id/tvTotal"
+            android:id="@+id/tvTotalAdminDetailOrder"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="right"

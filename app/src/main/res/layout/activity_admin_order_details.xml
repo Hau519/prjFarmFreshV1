@@ -35,7 +35,7 @@
 
 
     <TextView
-        android:id="@+id/tvDate"
+        android:id="@+id/tvDateAdminOrderDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvTitle"
@@ -64,7 +64,7 @@
 
 
     <TextView
-        android:id="@+id/tvTotal"
+        android:id="@+id/tvTotalAdminDetailOrder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="38dp"
@@ -80,7 +80,6 @@
         android:id="@+id/tvLblClientId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginLeft="40dp"
         android:layout_marginTop="29dp"
         android:text="Client ID: "
@@ -92,7 +91,7 @@
 
 
     <TextView
-        android:id="@+id/tvClientId"
+        android:id="@+id/tvClientIdAdminOrderDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="38dp"
@@ -114,7 +113,7 @@
         android:orientation="horizontal"
         app:layout_goneMarginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvClientId"
+        app:layout_constraintTop_toBottomOf="@id/tvClientIdAdminOrderDetail"
         >
 
         <TextView
@@ -163,10 +162,10 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/lvProducts"
+        android:id="@+id/lvProductAdinOrderDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btnOrder"
+        android:layout_above="@+id/btnWorkingStation"
         android:layout_below="@+id/tvLblDate"
         android:layout_marginTop="10dp"
         app:layout_constraintLeft_toLeftOf="parent"

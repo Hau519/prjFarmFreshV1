@@ -23,9 +23,9 @@ import java.util.Locale;
 
 public class AdminOrderDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView tvDate, tvTotal;
+    TextView tvDate, tvTotal, tvClientId;
     ListView lvProducts;
-    Button btnPlaceOrder, btnReturn;
+    Button btnWorkStation, btnReturn;
     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.CANADA);
     User user;
     ShoppingCartRecordAdapter scAdapter;
@@ -44,34 +44,35 @@ public class AdminOrderDetailsActivity extends AppCompatActivity implements View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_order_details);
-       // initialize();
+        initialize();
     }
 
     private void initialize() {
         orderListDatabase = FirebaseDatabase.getInstance().getReference("OrderList");
         orderProductDatabase = FirebaseDatabase.getInstance().getReference("OrderProduct");
 
-        tvDate = findViewById(R.id.tvDate);
-        tvTotal = findViewById(R.id.tvTotal);
-        lvProducts = findViewById(R.id.lvProducts);
-        btnPlaceOrder = findViewById(R.id.btnOrder);
-        btnReturn = findViewById(R.id.btnReturn);
+        tvDate = findViewById(R.id.tvDateAdminOrderDetails);
+        tvTotal = findViewById(R.id.tvTotalAdminDetailOrder);
+        lvProducts = findViewById(R.id.lvProductAdinOrderDetails);
+        tvClientId = findViewById(R.id.tvClientIdAdminOrderDetail);
 
-        btnPlaceOrder.setOnClickListener(this);
+        btnWorkStation = findViewById(R.id.btnWorkingStation);
+        btnReturn = findViewById(R.id.btnReturn);
+        btnWorkStation.setOnClickListener(this);
         btnReturn.setOnClickListener(this);
 
         user = (User)getIntent().getExtras().getSerializable("user");
         orderInfor = (OrderInfor )getIntent().getExtras().getSerializable("order");
+
         total = orderInfor.getTotal();
         tvTotal.setText(String.format("%.2f",total));
         Date date = new Date();
         dateOrder = orderInfor.getDate();
         tvDate.setText(dateOrder);
 
-
-        shoppingCartList = (ArrayList<ShoppingCartRecord>) getIntent().getExtras().getSerializable("shoppingCartList");
-        scAdapter = new ShoppingCartRecordAdapter(this, shoppingCartList,1);
-        lvProducts.setAdapter(scAdapter);
+      /*  shoppingCartList = (ArrayList<ShoppingCartRecord>) getIntent().getExtras().getSerializable("shoppingCartList");
+        scAdapter = new ShoppingCartRecordAdapter(this, shoppingCartList);
+        lvProducts.setAdapter(scAdapter);*/
     }
 
     @Override

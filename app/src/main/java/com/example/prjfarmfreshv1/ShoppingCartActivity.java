@@ -97,7 +97,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         tvSubtotal=  findViewById(R.id.tvCartSubtotal);
         tvQST=  findViewById(R.id.tvQST);
         tvGST=  findViewById(R.id.tvGST);
-        tvTotal= findViewById(R.id.tvTotal);
+        tvTotal= findViewById(R.id.tvTotalAdminDetailOrder);
 
         double subtotal = getSubtotal(shoppingCartList);
         tvSubtotal.setText(String.format("%.2f",subtotal));

@@ -41,8 +41,8 @@ public class AdminProfileActivity extends AppCompatActivity implements View.OnCl
                 break;
             case R.id.btnOrderList:
                 try{
-                    Intent i = new Intent(this, AdminOrderActivity.class);
-                    i.putExtra("admin", admin);
+                    Intent i = new Intent(this, OrderListActivity.class);
+                    i.putExtra("admin", "adminAllUsers");
                     startActivity(i);
                 }catch (Exception ex){
                     Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();

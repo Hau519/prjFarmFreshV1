@@ -79,16 +79,24 @@ public class OrderListActivity extends AppCompatActivity implements AdapterView.
                 admin = getIntent().getExtras().getString("admin");
                 btnShop.setText("Return");
                 setDeleteAlert();
+                ivAccount.setVisibility(View.INVISIBLE);
             }
 
             orderListDatabase.addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                     OrderInfor value = (OrderInfor) snapshot.getValue(OrderInfor.class);
-                    String email = value.getClientId();
-                    if (email.equals(user.getEmail())){
+                    if (admin.equalsIgnoreCase("adminAllUsers")){
                         orderInforList.add(value);
                         orderListAdapter.notifyDataSetChanged();
+
+                    }else{
+                        String email = value.getClientId();
+
+                        if (email.equals(user.getEmail())){
+                            orderInforList.add(value);
+                            orderListAdapter.notifyDataSetChanged();
+                        }
                     }
 
                 }
@@ -136,7 +144,7 @@ public class OrderListActivity extends AppCompatActivity implements AdapterView.
                 intent2.putExtra("order", orderInfo);
                 intent2.putExtra("user", user);
                 startActivity(intent2);
-            }else if(admin.equalsIgnoreCase("admin")){
+            }else if(admin.equalsIgnoreCase("admin") || admin.equalsIgnoreCase("adminAllUsers")){
                 OrderInfor orderInfo = orderInforList.get(i);
                 Intent intent2 = new Intent(this, AdminOrderDetailsActivity.class);
                 intent2.putExtra("order", orderInfo);

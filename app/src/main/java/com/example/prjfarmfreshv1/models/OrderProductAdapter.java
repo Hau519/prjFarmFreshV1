@@ -50,7 +50,7 @@ public class OrderProductAdapter extends BaseAdapter {
         tvName = oneItem.findViewById(R.id.tvName);
         tvUnitPrice = oneItem.findViewById(R.id.tvUnitPrice);
         tvQuanity = oneItem.findViewById(R.id.tvQuantity);
-        tvTotal = oneItem.findViewById(R.id.tvTotal);
+        tvTotal = oneItem.findViewById(R.id.tvTotalAdminDetailOrder);
         orderProduct=orderProductList.get(position);
         tvName.setText(orderProduct.getProductName());
         tvUnitPrice.setText(String.format("%.2f", orderProduct.getUnitPrice()));

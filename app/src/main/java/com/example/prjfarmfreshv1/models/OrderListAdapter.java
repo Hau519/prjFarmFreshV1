@@ -48,8 +48,8 @@ public class OrderListAdapter extends BaseAdapter {
 
         // 2-- Access and populate each widget of this view : OneItem
         tvOrderNumber = oneItem.findViewById(R.id.tvOrderNumber);
-        tvDate = oneItem.findViewById(R.id.tvDate);
-        tvTotal = oneItem.findViewById(R.id.tvTotal);
+        tvDate = oneItem.findViewById(R.id.tvDateAdminOrderDetails);
+        tvTotal = oneItem.findViewById(R.id.tvTotalAdminDetailOrder);
 
         orderInfor = orderInforList.get(position);
         if (orderInfor.getOrderId().length()>5){

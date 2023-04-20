@@ -31,7 +31,7 @@
             android:layout_weight="0.5" />
 
         <TextView
-            android:id="@+id/tvDate"
+            android:id="@+id/tvDateAdminOrderDetails"
             android:layout_width="0dp"
             android:gravity="right"
             android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
 
 
         <TextView
-            android:id="@+id/tvTotal"
+            android:id="@+id/tvTotalAdminDetailOrder"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="right"

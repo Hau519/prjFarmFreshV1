@@ -49,8 +49,8 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
     private void initialize() {
         try{
             tvId = findViewById(R.id.tvId);
-            tvDate = findViewById(R.id.tvDate);
-            tvTotal = findViewById(R.id.tvTotal);
+            tvDate = findViewById(R.id.tvDateAdminOrderDetails);
+            tvTotal = findViewById(R.id.tvTotalAdminDetailOrder);
             btnReturn = findViewById(R.id.btnReturn);
             lvProducts = findViewById(R.id.lvProducts);
             btnReturn.setOnClickListener(this);
