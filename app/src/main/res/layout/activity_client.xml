@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg104"
+    android:background="@drawable/bg125"
     tools:context=".ClientActivity">
 
 
@@ -36,10 +36,10 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
+        android:layout_marginRight="25dp"
         app:layout_constraintEnd_toStartOf="@+id/icLogOut"
-        app:layout_constraintHorizontal_bias="0.815"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/ivLogo"
-        android:layout_marginRight="30dp"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/order_history" />
 

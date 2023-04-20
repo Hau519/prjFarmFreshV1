@@ -37,7 +37,7 @@ import java.util.ArrayList;
 public class AdminOrderActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener, AdapterView.OnItemLongClickListener, DialogInterface.OnClickListener {
 
     ListView lvOrders;
-    ImageView ivAccount;
+
     Button btnShop;
     User user;
     OrderInfor orderInfor;
@@ -53,7 +53,7 @@ public class AdminOrderActivity extends AppCompatActivity implements AdapterView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_list);
-        initialize();
+        //initialize();
     }
 
     private void initialize() {
@@ -71,14 +71,27 @@ public class AdminOrderActivity extends AppCompatActivity implements AdapterView
         orderListAdapter = new OrderListAdapter(this, orderInforList);
         lvOrders.setAdapter(orderListAdapter);
         setDeleteAlert();
+        Intent intent = getIntent();
+        if (intent.hasExtra("user")){
+            user = (User)getIntent().getExtras().getSerializable("user");
+        }
 
 
         orderListDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 OrderInfor value = (OrderInfor) snapshot.getValue(OrderInfor.class);
-                orderInforList.add(value);
-                orderListAdapter.notifyDataSetChanged();
+                if (intent.hasExtra("user")){
+                    String email = value.getClientId();
+                    if (email.equals(user.getEmail())){
+                        orderInforList.add(value);
+                        orderListAdapter.notifyDataSetChanged();
+                    }
+                }else{
+                    orderInforList.add(value);
+                    orderListAdapter.notifyDataSetChanged();
+                }
+
 
             }
             @Override

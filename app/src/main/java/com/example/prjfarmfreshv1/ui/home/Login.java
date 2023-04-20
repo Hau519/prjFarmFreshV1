@@ -119,7 +119,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Va
         if(email.equalsIgnoreCase("admin@farmfresh.com") && password.equalsIgnoreCase("123")){
             Toast.makeText(this,"Welcome back Admin!",Toast.LENGTH_SHORT).show();
             Intent i=new Intent(this, AdminProfileActivity.class);
-            i.putExtra("user", "admin");
+            i.putExtra("admin", "admin");
             startActivity(i);
             return;
         }

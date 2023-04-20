@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.prjfarmfreshv1.models.MailSender;
@@ -24,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 public class ResetPassword extends AppCompatActivity implements View.OnClickListener, ValueEventListener {
     EditText edEmail, edCode;
     Button btnClick, btnLogin;
-
+    TextView tvError;
     User user=null;
 
     int code, inputCode;
@@ -42,16 +43,13 @@ public class ResetPassword extends AppCompatActivity implements View.OnClickList
     private void initialize() {
         edEmail = findViewById(R.id.edEmail);
         edCode = findViewById(R.id.edCodeAndPassword);
+        tvError = findViewById(R.id.tvError);
         btnClick = findViewById(R.id.btnClick);
         btnLogin = findViewById(R.id.btnLogin);
 //        user = (User) getIntent().getExtras().getSerializable("user");
         usersTable= FirebaseDatabase.getInstance().getReference("Users");
         btnClick.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
-
-
-
-
     }
 
     @Override
@@ -65,19 +63,21 @@ public class ResetPassword extends AppCompatActivity implements View.OnClickList
                         email = edEmail.getText().toString();
                         emailKey = email.replace(".", "DOT");
                         if (email.isEmpty()){
-                            Toast.makeText(ResetPassword.this, "Please fill in your email", Toast.LENGTH_SHORT).show();
+                            tvError.setText("Please fill in your email");
                         }else{
+                            tvError.setText("");
                             usersTable.child(emailKey).addValueEventListener(this);
                         }
                     }else if(btnClick.getText().toString().equalsIgnoreCase("Confirm code")){
                         inputCode = Integer.valueOf(edCode.getText().toString());
                         usersTable.child(emailKey).removeEventListener(this);
-
+                        tvError.setText("");
                         if (inputCode != code){
-                            Toast.makeText(ResetPassword.this, "Wrong code, please check", Toast.LENGTH_SHORT).show();
+                            tvError.setText("Wrong code, please try again");
                         }else{
                             edEmail.setText(email);
                             edCode.setText("");
+                            tvError.setText("");
                             edCode.setHint("Enter your new password");
                             btnClick.setText("Reset");
                         }
@@ -85,6 +85,7 @@ public class ResetPassword extends AppCompatActivity implements View.OnClickList
                         newPassword = edCode.getText().toString();
                         user.setPassword(newPassword);
                         usersTable.child(emailKey).setValue(user);
+                        tvError.setText("");
                         Snackbar.make(v, "Your password is reset successfully",
                                 Snackbar.LENGTH_LONG).show();
                         Intent i = new Intent(this, Login.class);
@@ -101,7 +102,6 @@ public class ResetPassword extends AppCompatActivity implements View.OnClickList
             case R.id.btnLogin:
                 finish();
                 break;
-
         }
     }
 
@@ -133,7 +133,7 @@ public class ResetPassword extends AppCompatActivity implements View.OnClickList
             edCode.setVisibility(View.VISIBLE);
             btnClick.setText("Confirm Code");
             }else{
-                Toast.makeText(this,"Email is not registered yet",Toast.LENGTH_SHORT).show();
+                tvError.setText("Email is not registered yet");
             }
 
     }
