@@ -138,17 +138,21 @@ public class OrderListActivity extends AppCompatActivity implements AdapterView.
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         try{
+            OrderInfor orderInfo = orderInforList.get(i);
+            String userEmail = orderInfo.getClientId();
             if (admin.isEmpty()){
-                OrderInfor orderInfo = orderInforList.get(i);
+
                 Intent intent2 = new Intent(this, OrderActivity.class);
                 intent2.putExtra("order", orderInfo);
                 intent2.putExtra("user", user);
+
                 startActivity(intent2);
             }else if(admin.equalsIgnoreCase("admin") || admin.equalsIgnoreCase("adminAllUsers")){
-                OrderInfor orderInfo = orderInforList.get(i);
+
                 Intent intent2 = new Intent(this, AdminOrderDetailsActivity.class);
                 intent2.putExtra("order", orderInfo);
                 intent2.putExtra("user", user);
+                intent2.putExtra("clientId", userEmail);
                 intent2.putExtra("admin", "admin");
                 startActivity(intent2);
             }

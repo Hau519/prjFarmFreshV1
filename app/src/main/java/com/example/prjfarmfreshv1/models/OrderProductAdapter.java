@@ -16,6 +16,8 @@ public class OrderProductAdapter extends BaseAdapter {
     private ArrayList<OrderProduct> orderProductList;
     OrderProduct orderProduct;
 
+
+
     public OrderProductAdapter(Context context, ArrayList<OrderProduct> orderProductList) {
         this.context = context;
         this.orderProductList = orderProductList;
@@ -50,6 +52,7 @@ public class OrderProductAdapter extends BaseAdapter {
         tvName = oneItem.findViewById(R.id.tvName);
         tvUnitPrice = oneItem.findViewById(R.id.tvUnitPrice);
         tvQuanity = oneItem.findViewById(R.id.tvQuantity);
+        tvQuanity.setEnabled(false);
         tvTotal = oneItem.findViewById(R.id.tvTotalAdminDetailOrder);
         orderProduct=orderProductList.get(position);
         tvName.setText(orderProduct.getProductName());

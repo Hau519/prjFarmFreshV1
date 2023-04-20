@@ -33,7 +33,7 @@
             android:textSize="18dp"
             android:text="2.99" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvQuantity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

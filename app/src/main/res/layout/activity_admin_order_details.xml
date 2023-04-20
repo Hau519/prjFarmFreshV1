@@ -121,21 +121,21 @@
             style="@style/style_shoppingCartListHeader"
             android:textSize="13sp"
             android:textStyle="bold"
-            android:text="IMAGE" />
+            android:text="Name" />
 
         <TextView
             android:id="@+id/textView5"
             style="@style/style_shoppingCartListHeader"
             android:textSize="13sp"
             android:textStyle="bold"
-            android:text="PRODUCT" />
+            android:text="Unit Price" />
 
         <TextView
             android:id="@+id/textView6"
             style="@style/style_shoppingCartListHeader"
             android:textSize="13sp"
             android:textStyle="bold"
-            android:text="PRICE" />
+            android:text="Quanity" />
 
         <TextView
             android:id="@+id/textView7"
@@ -143,20 +143,8 @@
             android:textSize="13sp"
             android:textStyle="bold"
             android:layout_weight="1.5"
-            android:text="QUANTITY" />
+            android:text="Total" />
 
-        <TextView
-            android:id="@+id/textView8"
-            style="@style/style_shoppingCartListHeader"
-            android:textStyle="bold"
-            android:textSize="12sp"
-            android:text="SUBTOTAL" />
-
-        <TextView
-            android:id="@+id/textView10"
-            style="@style/style_shoppingCartListHeader"
-            android:textSize="13sp"
-            android:text="EDIT" />
 
 
     </LinearLayout>
