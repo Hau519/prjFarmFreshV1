@@ -122,6 +122,8 @@ public class ShoppingCartRecordAdapter extends BaseAdapter {
                     imMinus.setVisibility(View.VISIBLE);
                     imPlus.setVisibility(View.VISIBLE);
                     btnEdit.setTag("save");
+
+                    btnEdit.setBackgroundResource(R.drawable.ic_shopping_cart_save);
                 }else if (btnEdit.getTag().toString().equalsIgnoreCase("save")) {
 
 
@@ -129,6 +131,7 @@ public class ShoppingCartRecordAdapter extends BaseAdapter {
                     imMinus.setVisibility(View.INVISIBLE);
                     imPlus.setVisibility(View.INVISIBLE);
                     btnEdit.setTag("edit");
+                    btnEdit.setBackgroundResource(R.drawable.edit_btn);
                     try{
                         int newQuantity = Integer.valueOf(edProductQuantity.getText().toString());
                         float newTotal = newQuantity * price;
