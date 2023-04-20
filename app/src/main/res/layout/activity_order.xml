@@ -18,9 +18,9 @@
         android:fontFamily="serif"
         android:gravity="center"
         android:text="Order Details"
-        android:textColor="@android:color/holo_green_light"
-        android:textSize="45sp"
-        android:textStyle="bold|italic"
+        android:textColor="#528534"
+        android:textSize="52sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,10 +33,10 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="40dp"
                 android:text="Order No: "
-                android:textColor="@android:color/holo_green_light"
+                android:textColor="#528534"
                 app:layout_constraintTop_toBottomOf="@id/tvTitle"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:textSize="30sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -49,10 +49,11 @@
                 android:layout_marginTop="63dp"
                 android:layout_toEndOf="@id/tvLblId"
                 android:text="....."
+                android:textColor="#528534"
                 app:layout_constraintBaseline_toBaselineOf="@id/tvLblId"
                 app:layout_constraintStart_toEndOf="@id/tvLblId"
-                android:textColor="@android:color/holo_green_light"
-                android:textSize="30sp"
+                android:textSize="24sp"
+
                 android:textStyle="bold" />
 
 
@@ -63,10 +64,10 @@
                 android:layout_below="@+id/tvLblId"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="29dp"
+                android:textColor="#528534"
                 android:text="Date order: "
                 app:layout_constraintTop_toBottomOf="@id/tvLblId"
-                android:textColor="@android:color/holo_green_light"
-                android:textSize="30sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -78,11 +79,9 @@
         android:layout_below="@+id/tvTitle"
         android:layout_marginStart="20dp"
         android:layout_toEndOf="@+id/tvLblId"
-        android:textColor="@android:color/holo_green_light"
-
-        android:textSize="30sp"
+        android:textColor="#528534"
+        android:textSize="24sp"
         android:textStyle="bold"
-
         app:layout_constraintBaseline_toBaselineOf="@id/tvLblDate"
         app:layout_constraintStart_toEndOf="@id/tvLblDate"
        />
@@ -95,9 +94,9 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="29dp"
         android:text="Total: "
+        android:textColor="#528534"
         app:layout_constraintTop_toBottomOf="@id/tvLblDate"
-        android:textColor="@android:color/holo_green_light"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -106,28 +105,29 @@
         android:id="@+id/tvTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="38dp"
+        android:layout_marginStart="78dp"
         android:layout_marginTop="138dp"
         android:text="....."
+        android:textColor="#528534"
         app:layout_constraintStart_toEndOf="@id/tvLblTotal"
         app:layout_constraintBaseline_toBaselineOf="@id/tvLblTotal"
-        android:textColor="@android:color/holo_green_light"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvProductLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:textSize="25sp"
+        android:layout_marginTop="60dp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@android:color/holo_green_light"
         android:text="Name    Unit Price   Quantity    Total"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTotal" />
+
+
 
     <ListView
         android:id="@+id/lvProducts"
@@ -145,16 +145,16 @@
         android:layout_height="71dp"
         android:layout_below="@+id/tvTitle"
         android:layout_alignParentStart="true"
-
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="32dp"
+        android:textColor="#ddd"
         android:text="Return"
         android:textSize="23sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lvProducts"
         app:layout_constraintVertical_bias="0.0"
+        android:backgroundTint="#068151"
         android:background="@drawable/button_pressed"/>
 
 

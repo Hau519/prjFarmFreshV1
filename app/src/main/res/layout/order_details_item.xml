@@ -16,8 +16,8 @@
         <TextView
             android:id="@+id/tvName"
             android:layout_width="0dp"
-            android:textSize="16dp"
-            android:gravity="center"
+            android:textSize="18dp"
+            android:gravity="left"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="tomato" />
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="16dp"
+            android:textSize="18dp"
             android:text="2.99" />
 
         <TextView
@@ -38,7 +38,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="16dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="18dp"
             android:layout_weight="1"
             android:text="7" />
 
@@ -47,9 +48,9 @@
             android:id="@+id/tvTotal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:gravity="right"
             android:layout_weight="1"
-            android:textSize="16dp"
+            android:textSize="18dp"
             android:text="65.97" />
 
         <Space
