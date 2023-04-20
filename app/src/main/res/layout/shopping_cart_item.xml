@@ -94,7 +94,8 @@
             android:textSize="16dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/edit_btn"/>
+            android:background="@drawable/edit_btn"
+            android:tag="edit"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
