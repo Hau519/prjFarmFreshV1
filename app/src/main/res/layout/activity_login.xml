@@ -160,7 +160,6 @@
             android:textSize="28sp"
             tools:ignore="TextSizeCheck"
             android:backgroundTint="#068151"
-
             android:background="@drawable/button_pressed"/>
 
     </LinearLayout>
