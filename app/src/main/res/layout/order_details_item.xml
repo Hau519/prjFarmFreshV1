@@ -16,35 +16,40 @@
         <TextView
             android:id="@+id/tvName"
             android:layout_width="0dp"
+            android:textSize="16dp"
+            android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="O2" />
+            android:text="tomato" />
 
 
 
         <TextView
             android:id="@+id/tvUnitPrice"
             android:layout_width="0dp"
-            android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="02.10.2023" />
+            android:gravity="center"
+            android:textSize="16dp"
+            android:text="2.99" />
 
         <TextView
             android:id="@+id/tvQuantity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="right"
+            android:gravity="center"
+            android:textSize="16dp"
             android:layout_weight="1"
-            android:text="65.97" />
+            android:text="7" />
 
 
         <TextView
             android:id="@+id/tvTotal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="right"
+            android:gravity="center"
             android:layout_weight="1"
+            android:textSize="16dp"
             android:text="65.97" />
 
         <Space

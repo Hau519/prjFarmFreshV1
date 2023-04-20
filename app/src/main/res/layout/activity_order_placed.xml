@@ -18,28 +18,24 @@
         app:srcCompat="@drawable/baseline_logout_24"
         app:tint="#5E5B5B" />
 
+
     <ImageView
         android:id="@+id/imgLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBaseline_toBaselineOf="@id/tvTitle"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo1" />
 
-
     <ImageView
         android:id="@+id/imgConfirm"
         android:layout_width="123dp"
         android:layout_height="68dp"
-        android:layout_marginTop="68dp"
-
-
+        android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imgLogo"
         app:srcCompat="@drawable/img" />
@@ -54,7 +50,7 @@
         android:text="Order successful!"
         android:textColor="#26851F"
         android:textSize="40sp"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgLogo" />
 
@@ -76,12 +72,12 @@
         android:id="@+id/btnBackToHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvTitle"
-        android:layout_alignParentStart="true"
         android:layout_marginTop="116dp"
+        android:backgroundTint="#068151"
         android:background="@drawable/button_pressed"
         android:text="Home"
-        app:layout_constraintHorizontal_bias="0.777"
+        android:textColor="#ddd"
+        android:layout_marginLeft="160dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvMessage" />
@@ -91,14 +87,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvTitle"
-        android:layout_alignParentStart="true"
-
+        android:textColor="#ddd"
         android:layout_marginTop="116dp"
-
+        android:backgroundTint="#068151"
         android:background="@drawable/button_pressed"
         android:text="Profile"
+        android:layout_marginLeft="10dp"
         app:layout_constraintEnd_toStartOf="@+id/btnBackToHome"
-        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvMessage" />
 

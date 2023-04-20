@@ -15,9 +15,10 @@
 
         <ImageView
             android:id="@+id/imProduct"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_width="20dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
+            android:padding="1dp"
             app:srcCompat="@drawable/vegetables"
             android:focusableInTouchMode="false"
             android:clickable="false"
@@ -26,6 +27,8 @@
 
         <TextView
             android:id="@+id/tvProductName"
+            android:textSize="14dp"
+            android:layout_marginTop="10dp"
             style="@style/style_shoppingCartListHeader"
             android:text="Tomato"
             />
@@ -33,7 +36,9 @@
         <TextView
             android:id="@+id/tvProductPrice"
             style="@style/style_shoppingCartListHeader"
-            android:text="1.99" />
+            android:text="1.99"
+            android:textSize="14dp"
+            android:layout_marginTop="10dp"/>
 
         <ImageButton
             android:id="@+id/imPlus"
@@ -51,8 +56,9 @@
             android:id="@+id/edProductQuantity"
             style="@style/style_shoppingCartListHeader"
             android:layout_weight="0.5"
-            android:textSize="12sp"
             android:ems="1"
+            android:textSize="14dp"
+            android:layout_marginTop="10dp"
             android:inputType="number|textNoSuggestions"
             android:text="3"
             android:enabled="false"
@@ -77,15 +83,18 @@
         <TextView
             android:id="@+id/tvProductTotal"
             style="@style/style_shoppingCartListHeader"
-            android:text="5.97" />
+            android:text="5.97"
+            android:textSize="14dp"
+            android:layout_marginTop="10dp"/>
 
         <Button
             android:id="@+id/btnEdit"
-            style="@style/style_shoppingCartListHeader"
-            android:text="Edit"
-            android:textAllCaps="false"
-
-            android:background="@drawable/button_pressed"/>
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:textSize="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/edit_btn"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
