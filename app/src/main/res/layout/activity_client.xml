@@ -21,7 +21,7 @@
         app:srcCompat="@drawable/logo1" />
 
     <ImageView
-        android:id="@+id/icLogOut"
+        android:id="@+id/icLogOutAdmin"
         android:layout_width="50dp"
         android:layout_height="70dp"
         android:layout_marginTop="24dp"
@@ -37,7 +37,7 @@
         android:layout_height="100dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/icLogOut"
+        app:layout_constraintEnd_toStartOf="@+id/icLogOutAdmin"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/ivLogo"
         app:layout_constraintTop_toTopOf="parent"

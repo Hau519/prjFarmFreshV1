@@ -53,7 +53,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
         btnShop.setOnClickListener(this);
         btnUpdate.setOnClickListener(this);
         usersTable= FirebaseDatabase.getInstance().getReference("Users");
-        iconLogout = findViewById(R.id.icLogOut);
+        iconLogout = findViewById(R.id.icLogOutAdmin);
         icOrderList = findViewById(R.id.icOrderList);
         iconLogout.setOnClickListener(this);
         ivLogo.setOnClickListener(this);
@@ -116,7 +116,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                             Snackbar.LENGTH_LONG).show();
                 }
                 break;
-            case R.id.icLogOut:
+            case R.id.icLogOutAdmin:
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 break;

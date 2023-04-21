@@ -22,10 +22,7 @@ import android.widget.TextView;
 import com.example.prjfarmfreshv1.models.OrderInfor;
 import com.example.prjfarmfreshv1.models.OrderProduct;
 import com.example.prjfarmfreshv1.models.OrderProductAdapter;
-import com.example.prjfarmfreshv1.models.ShoppingCartRecord;
-import com.example.prjfarmfreshv1.models.ShoppingCartRecordAdapter;
 import com.example.prjfarmfreshv1.models.User;
-import com.example.prjfarmfreshv1.ui.home.Login;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -95,7 +92,7 @@ public class AdminOrderDetailsActivity extends AppCompatActivity implements View
 
         setDeleteAlert();
         btnWorkStation = findViewById(R.id.btnWorkingStation);
-        btnReturn = findViewById(R.id.btnReturn);
+        btnReturn = findViewById(R.id.btnReturnAdminClientList);
         btnWorkStation.setOnClickListener(this);
         btnReturn.setOnClickListener(this);
         clientId = getIntent().getExtras().getString("clientId");
@@ -156,7 +153,7 @@ public class AdminOrderDetailsActivity extends AppCompatActivity implements View
     public void onClick(View v) {
         int id = v.getId();
         switch (id){
-            case R.id.btnReturn:
+            case R.id.btnReturnAdminClientList:
                 finish();
                 break;
             case R.id.btnWorkingStation:

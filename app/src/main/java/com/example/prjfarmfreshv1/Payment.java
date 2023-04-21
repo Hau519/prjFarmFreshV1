@@ -60,7 +60,7 @@ public class Payment extends AppCompatActivity implements View.OnClickListener {
         tvTotal = findViewById(R.id.tvTotalAdminDetailOrder);
         lvProducts = findViewById(R.id.lvProducts);
         btnPlaceOrder = findViewById(R.id.btnOrder);
-        btnReturn = findViewById(R.id.btnReturn);
+        btnReturn = findViewById(R.id.btnReturnAdminClientList);
 
         btnPlaceOrder.setOnClickListener(this);
         btnReturn.setOnClickListener(this);
@@ -95,7 +95,7 @@ public class Payment extends AppCompatActivity implements View.OnClickListener {
                     Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
                 }
                 break;
-            case R.id.btnReturn:
+            case R.id.btnReturnAdminClientList:
                 continueShopping();
                 break;
         }

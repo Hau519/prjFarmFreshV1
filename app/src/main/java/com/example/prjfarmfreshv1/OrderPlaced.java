@@ -55,7 +55,7 @@ public class OrderPlaced extends AppCompatActivity implements View.OnClickListen
                     Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
                 }
                 break;
-            case R.id.icLogOut:
+            case R.id.icLogOutAdmin:
                 try{
                     Intent i = new Intent(this, MainActivity.class);
                     startActivity(i);

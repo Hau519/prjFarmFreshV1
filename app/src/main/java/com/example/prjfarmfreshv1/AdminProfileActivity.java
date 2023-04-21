@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 
 public class AdminProfileActivity extends AppCompatActivity implements View.OnClickListener {
     Button clientList, orderList;
+    ImageView icLogout;
     String admin;
 
     @Override
@@ -19,9 +21,12 @@ public class AdminProfileActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_admin_profile);
         clientList = findViewById(R.id.btnClientList);
         orderList = findViewById(R.id.btnOrderList);
+        icLogout = findViewById(R.id.icLogOutAdmin);
 
         clientList.setOnClickListener(this);
         orderList.setOnClickListener(this);
+        icLogout.setOnClickListener(this);
+
 
         admin = getIntent().getExtras().getString("admin");
     }
@@ -48,7 +53,7 @@ public class AdminProfileActivity extends AppCompatActivity implements View.OnCl
                     Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
                 }
                 break;
-            case R.id.icLogOut:
+            case R.id.icLogOutAdmin:
                 Intent i = new Intent(this, MainActivity.class);
                 Toast.makeText(this, "You have successfully log out", Toast.LENGTH_SHORT).show();
                 startActivity(i);

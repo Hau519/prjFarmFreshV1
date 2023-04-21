@@ -7,17 +7,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.prjfarmfreshv1.models.ClientListAdapter;
 import com.example.prjfarmfreshv1.models.User;
-import com.example.prjfarmfreshv1.ui.home.Login;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -45,11 +42,12 @@ public class AdminClientActivity extends AppCompatActivity implements AdapterVie
 
     private void initialize() {
         orderList = findViewById(R.id.btnOrderList);
-        btnReturn = findViewById(R.id.btnReturn);
+        btnReturn = findViewById(R.id.btnReturnAdminClientList);
         lvClient = findViewById(R.id.lvClients);
 
         lvClient.setOnItemClickListener(this);
         setDeleteAlert();
+        btnReturn.setOnClickListener(this);
 
         usersDatabase= FirebaseDatabase.getInstance().getReference("Users");
         clientList = new ArrayList<>();
@@ -88,7 +86,7 @@ public class AdminClientActivity extends AppCompatActivity implements AdapterVie
 
     @Override
     public void onClick(View v) {
-
+        finish();
     }
 
     @Override
