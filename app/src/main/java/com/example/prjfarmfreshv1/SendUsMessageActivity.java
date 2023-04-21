@@ -81,7 +81,7 @@ public class SendUsMessageActivity extends AppCompatActivity implements View.OnC
                     String body = "Client name/email: " + name + ".\nMessage: " + content;
                     MailSender sender = new MailSender();
                     sender.sendMail(subject, body,
-                            "farmfresh.lasalle@gmail.com", "farmfresh.lasalle@gmail.com");
+                            "farmfresh.lasalle@gmail.com", "farmfresh.client@gmail.com");
                 } catch (Exception e) {
                     Toast.makeText(SendUsMessageActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
