@@ -116,19 +116,22 @@ public class ShoppingCartRecordAdapter extends BaseAdapter {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (btnEdit.getText().toString().equalsIgnoreCase("edit")) {
+                if (btnEdit.getTag().toString().equalsIgnoreCase("edit")) {
                     edProductQuantity.setEnabled(true);
 
                     imMinus.setVisibility(View.VISIBLE);
                     imPlus.setVisibility(View.VISIBLE);
-                    btnEdit.setText("Save");
-                }else if (btnEdit.getText().toString().equalsIgnoreCase("save")) {
+                    btnEdit.setTag("save");
+
+                    btnEdit.setBackgroundResource(R.drawable.ic_shopping_cart_save);
+                }else if (btnEdit.getTag().toString().equalsIgnoreCase("save")) {
 
 
                     edProductQuantity.setEnabled(false);
                     imMinus.setVisibility(View.INVISIBLE);
                     imPlus.setVisibility(View.INVISIBLE);
-                    btnEdit.setText("Edit");
+                    btnEdit.setTag("edit");
+                    btnEdit.setBackgroundResource(R.drawable.edit_btn);
                     try{
                         int newQuantity = Integer.valueOf(edProductQuantity.getText().toString());
                         float newTotal = newQuantity * price;

@@ -7,10 +7,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -68,6 +70,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void initialize() {
+        productsDB = FirebaseDatabase.getInstance().getReference(Product.class.getSimpleName()+"s");
         mMessageReceiver = getMessageReceiver();
 
         //transfer data from Adapter
@@ -86,10 +89,14 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
         //listView
         lvProducts = findViewById(R.id.lvProducts);
+
+
+//        setListViewHeight(lvProducts);
+
         fullProductList = new ArrayList<Product>();
         productAdapter = new ProductAdapter(ProductActivity.this, fullProductList);
-        getFullProductList();
         lvProducts.setAdapter(productAdapter);
+        getFullProductList();
 
         //button
         btnSearchProductName = findViewById(R.id.btnSearchProductName);
@@ -106,33 +113,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
 
 
-    private void updateSelectedList(ActivityResult result) {
 
-            if (result.getResultCode() == RESULT_OK && result.getData()!=null) {
-                selectedProductRecords = (ArrayList<ShoppingCartRecord>) result.getData().getExtras().getSerializable("returnedScRecordList");
-                if (selectedProductRecords.size()>0) {
-                    for (int i = 0; i < fullProductList.size(); i++) {
-                        TextView tvSelectedProductName = (TextView) lvProducts.getChildAt(i).findViewById(R.id.tvProductName);
-                        EditText edSelectedProductQuantity = (EditText) lvProducts.getChildAt(i).findViewById(R.id.edQuantity);
-                        for (ShoppingCartRecord scRecord : selectedProductRecords) {
-                            if (tvSelectedProductName.getText().toString().equals(scRecord.getProductName())) {
-                                edSelectedProductQuantity.setText(scRecord.getProductQuantity()+"");
-                                break;
-                            }else{
-                                edSelectedProductQuantity.setText(null);
-                            }
-                        }
-                    }
-                }else
-                    reset();
-
-
-
-            }else{
-                Toast.makeText(this, "Wrong way", Toast.LENGTH_SHORT).show();
-            }
-
-    }
 
     private BroadcastReceiver getMessageReceiver() {
        return new BroadcastReceiver() {
@@ -175,7 +156,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     private void getFullProductList() {
 
 
-        productsDB = FirebaseDatabase.getInstance().getReference(Product.class.getSimpleName()+"s");
+
         productsDB.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -200,6 +181,35 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
             }
         });
+
+    }
+
+
+    private void updateSelectedList(ActivityResult result) {
+
+        if (result.getResultCode() == RESULT_OK && result.getData()!=null) {
+            selectedProductRecords = (ArrayList<ShoppingCartRecord>) result.getData().getExtras().getSerializable("returnedScRecordList");
+            if (selectedProductRecords.size()>0) {
+//                for (int i = 0; i < fullProductList.size(); i++) {
+//                    TextView tvSelectedProductName = (TextView) lvProducts.getChildAt(i).findViewById(R.id.tvProductName);
+//                    EditText edSelectedProductQuantity = (EditText) lvProducts.getChildAt(i).findViewById(R.id.edQuantity);
+//                    for (ShoppingCartRecord scRecord : selectedProductRecords) {
+//                        if (tvSelectedProductName.getText().toString().equals(scRecord.getProductName())) {
+//                            edSelectedProductQuantity.setText(scRecord.getProductQuantity()+"");
+//                            break;
+//                        }else{
+//                            edSelectedProductQuantity.setText(null);
+//                        }
+//                    }
+//                }
+            }else
+                reset();
+
+
+
+        }else{
+            Toast.makeText(this, "Wrong way", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -294,6 +304,29 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
             productAdapter = new ProductAdapter(this, categorizedProductList);
         }
         lvProducts.setAdapter(productAdapter);
+    }
+
+
+    // not work now
+    public static void setListViewHeight(ListView listView) {
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null)
+            return;
+
+        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.UNSPECIFIED);
+        int totalHeight = 0;
+        View view = null;
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            view = listAdapter.getView(i, view, listView);
+            if (i == 0)
+                view.setLayoutParams(new ViewGroup.LayoutParams(desiredWidth, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+            view.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+            totalHeight += view.getMeasuredHeight();
+        }
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        listView.setLayoutParams(params);
     }
 
 

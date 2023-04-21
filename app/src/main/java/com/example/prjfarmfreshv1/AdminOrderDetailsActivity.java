@@ -51,6 +51,8 @@ public class AdminOrderDetailsActivity extends AppCompatActivity implements View
     String orderNumberDisplay;
     DatabaseReference orderListDatabase;
 
+    int state = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +87,7 @@ public class AdminOrderDetailsActivity extends AppCompatActivity implements View
         tvDate.setText(dateOrder);
         orderProductDatabase = FirebaseDatabase.getInstance().getReference("OrderProduct");
         orderProductList = new ArrayList<>();
-        orderProductAdapter = new OrderProductAdapter(this, orderProductList);
+        orderProductAdapter = new OrderProductAdapter(this, orderProductList, state);
         lvProducts.setAdapter(orderProductAdapter);
         orderProductDatabase.addChildEventListener(new ChildEventListener() {
             @Override

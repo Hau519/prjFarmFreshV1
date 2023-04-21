@@ -16,11 +16,17 @@ public class OrderProductAdapter extends BaseAdapter {
     private ArrayList<OrderProduct> orderProductList;
     OrderProduct orderProduct;
 
-
+    int state =0;
 
     public OrderProductAdapter(Context context, ArrayList<OrderProduct> orderProductList) {
         this.context = context;
         this.orderProductList = orderProductList;
+    }
+
+    public OrderProductAdapter(Context context, ArrayList<OrderProduct> orderProductList, int state) {
+        this.context = context;
+        this.orderProductList = orderProductList;
+        this.state = state;
     }
 
     @Override
@@ -53,6 +59,9 @@ public class OrderProductAdapter extends BaseAdapter {
         tvUnitPrice = oneItem.findViewById(R.id.tvUnitPrice);
         tvQuanity = oneItem.findViewById(R.id.tvQuantity);
         tvQuanity.setEnabled(false);
+        if (state==1){
+            tvQuanity.setEnabled(true);
+        }
         tvTotal = oneItem.findViewById(R.id.tvTotalAdminDetailOrder);
         orderProduct=orderProductList.get(position);
         tvName.setText(orderProduct.getProductName());
