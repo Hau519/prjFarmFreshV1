@@ -107,6 +107,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                         Snackbar.make(view, "Your information is updated successfully",
                                 Snackbar.LENGTH_LONG).show();
                         tvEmail.setEnabled(false);
+                        tvTitle.setText("Welcome " + name);
                         tvName.setEnabled(false);
                         btnUpdate.setText("Update");
                     }
