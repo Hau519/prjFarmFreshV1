@@ -4,34 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg126"
     tools:context=".AdminOrderDetailsActivity">
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Order details"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="110dp"
-        android:textSize="35sp"
-        android:textColor="#3F51B5"
-        android:textStyle="bold|italic"/>
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:layout_weight="1"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="Order Details"
+        android:textColor="#528534"
+        android:textSize="52sp"
+        android:textStyle="bold"
+
+        />
 
     <TextView
         android:id="@+id/tvLblDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginLeft="40dp"
         android:layout_marginTop="29dp"
         android:text="Date order: "
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        android:textColor="@color/profile"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:textColor="#528534"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_below="@+id/tvTitle"
+
+
+        />
 
 
     <TextView
@@ -41,9 +51,9 @@
         android:layout_below="@+id/tvTitle"
         android:layout_marginStart="20dp"
         android:text="....."
-        android:textColor="@color/profile"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:textColor="#528534"
         app:layout_constraintBaseline_toBaselineOf="@id/tvLblDate"
         app:layout_constraintStart_toEndOf="@id/tvLblDate"
         />
@@ -57,9 +67,10 @@
         android:layout_marginTop="29dp"
         android:text="Total: "
         app:layout_constraintTop_toBottomOf="@id/tvLblDate"
-        android:textColor="@color/profile"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:textColor="#528534"
+
         app:layout_constraintLeft_toLeftOf="parent" />
 
 
@@ -72,7 +83,7 @@
         android:text="....."
         app:layout_constraintStart_toEndOf="@id/tvLblTotal"
         app:layout_constraintBaseline_toBaselineOf="@id/tvLblTotal"
-        android:textColor="@color/profile"
+        android:textColor="#528534"
         android:textSize="30sp"
         android:textStyle="bold" />
 
@@ -84,7 +95,7 @@
         android:layout_marginTop="29dp"
         android:text="Client ID: "
         app:layout_constraintTop_toBottomOf="@id/tvLblTotal"
-        android:textColor="@color/profile"
+        android:textColor="#528534"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent" />
@@ -99,7 +110,7 @@
         android:text="....."
         app:layout_constraintStart_toEndOf="@id/tvLblClientId"
         app:layout_constraintBaseline_toBaselineOf="@id/tvLblClientId"
-        android:textColor="@color/profile"
+        android:textColor="#528534"
         android:textSize="30sp"
         android:textStyle="bold" />
 
@@ -119,38 +130,44 @@
         <TextView
             android:id="@+id/textView2"
             style="@style/style_shoppingCartListHeader"
-            android:textSize="13sp"
+            android:textSize="20sp"
+            android:layout_weight="1.5"
+            android:textColor="#528534"
             android:textStyle="bold"
             android:text="Name" />
 
         <TextView
             android:id="@+id/textView5"
             style="@style/style_shoppingCartListHeader"
-            android:textSize="13sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:text="Unit Price" />
+            android:textColor="#528534"
+            android:text="Price" />
 
         <TextView
             android:id="@+id/textView6"
             style="@style/style_shoppingCartListHeader"
-            android:textSize="13sp"
+            android:textSize="20sp"
             android:textStyle="bold"
+            android:textColor="#528534"
             android:text="Quanity" />
 
         <TextView
             android:id="@+id/textView7"
             style="@style/style_shoppingCartListHeader"
-            android:textSize="13sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_weight="1.5"
+            android:textColor="#528534"
+            android:layout_weight="1"
             android:text="Total" />
 
         <TextView
             android:id="@+id/textView8"
             style="@style/style_shoppingCartListHeader"
-            android:textSize="13sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_weight="1.5"
+            android:textColor="#528534"
+            android:layout_weight="0.7"
             android:text="Edit" />
 
 
@@ -223,26 +240,41 @@
 
     <Button
         android:id="@+id/btnWorkingStation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
         android:layout_marginBottom="120dp"
-        android:backgroundTint="#80D160"
         android:text="Working Station"
         android:textStyle="bold"
+
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/button_pressed"
+        android:backgroundTint="#068151"
+        android:padding="10dp"
+        android:textColor="#ddd"
+        android:textSize="23sp"
+
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:textColor="#2C2725"
         app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/btnReturn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="172dp"
+    android:layout_marginLeft="60dp"
         android:layout_marginBottom="44dp"
-        android:backgroundTint="#80D160"
         android:text="Return"
-        android:textColor="#2C2725"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tvTitle"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="52dp"
+        android:backgroundTint="#068151"
+        android:background="@drawable/button_pressed"
+        android:textColor="#ddd"
+        android:padding="10dp"
+        android:textSize="23sp"
+
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

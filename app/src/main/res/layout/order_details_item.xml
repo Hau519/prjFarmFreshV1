@@ -22,10 +22,12 @@
             android:textSize="18dp"
             android:gravity="left"
             android:clickable="false"
+            android:textStyle="bold"
+            android:textColor="#272B2A"
             android:focusableInTouchMode="false"
             android:focusable="false"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="tomato" />
 
 
@@ -34,9 +36,11 @@
             android:id="@+id/tvUnitPrice"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.3"
             android:gravity="center"
+            android:textStyle="bold"
             android:clickable="false"
+            android:textColor="#272B2A"
             android:focusableInTouchMode="false"
             android:focusable="false"
             android:textSize="18dp"
@@ -49,11 +53,13 @@
             android:gravity="center"
             android:layout_marginLeft="20dp"
             android:clickable="false"
+            android:textStyle="bold"
+            android:textColor="#272B2A"
             android:focusableInTouchMode="false"
             android:focusable="false"
             android:textSize="18dp"
             android:enabled="false"
-            android:layout_weight="1"
+            android:layout_weight="1.3"
             android:text="7" />
 
 
@@ -62,8 +68,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="right"
-            android:layout_weight="1"
+            android:layout_weight="1.4"
             android:clickable="false"
+            android:textColor="#272B2A"
+            android:textStyle="bold"
             android:focusableInTouchMode="false"
             android:focusable="false"
             android:textSize="18dp"
@@ -78,7 +86,9 @@
             android:clickable="false"
             android:focusableInTouchMode="false"
             android:focusable="false"
-            android:layout_weight="0.8"
+            android:textStyle="bold"
+            android:background="@color/white"
+            android:textColor="#FF6F00"
             android:text="edit" />
 
 
