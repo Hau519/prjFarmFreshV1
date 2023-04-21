@@ -121,7 +121,7 @@
         android:layout_marginTop="60dp"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:text="Name    Unit Price   Quantity    Total"
+        android:text="Name     Unit Price    Quantity     Total"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"

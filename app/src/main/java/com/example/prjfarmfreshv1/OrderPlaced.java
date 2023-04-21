@@ -27,7 +27,7 @@ public class OrderPlaced extends AppCompatActivity implements View.OnClickListen
     }
 
     private void initialize() {
-        ivLogo = findViewById(R.id.imgLogo);
+        ivLogo = findViewById(R.id.imgLogoOrderList);
         tvMessage = findViewById(R.id.tvMessage);
         btnHomePage = findViewById(R.id.btnBackToHome);
         btnProfile = findViewById(R.id.btnBackToProfile);

@@ -48,7 +48,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Va
     }
 
     private void initialize() {
-        ivLogo = findViewById(R.id.ivLogo);
+//        ivLogo = findViewById(R.id.ivLogo);
         edEmail=findViewById(R.id.edEmail);
         edPassword=findViewById(R.id.edPassword);
         btnLogIn=findViewById(R.id.btnLogIn);
@@ -57,7 +57,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Va
         tvForgetPassword.setOnClickListener(this);
         btnLogIn.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
-        ivLogo.setOnClickListener(this);
+//        ivLogo.setOnClickListener(this);
         databaseReference= FirebaseDatabase.getInstance().getReference("Users");
 
         activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),result -> {
@@ -84,18 +84,23 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Va
             case R.id.btnRegister:
                 register();
                 break;
-            case R.id.ivLogo:
+            /*case R.id.ivLogo:
                 Intent i=new Intent(this, MainActivity.class);
                 i.putExtra("user", user);
-                startActivity(i);
+                startActivity(i);*/
             case R.id.tvForgetPassword:
-                Intent i1=new Intent(this, ResetPassword.class);
-                startActivity(i1);
+                /*Intent i1=new Intent(this, ResetPassword.class);
+                startActivity(i1);*/
+                resetPassword();
         }
     }
 
     private void register() {
         activityResultLauncher.launch(new Intent(this, Register.class));
+    }
+
+    private void resetPassword() {
+        activityResultLauncher.launch(new Intent(this, ResetPassword.class));
     }
 
 

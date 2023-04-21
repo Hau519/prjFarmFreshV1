@@ -37,7 +37,7 @@ import java.util.ArrayList;
 public class OrderListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener, AdapterView.OnItemLongClickListener, DialogInterface.OnClickListener {
 
     ListView lvOrders;
-    ImageView ivAccount;
+    ImageView ivAccount, ivLogo;
     Button btnShop;
     User user;
     OrderInfor orderInfor;
@@ -62,6 +62,7 @@ public class OrderListActivity extends AppCompatActivity implements AdapterView.
             lvOrders.setOnItemClickListener(this);
             lvOrders.setOnItemLongClickListener(this);
             ivAccount = findViewById(R.id.ivAccount);
+            ivLogo = findViewById(R.id.imgLogoOrderList);
 
             orderListDatabase = FirebaseDatabase.getInstance().getReference("OrderList");
             orderInforList = new ArrayList<OrderInfor>();
@@ -69,17 +70,21 @@ public class OrderListActivity extends AppCompatActivity implements AdapterView.
             user = (User)getIntent().getExtras().getSerializable("user");
 
             ivAccount.setOnClickListener(this);
+            ivLogo.setOnClickListener(this);
             btnShop = findViewById(R.id.btnShop);
             btnShop.setOnClickListener(this);
             orderInfor = new OrderInfor();
             orderListAdapter = new OrderListAdapter(this, orderInforList);
             lvOrders.setAdapter(orderListAdapter);
+
             Intent intent = getIntent();
             if (intent.hasExtra("admin")){
                 admin = getIntent().getExtras().getString("admin");
-                btnShop.setText("Return");
-                setDeleteAlert();
-                ivAccount.setVisibility(View.INVISIBLE);
+                if(!admin.equalsIgnoreCase("")){
+                    btnShop.setText("Return");
+                    setDeleteAlert();
+                    ivAccount.setVisibility(View.INVISIBLE);
+                }
             }
 
             orderListDatabase.addChildEventListener(new ChildEventListener() {
@@ -183,6 +188,11 @@ public class OrderListActivity extends AppCompatActivity implements AdapterView.
                 break;
             case R.id.ivAccount:
                 finish();
+                break;
+            case R.id.imgLogoOrderList:
+                Intent intent2 =new Intent(this, MainActivity.class);
+                intent2.putExtra("user", user);
+                startActivity(intent2);
                 break;
         }
     }

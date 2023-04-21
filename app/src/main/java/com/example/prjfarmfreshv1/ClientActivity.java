@@ -23,8 +23,8 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
     User user;
 
     String admin="";
-
     DatabaseReference usersTable;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +95,11 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
 
                         String email = user.getEmail();
                         String name = tvName.getText().toString();
+                        if (name.equals(user.getName())){
+                            Snackbar.make(view, "Nothing change",
+                                    Snackbar.LENGTH_LONG).show();
+                            break;
+                        }
 //                        User updateUser = new User(name, email, user.getPassword());
                         user.setName(name);
                         String emailKey = email.replace(".", "DOT");
@@ -117,7 +122,9 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.icOrderList:
                 Intent intent1 = new Intent(this, OrderListActivity.class);
                 intent1.putExtra("user", user);
-                intent1.putExtra("admin", admin);
+                if (!admin.equalsIgnoreCase("")){
+                    intent1.putExtra("admin", admin);
+                }
                 startActivity(intent1);
                 break;
             case R.id.ivLogo:
