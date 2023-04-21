@@ -42,7 +42,7 @@ import java.util.Objects;
 
 public class ProductActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener  {
     ListView lvProducts;
-    Button btnSearchProductName, btnReset, btnGoToShoppingCart;
+    Button btnSearchProductName, btnReset, btnGoToShoppingCart, btnGoBack,btnGoShoppingCart;
     EditText edSearchProductName;
     Spinner spinnerProductFilter;
     String[] categories = {"All","Vegetable","Meat","Fruit"};
@@ -106,7 +106,10 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         btnSearchProductName.setOnClickListener(this);
         btnGoToShoppingCart.setOnClickListener(this);
 
-
+        btnGoBack = findViewById(R.id.btnGoBack);
+        btnGoBack.setOnClickListener(this);
+        btnGoShoppingCart = findViewById(R.id.btnGoShoppingCart);
+        btnGoShoppingCart.setOnClickListener(this);
 
         actResLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> updateSelectedList(result));
     }
@@ -216,6 +219,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         int vId = v.getId();
 
         switch (vId) {
+            case R.id.btnGoShoppingCart:
             case R.id.btnGoToShoppingCart:
                 goToShoppingCart();
                 break;
@@ -225,7 +229,8 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.btnReset:
                 reset();
                 break;
-
+            case R.id.btnGoBack:
+                finish();
         }
     }
 
