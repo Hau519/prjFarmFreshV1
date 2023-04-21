@@ -14,7 +14,7 @@ import com.example.prjfarmfreshv1.models.User;
 
 public class OrderPlaced extends AppCompatActivity implements View.OnClickListener{
     TextView tvMessage;
-    ImageView ivLogo, icLogoutAdmin;
+    ImageView ivLogo, icLogout;
     Button btnHomePage, btnProfile, btnLogout;
     User user;
     String orderNumber;
@@ -31,7 +31,7 @@ public class OrderPlaced extends AppCompatActivity implements View.OnClickListen
         tvMessage = findViewById(R.id.tvMessage);
         btnHomePage = findViewById(R.id.btnBackToHome);
         btnProfile = findViewById(R.id.btnBackToProfile);
-        icLogoutAdmin = findViewById(R.id.icLogOutAdmin);
+        icLogout = findViewById(R.id.icLogOut);
 
         user = (User)getIntent().getExtras().getSerializable("user");
         orderNumber = getIntent().getExtras().getString("orderNumber");
@@ -40,7 +40,7 @@ public class OrderPlaced extends AppCompatActivity implements View.OnClickListen
         btnHomePage.setOnClickListener(this);
         btnProfile.setOnClickListener(this);
         ivLogo.setOnClickListener(this);
-        icLogoutAdmin.setOnClickListener(this);
+        icLogout.setOnClickListener(this);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class OrderPlaced extends AppCompatActivity implements View.OnClickListen
                     Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
                 }
                 break;
-            case R.id.icLogOutAdmin:
+            case R.id.icLogOut:
                 try{
                     Intent i = new Intent(this, MainActivity.class);
                     startActivity(i);
@@ -74,8 +74,6 @@ public class OrderPlaced extends AppCompatActivity implements View.OnClickListen
                     Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
                 }
                 break;
-
-
 
         }
     }
