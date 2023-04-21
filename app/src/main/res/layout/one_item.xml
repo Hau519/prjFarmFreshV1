@@ -23,17 +23,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:text="O2" />
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5" />
+
 
         <TextView
             android:id="@+id/tvDateAdminOrderDetails"
             android:layout_width="0dp"
             android:gravity="right"
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="02.10.2023" />
@@ -45,6 +46,8 @@
             android:layout_height="wrap_content"
             android:gravity="right"
             android:layout_weight="1"
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:text="65.97" />
 
         <Space
