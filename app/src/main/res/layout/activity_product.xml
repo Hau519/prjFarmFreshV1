@@ -76,10 +76,10 @@
 
     <Button
         android:id="@+id/btnGoToShoppingCart"
-        android:layout_width="76dp"
+        android:layout_width="66dp"
         android:layout_height="54dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/shoppingcartwithhealth"
+        android:background="@drawable/shopping_cart_xxl"
         app:layout_constraintBottom_toBottomOf="@+id/tvProductTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvProductTitle"

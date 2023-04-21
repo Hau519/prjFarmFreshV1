@@ -84,11 +84,14 @@
 
     <TableLayout
         android:id="@+id/tableCartTotal"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/table_radius"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="100dp"
+        android:layout_marginLeft="32dp"
+        android:padding="10dp"
         android:stretchColumns="*"
         >
 

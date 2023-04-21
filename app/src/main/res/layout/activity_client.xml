@@ -11,10 +11,10 @@
     <ImageView
         android:id="@+id/ivLogo"
         android:layout_width="180dp"
-        android:layout_height="105dp"
+        android:layout_height="115dp"
         android:layout_gravity="center"
         android:layout_marginTop="12dp"
-        android:layout_marginRight="180dp"
+        android:layout_marginRight="150dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,25 +23,25 @@
     <ImageView
         android:id="@+id/icLogOut"
         android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_height="70dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="28dp"
         android:backgroundTint="#F4EBEE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_logout_24" />
+        app:srcCompat="@drawable/logout_icon" />
 
     <ImageView
         android:id="@+id/icOrderList"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginRight="25dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="8dp"
         app:layout_constraintEnd_toStartOf="@+id/icLogOut"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/ivLogo"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/order_history" />
+        app:srcCompat="@drawable/order_history_icon" />
 
     <TextView
         android:id="@+id/tvTitle"
