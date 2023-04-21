@@ -89,7 +89,9 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
         //listView
         lvProducts = findViewById(R.id.lvProducts);
-        setListViewHeight(lvProducts);
+
+
+//        setListViewHeight(lvProducts);
 
         fullProductList = new ArrayList<Product>();
         productAdapter = new ProductAdapter(ProductActivity.this, fullProductList);
@@ -160,10 +162,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Product product = snapshot.getValue(Product.class);
                 fullProductList.add(product);
-//                productAdapter.notifyDataSetChanged();
-
-                productAdapter = new ProductAdapter(ProductActivity.this, fullProductList);
-                lvProducts.setAdapter(productAdapter);
+                productAdapter.notifyDataSetChanged();
             }
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -191,18 +190,18 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         if (result.getResultCode() == RESULT_OK && result.getData()!=null) {
             selectedProductRecords = (ArrayList<ShoppingCartRecord>) result.getData().getExtras().getSerializable("returnedScRecordList");
             if (selectedProductRecords.size()>0) {
-                for (int i = 0; i < fullProductList.size(); i++) {
-                    TextView tvSelectedProductName = (TextView) lvProducts.getChildAt(i).findViewById(R.id.tvProductName);
-                    EditText edSelectedProductQuantity = (EditText) lvProducts.getChildAt(i).findViewById(R.id.edQuantity);
-                    for (ShoppingCartRecord scRecord : selectedProductRecords) {
-                        if (tvSelectedProductName.getText().toString().equals(scRecord.getProductName())) {
-                            edSelectedProductQuantity.setText(scRecord.getProductQuantity()+"");
-                            break;
-                        }else{
-                            edSelectedProductQuantity.setText(null);
-                        }
-                    }
-                }
+//                for (int i = 0; i < fullProductList.size(); i++) {
+//                    TextView tvSelectedProductName = (TextView) lvProducts.getChildAt(i).findViewById(R.id.tvProductName);
+//                    EditText edSelectedProductQuantity = (EditText) lvProducts.getChildAt(i).findViewById(R.id.edQuantity);
+//                    for (ShoppingCartRecord scRecord : selectedProductRecords) {
+//                        if (tvSelectedProductName.getText().toString().equals(scRecord.getProductName())) {
+//                            edSelectedProductQuantity.setText(scRecord.getProductQuantity()+"");
+//                            break;
+//                        }else{
+//                            edSelectedProductQuantity.setText(null);
+//                        }
+//                    }
+//                }
             }else
                 reset();
 
@@ -307,6 +306,8 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         lvProducts.setAdapter(productAdapter);
     }
 
+
+    // not work now
     public static void setListViewHeight(ListView listView) {
         ListAdapter listAdapter = listView.getAdapter();
         if (listAdapter == null)
