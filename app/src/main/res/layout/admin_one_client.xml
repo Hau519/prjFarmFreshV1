@@ -11,7 +11,7 @@
         <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5" />
+            android:layout_weight="0.3" />
 
 
         <TextView
@@ -19,16 +19,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
-            android:gravity="center"
+            android:gravity="left"
             android:text="hau@gmail.com"
             android:clickable="false"
             android:focusableInTouchMode="false"
             android:focusable="false"/>
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5" />
+
 
         <TextView
             android:id="@+id/tvName"
@@ -40,10 +37,7 @@
             android:clickable="false"
             android:focusableInTouchMode="false"
             android:focusable="false"/>
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2" />
+
 
 
         <Button
