@@ -126,10 +126,8 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
                 for (ShoppingCartRecord scRec : selectedProductRecords) {
                     if ((selectedProduct.getName()).equals(scRec.getProductName())) {
-//                        int finalQuantity = quantity + scRec.getProductQuantity();
-                        int finalQuantity = quantity;
-                        scRec.setProductQuantity(finalQuantity);
-                        scRec.setProductTotal(finalQuantity * scRec.getProductPrice());
+                        scRec.setProductQuantity(quantity);
+                        scRec.setProductTotal(quantity * scRec.getProductPrice());
                         Toast.makeText(context, "Change Quantity Success!", Toast.LENGTH_SHORT).show();
                         return;
                     }
