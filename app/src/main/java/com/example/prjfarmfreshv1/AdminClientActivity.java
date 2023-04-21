@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -86,7 +87,10 @@ public class AdminClientActivity extends AppCompatActivity implements AdapterVie
 
     @Override
     public void onClick(View v) {
-        finish();
+
+        Intent i = new Intent(this, AdminProfileActivity.class);
+        i.putExtra("admin", "admin");
+        startActivity(i);
     }
 
     @Override
