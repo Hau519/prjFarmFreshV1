@@ -47,8 +47,8 @@
 
         <TextView
             android:id="@+id/textView6"
-            android:layout_weight="1"
 
+            android:paddingLeft="3dp"
             style="@style/style_shoppingCartListHeader"
             android:text="PRICE" />
 
@@ -68,7 +68,7 @@
         <TextView
             android:id="@+id/tvShoppingCartEditTitle"
             style="@style/style_shoppingCartListHeader"
-
+            android:layout_weight="0.7"
             android:text="EDIT" />
     </LinearLayout>
 
