@@ -1,11 +1,17 @@
 package com.example.prjfarmfreshv1.models;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.example.prjfarmfreshv1.R;
 
@@ -49,6 +55,7 @@ public class OrderProductAdapter extends BaseAdapter {
         View oneItem = null;
 
         TextView tvName, tvUnitPrice, tvQuanity, tvTotal;
+        Button btnEditOrderDetails;
 
         //1-inflate layout
         LayoutInflater inflater = LayoutInflater.from(context);
@@ -58,16 +65,55 @@ public class OrderProductAdapter extends BaseAdapter {
         tvName = oneItem.findViewById(R.id.tvName);
         tvUnitPrice = oneItem.findViewById(R.id.tvUnitPrice);
         tvQuanity = oneItem.findViewById(R.id.tvQuantity);
-        tvQuanity.setEnabled(false);
-        if (state==1){
-            tvQuanity.setEnabled(true);
+        btnEditOrderDetails = oneItem.findViewById(R.id.btnEditOrderDetails);
+
+        if (state!=1){
+            btnEditOrderDetails.setVisibility(View.GONE);
         }
+
         tvTotal = oneItem.findViewById(R.id.tvTotalAdminDetailOrder);
         orderProduct=orderProductList.get(position);
         tvName.setText(orderProduct.getProductName());
         tvUnitPrice.setText(String.format("%.2f", orderProduct.getUnitPrice()));
         tvQuanity.setText(String.valueOf(orderProduct.getQuantity()));
         tvTotal.setText(String.format("%.2f", orderProduct.getProductTotal()));
+        btnEditOrderDetails.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                if (btnEditOrderDetails.getText().toString().equalsIgnoreCase("edit")) {
+                    tvQuanity.setEnabled(true);
+                    tvQuanity.setClickable(true);
+                    tvQuanity.setFocusableInTouchMode(true);
+                    tvQuanity.setFocusable(true);
+
+                    btnEditOrderDetails.setText("save");
+                }else if (btnEditOrderDetails.getText().toString().equalsIgnoreCase("save")) {
+                    tvQuanity.setEnabled(false);
+                    btnEditOrderDetails.setText("edit");
+                    float newQuantity = Float.valueOf(tvQuanity.getText().toString());
+                    float price = Float.parseFloat(tvUnitPrice.getText().toString());
+                    float newTotal = newQuantity * price;
+                    tvTotal.setText(String.format("%.2f", newTotal));
+                    orderProduct.setQuantity(newQuantity);
+                    orderProduct.setProductTotal(newTotal);
+                    tvQuanity.setClickable(false);
+                    tvQuanity.setFocusableInTouchMode(false);
+                    tvQuanity.setFocusable(false);
+                    Intent intent = new Intent("changedOrderProductList");
+                    intent.putExtra("newOrderProductList", orderProductList);
+                    LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+                    try{
+
+
+                    }catch(Exception e){
+                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            }
+        });
+
         return oneItem;
 
     }

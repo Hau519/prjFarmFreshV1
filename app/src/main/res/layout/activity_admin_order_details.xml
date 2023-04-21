@@ -145,6 +145,14 @@
             android:layout_weight="1.5"
             android:text="Total" />
 
+        <TextView
+            android:id="@+id/textView8"
+            style="@style/style_shoppingCartListHeader"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_weight="1.5"
+            android:text="Edit" />
+
 
 
     </LinearLayout>

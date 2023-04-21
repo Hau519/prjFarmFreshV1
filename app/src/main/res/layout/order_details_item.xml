@@ -10,6 +10,9 @@
 
         <Space
             android:layout_width="0dp"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"
             android:layout_height="wrap_content"
             android:layout_weight="0.2" />
 
@@ -18,6 +21,9 @@
             android:layout_width="0dp"
             android:textSize="18dp"
             android:gravity="left"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="tomato" />
@@ -30,6 +36,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"
             android:textSize="18dp"
             android:text="2.99" />
 
@@ -39,7 +48,11 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginLeft="20dp"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"
             android:textSize="18dp"
+            android:enabled="false"
             android:layout_weight="1"
             android:text="7" />
 
@@ -50,13 +63,24 @@
             android:layout_height="wrap_content"
             android:gravity="right"
             android:layout_weight="1"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"
             android:textSize="18dp"
             android:text="65.97" />
 
-        <Space
-            android:layout_width="0dp"
+
+
+        <Button
+            android:id="@+id/btnEditOrderDetails"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.2" />
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"
+            android:layout_weight="0.8"
+            android:text="edit" />
+
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

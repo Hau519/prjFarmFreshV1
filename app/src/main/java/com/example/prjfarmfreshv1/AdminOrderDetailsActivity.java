@@ -2,10 +2,19 @@ package com.example.prjfarmfreshv1;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -16,6 +25,7 @@ import com.example.prjfarmfreshv1.models.OrderProductAdapter;
 import com.example.prjfarmfreshv1.models.ShoppingCartRecord;
 import com.example.prjfarmfreshv1.models.ShoppingCartRecordAdapter;
 import com.example.prjfarmfreshv1.models.User;
+import com.example.prjfarmfreshv1.ui.home.Login;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,15 +37,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class AdminOrderDetailsActivity extends AppCompatActivity implements View.OnClickListener {
+public class AdminOrderDetailsActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemLongClickListener, DialogInterface.OnClickListener {
 
     TextView tvDate, tvTotal, tvClientId;
     ListView lvProducts;
     Button btnWorkStation, btnReturn;
     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.CANADA);
     User user;
-    ShoppingCartRecordAdapter scAdapter;
-    ArrayList<ShoppingCartRecord> shoppingCartList;
+
     String orderNumber;
     String dateOrder;
     Double total;
@@ -51,7 +60,19 @@ public class AdminOrderDetailsActivity extends AppCompatActivity implements View
     String orderNumberDisplay;
     DatabaseReference orderListDatabase;
 
+    AlertDialog.Builder alertD;
+    int position=-1;
+
     int state = 1;
+
+    public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // Get extra data included in the Intent
+            orderProductList = ( ArrayList<OrderProduct>) intent.getExtras().getSerializable("newOrderProductList");
+
+        }
+    };
 
 
     @Override
@@ -62,15 +83,17 @@ public class AdminOrderDetailsActivity extends AppCompatActivity implements View
     }
 
     private void initialize() {
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, new IntentFilter("changedOrderProductList"));
         orderListDatabase = FirebaseDatabase.getInstance().getReference("OrderList");
         orderProductDatabase = FirebaseDatabase.getInstance().getReference("OrderProduct");
 
         tvDate = findViewById(R.id.tvDateAdminOrderDetails);
         tvTotal = findViewById(R.id.tvTotalAdminDetailOrder);
         lvProducts = findViewById(R.id.lvProductAdinOrderDetails);
+        lvProducts.setOnItemLongClickListener(this);
         tvClientId = findViewById(R.id.tvClientIdAdminOrderDetail);
 
-
+        setDeleteAlert();
         btnWorkStation = findViewById(R.id.btnWorkingStation);
         btnReturn = findViewById(R.id.btnReturn);
         btnWorkStation.setOnClickListener(this);
@@ -119,13 +142,48 @@ public class AdminOrderDetailsActivity extends AppCompatActivity implements View
 
             }
         });
-      /*  shoppingCartList = (ArrayList<ShoppingCartRecord>) getIntent().getExtras().getSerializable("shoppingCartList");
-        scAdapter = new ShoppingCartRecordAdapter(this, shoppingCartList);
-        lvProducts.setAdapter(scAdapter);*/
+    }
+
+    private void setDeleteAlert() {
+        alertD = new AlertDialog.Builder(this);
+        alertD.setTitle("Remove Product");
+        alertD.setMessage("Do you want to remove (Yes/NO)?");
+        alertD.setPositiveButton("Yes", this);
+        alertD.setNegativeButton("No",this);
     }
 
     @Override
     public void onClick(View v) {
+        int id = v.getId();
+        switch (id){
+            case R.id.btnReturn:
+                finish();
+                break;
+            case R.id.btnWorkingStation:
+                Intent intent = new Intent(this, AdminProfileActivity.class);
+                intent.putExtra("admin", "admin");
+                startActivity(intent);
+                break;
 
+        }
+    }
+
+    @Override
+    public void onClick(DialogInterface dialog, int which) {
+        switch (which) {
+            case Dialog.BUTTON_POSITIVE:
+                orderProductList.remove(position);
+                orderProductAdapter.notifyDataSetChanged();
+                break;
+            case Dialog.BUTTON_NEGATIVE:
+                break;
+        }
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int i, long id) {
+        position = i;
+        alertD.create().show();
+        return true;
     }
 }
