@@ -63,12 +63,13 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
         Intent intent = getIntent();
         if (intent.hasExtra("admin")){
             admin = getIntent().getExtras().getString("admin");
-            user = (User) getIntent().getExtras().getSerializable("user");
+
         }
         if (!admin.isEmpty()){
             tvTitle.setText("Welcome admin!");
             iconLogout.setVisibility(View.INVISIBLE);
             btnShop.setText("Working station");
+            user = (User) getIntent().getExtras().getSerializable("user");
         }
     }
 
@@ -102,14 +103,19 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                                     Snackbar.LENGTH_LONG).show();
                             break;
                         }
-//                        User updateUser = new User(name, email, user.getPassword());
+
                         user.setName(name);
                         String emailKey = email.replace(".", "DOT");
                         usersTable.child(emailKey).setValue(user);
-                        Snackbar.make(view, "Your information is updated successfully",
-                                Snackbar.LENGTH_LONG).show();
                         tvEmail.setEnabled(false);
-                        tvTitle.setText("Welcome " + name);
+                        if(admin.equalsIgnoreCase("")){
+                            tvTitle.setText("Welcome " + name);
+                            Snackbar.make(view, "Your information is updated successfully",
+                                    Snackbar.LENGTH_LONG).show();
+                        }else{
+                            Snackbar.make(view, "The client information is updated successfully",
+                                    Snackbar.LENGTH_LONG).show();
+                        }
                         tvName.setEnabled(false);
                         btnUpdate.setText("Update");
                     }

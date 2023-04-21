@@ -54,6 +54,7 @@ public class AdminClientActivity extends AppCompatActivity implements AdapterVie
         clientList = new ArrayList<>();
         clientListAdapter = new ClientListAdapter(this, clientList);
         lvClient.setAdapter(clientListAdapter);
+        clientListAdapter.notifyDataSetChanged();
 
         usersDatabase.addChildEventListener(new ChildEventListener() {
             @Override
