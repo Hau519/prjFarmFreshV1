@@ -28,14 +28,21 @@
             style="@style/style_shoppingCartListHeader"
             android:layout_marginTop="10dp"
             android:text="Tomato"
-            android:textSize="14dp" />
+            android:textSize="14dp"
+
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
 
         <TextView
             android:id="@+id/tvProductPrice"
             style="@style/style_shoppingCartListHeader"
             android:layout_marginTop="10dp"
             android:text="1.99"
-            android:textSize="14dp" />
+            android:textSize="14dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
 
         <ImageButton
             android:id="@+id/imPlus"
@@ -47,7 +54,10 @@
 
             android:scaleType="fitCenter"
             android:visibility="invisible"
-            app:srcCompat="@drawable/icon_plus_button" />
+            app:srcCompat="@drawable/icon_plus_button"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
 
         <EditText
             android:id="@+id/edProductQuantity"
@@ -65,6 +75,8 @@
             android:enabled="false"
 
 
+
+
             />
 
         <ImageButton
@@ -76,14 +88,20 @@
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
             android:visibility="invisible"
-            app:srcCompat="@drawable/icon_minus_button" />
+            app:srcCompat="@drawable/icon_minus_button"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
 
         <TextView
             android:id="@+id/tvProductTotal"
             style="@style/style_shoppingCartListHeader"
             android:layout_marginTop="10dp"
             android:text="5.97"
-            android:textSize="14dp" />
+            android:textSize="14dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
 
         <Button
             android:id="@+id/btnEdit"
