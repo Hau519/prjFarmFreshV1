@@ -8,7 +8,7 @@
     tools:context=".ClientActivity">
 
     <ImageView
-        android:id="@+id/icLogOutAdmin"
+        android:id="@+id/icLogOut"
         android:layout_width="42dp"
         android:layout_height="72dp"
         android:layout_marginStart="56dp"
