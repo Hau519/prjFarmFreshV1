@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.prjfarmfreshv1.models.MailSender;
-import com.example.prjfarmfreshv1.models.OrderProduct;
 import com.example.prjfarmfreshv1.models.User;
 import com.example.prjfarmfreshv1.ui.home.Login;
 import com.google.android.material.snackbar.Snackbar;
@@ -43,7 +42,7 @@ public class ResetPassword extends AppCompatActivity implements View.OnClickList
     private void initialize() {
         edEmail = findViewById(R.id.edEmail);
         edCode = findViewById(R.id.edCodeAndPassword);
-        tvError = findViewById(R.id.tvError);
+        tvError = findViewById(R.id.tvErrorResetPassword);
         btnClick = findViewById(R.id.btnClick);
         btnLogin = findViewById(R.id.btnLogin);
 //        user = (User) getIntent().getExtras().getSerializable("user");

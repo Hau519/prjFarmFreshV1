@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.prjfarmfreshv1.R;
@@ -25,6 +26,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
     EditText edName, edEmail, edPassword;
     DatabaseReference userDatabase;
 
+    TextView tvError;
+
 
     User user;
     String email;
@@ -38,6 +41,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
     }
 
     private void initialize(){
+        tvError = findViewById(R.id.tvErrorRegister);
         btnRegister = findViewById(R.id.btnRegister);
         btnLogIn = findViewById(R.id.btnLogIn);
         btnRegister.setOnClickListener(this);
@@ -54,6 +58,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
         int id=view.getId();
         switch (id){
             case R.id.btnRegister:
+                tvError.setText("");
                 register(view);
                 break;
             case R.id.btnLogIn:
@@ -72,8 +77,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
             String password = edPassword.getText().toString();
 
             if(TextUtils.isEmpty(name)||TextUtils.isEmpty(emailstr)||TextUtils.isEmpty(password)){
-                Toast.makeText(this, "Plz fill all fields!", Toast.LENGTH_SHORT).show();
+                tvError.setText("Please fill all the fields!");
             }else{
+                tvError.setText("");
                 user = new User(name, emailstr, password);
                 userDatabase.child(email).addValueEventListener(this);
             }
@@ -90,9 +96,10 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
 
         if(snapshot.exists()){
             if (!userAdded) {
-              Toast.makeText(this, "This email already exist.", Toast.LENGTH_SHORT).show();
+                tvError.setText("This email already exist.");
             }
         }else{
+            tvError.setText("");
             userDatabase.child(email).setValue(user);
             userAdded=true;
             Toast.makeText(this, "Register success!", Toast.LENGTH_SHORT).show();
