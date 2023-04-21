@@ -22,6 +22,10 @@ public class OrderProductAdapter extends BaseAdapter {
     private ArrayList<OrderProduct> orderProductList;
     OrderProduct orderProduct;
 
+    float totalChange=0;
+    float originTotal;
+    float newTotal;
+
     int state =0;
 
     public OrderProductAdapter(Context context, ArrayList<OrderProduct> orderProductList) {
@@ -76,42 +80,45 @@ public class OrderProductAdapter extends BaseAdapter {
         tvName.setText(orderProduct.getProductName());
         tvUnitPrice.setText(String.format("%.2f", orderProduct.getUnitPrice()));
         tvQuanity.setText(String.valueOf(orderProduct.getQuantity()));
-        tvTotal.setText(String.format("%.2f", orderProduct.getProductTotal()));
+        originTotal = Float.parseFloat(String.valueOf(orderProduct.getProductTotal()));
+        tvTotal.setText(String.format("%.2f", originTotal));
         btnEditOrderDetails.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-                if (btnEditOrderDetails.getText().toString().equalsIgnoreCase("edit")) {
-                    tvQuanity.setEnabled(true);
-                    tvQuanity.setClickable(true);
-                    tvQuanity.setFocusableInTouchMode(true);
-                    tvQuanity.setFocusable(true);
-
-                    btnEditOrderDetails.setText("save");
-                }else if (btnEditOrderDetails.getText().toString().equalsIgnoreCase("save")) {
-                    tvQuanity.setEnabled(false);
-                    btnEditOrderDetails.setText("edit");
-                    float newQuantity = Float.valueOf(tvQuanity.getText().toString());
-                    float price = Float.parseFloat(tvUnitPrice.getText().toString());
-                    float newTotal = newQuantity * price;
-                    tvTotal.setText(String.format("%.2f", newTotal));
-                    orderProduct.setQuantity(newQuantity);
-                    orderProduct.setProductTotal(newTotal);
-                    tvQuanity.setClickable(false);
-                    tvQuanity.setFocusableInTouchMode(false);
-                    tvQuanity.setFocusable(false);
-                    Intent intent = new Intent("changedOrderProductList");
-                    intent.putExtra("newOrderProductList", orderProductList);
-                    LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
                     try{
+                        if (btnEditOrderDetails.getText().toString().equalsIgnoreCase("edit")) {
+                            tvQuanity.setEnabled(true);
+                            tvQuanity.setClickable(true);
+                            tvQuanity.setFocusableInTouchMode(true);
+                            tvQuanity.setFocusable(true);
 
+                            btnEditOrderDetails.setText("save");
+                        }else if (btnEditOrderDetails.getText().toString().equalsIgnoreCase("save")) {
+                            tvQuanity.setEnabled(false);
+                            btnEditOrderDetails.setText("edit");
+                            float newQuantity = Float.valueOf(tvQuanity.getText().toString());
+                            float price = Float.parseFloat(tvUnitPrice.getText().toString());
+                            newTotal = newQuantity * price;
+                            tvTotal.setText(String.format("%.2f", newTotal));
+                            orderProduct.setQuantity(newQuantity);
+                            orderProduct.setProductTotal(newTotal);
+                            tvQuanity.setClickable(false);
+                            tvQuanity.setFocusableInTouchMode(false);
+                            tvQuanity.setFocusable(false);
+                            Intent intent = new Intent("changedOrderProductList");
+                            intent.putExtra("newOrderProductList", orderProductList);
+                            totalChange = totalChange + (newTotal - originTotal) *1.15f;
+                            intent.putExtra("totalChange", totalChange);
+                            LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+                        }
 
                     }catch(Exception e){
                         Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
 
                 }
-            }
+
         });
 
         return oneItem;

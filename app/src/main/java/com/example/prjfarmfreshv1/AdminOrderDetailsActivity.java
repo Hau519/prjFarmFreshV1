@@ -57,6 +57,8 @@ public class AdminOrderDetailsActivity extends AppCompatActivity implements View
     String orderNumberDisplay;
     DatabaseReference orderListDatabase;
 
+    float totalChange=0;
+
     AlertDialog.Builder alertD;
     int position=-1;
 
@@ -67,6 +69,7 @@ public class AdminOrderDetailsActivity extends AppCompatActivity implements View
         public void onReceive(Context context, Intent intent) {
             // Get extra data included in the Intent
             orderProductList = ( ArrayList<OrderProduct>) intent.getExtras().getSerializable("newOrderProductList");
+            totalChange = intent.getExtras().getFloat("totalChange");
 
         }
     };
@@ -100,7 +103,7 @@ public class AdminOrderDetailsActivity extends AppCompatActivity implements View
         tvClientId.setText(clientId);
         orderInfor = (OrderInfor )getIntent().getExtras().getSerializable("order");
 
-        total = orderInfor.getTotal();
+        total = orderInfor.getTotal()+totalChange;
         tvTotal.setText(String.format("%.2f",total));
         Date date = new Date();
         dateOrder = orderInfor.getDate();
