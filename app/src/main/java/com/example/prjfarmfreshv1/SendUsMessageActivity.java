@@ -61,14 +61,12 @@ public class SendUsMessageActivity extends AppCompatActivity implements View.OnC
                     intent1.putExtra("user", user);
                     startActivity(intent1);
                 }
-
                 break;
             case R.id.btnHome:
                 Intent intent = new Intent(this, MainActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
                 break;
-
         }
     }
 

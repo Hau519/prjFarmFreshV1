@@ -134,7 +134,6 @@ public class ResetPassword extends AppCompatActivity implements View.OnClickList
             }else{
                 tvError.setText("Email is not registered yet");
             }
-
     }
 
     @Override

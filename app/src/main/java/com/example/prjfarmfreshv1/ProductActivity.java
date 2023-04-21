@@ -131,7 +131,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
                     if ((selectedProduct.getName()).equals(scRec.getProductName())) {
                         scRec.setProductQuantity(quantity);
                         scRec.setProductTotal(quantity * scRec.getProductPrice());
-                        Toast.makeText(context, "Change Quantity Success!", Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(context, "Change Quantity Success!", Toast.LENGTH_SHORT).show();
                         return;
                     }
                 }

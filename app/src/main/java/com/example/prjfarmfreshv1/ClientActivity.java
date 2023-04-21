@@ -99,6 +99,8 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                         String email = user.getEmail();
                         String name = tvName.getText().toString();
                         if (name.equals(user.getName())){
+                            tvName.setEnabled(false);
+                            btnUpdate.setText("Update");
                             Snackbar.make(view, "Nothing change",
                                     Snackbar.LENGTH_LONG).show();
                             break;
